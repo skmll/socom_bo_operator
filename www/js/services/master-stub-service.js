@@ -1,0 +1,3 @@
+.service('MasterStubService', function() {
+
+});

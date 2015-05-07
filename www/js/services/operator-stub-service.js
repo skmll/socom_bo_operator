@@ -1,0 +1,3 @@
+.service('OperatorStubService', function() {
+
+});
