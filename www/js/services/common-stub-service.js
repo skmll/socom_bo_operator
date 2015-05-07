@@ -1,3 +1,0 @@
-.service('CommonStubService', function() {
-
-});
