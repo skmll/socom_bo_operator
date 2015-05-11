@@ -22,7 +22,7 @@ app.run(function($ionicPlatform) {
 app.controller('OperatorTestCtrl', function($scope, operatorService) {
   $scope.operators = 'Loading data..';  
   operatorService.getRandomWord().then(function(data){
-    console.log(data['data']['weather']);
-    $scope.operators = 'London weather: ' + data['data']['weather'][0].description;
+    console.log(data);
+    $scope.operators = data['data'].content;
   });
 })

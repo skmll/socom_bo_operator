@@ -1,3 +1,3 @@
-.service('ComsysStubService', function() {
+app.service('ComsysStubService', function() {
 
 });

@@ -1,3 +1,3 @@
-.service('MasterStubService', function() {
+app.service('MasterStubService', function() {
 
 });

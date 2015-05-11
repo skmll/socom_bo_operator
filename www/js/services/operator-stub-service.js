@@ -1,6 +1,6 @@
 app.service('operatorService', ['$http', function ($http) {
 	
-	var baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=London,uk';
+	var baseUrl = 'http://rest-service.guides.spring.io/greeting';
 	
     this.getRandomWord = function () {
 		return $http.get(baseUrl);
