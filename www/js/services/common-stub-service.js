@@ -1,15 +1,7 @@
 app.factory('CommonStubService', ['$http', '$rootScope', '$cordovaBatteryStatus',
  function ($http, $rootScope, $cordovaBatteryStatus) {
 
-	var data = {};
-	data.batteryLevel = -1;
-	data.isPluggedIn = false;
-
-	data.getBatteryLevel = function(){
-		data.batteryLevel ++;
-		return data.batteryLevel;
-	};
-	
+	// Battery events
 	$rootScope.$on('$cordovaBatteryStatus:status', function (result) {
 		data.batteryLevel = result.level;       // (0 - 100)
 		data.isPluggedIn  = result.isPlugged;   // bool
@@ -24,6 +16,19 @@ app.factory('CommonStubService', ['$http', '$rootScope', '$cordovaBatteryStatus'
 		data.batteryLevel = result.level;       // (0 - 100)
 		data.isPluggedIn  = result.isPlugged;   // bool
 	});
+	
+	var data = {};
+	data.batteryLevel = -1;
+	data.isPluggedIn = false;
+
+	data.getBatteryLevel = function(){
+		return data.batteryLevel;
+	};
+	
+	data.getAllEvents = function(){
+		return $http.get('http://192.168.234.37/SOCOM_BO/public/v0/event/get/all');
+	}
+	
 	
 	return data;
 }]);

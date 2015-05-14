@@ -6,7 +6,7 @@
 var app = angular.module('starter', ['ionic', 'ngCordova']);
 
 
-app.run(function($ionicPlatform) {
+app.run(function($ionicPlatform, $ionicPopup) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -17,28 +17,53 @@ app.run(function($ionicPlatform) {
       StatusBar.styleDefault();
     }
     
+    // Check for network connection
+    if(window.Connection) {
+      if(navigator.connection.type == Connection.NONE) {
+        $ionicPopup.confirm({
+          title: 'No Internet Connection',
+          content: 'Sorry, no Internet connectivity detected. Please reconnect and try again.'
+        })
+        .then(function(result) {
+          if(!result) {
+            ionic.Platform.exitApp();
+          }
+        });
+      }
+    }
+    
   });
   
-
-
-   
 })
 
-app.controller('OperatorTestCtrl', ['$scope', 'OperatorStubService', 'CommonStubService', function($scope, OperatorStubService, CommonStubService) {
-  $scope.operators = 'Loading data..';  
-  OperatorStubService.getHelloWorld()
-    .success(function (data) {
-        console.log(data);
-        $scope.operators = data.content;
-    })
-    .error(function (error) {
-        $scope.operators = 'Unable to load data: ' + error.message;
-    });
-    
-    $scope.getBatteryLevel = function() {
-      var lvl = CommonStubService.getBatteryLevel();
-      console.log('battery level -> ' + lvl);
-      $scope.batterylvl = lvl;
-      alert(lvl);
-    }
-}])
+app.config(function($stateProvider, $urlRouterProvider) {
+  
+  $stateProvider
+    .state('common', {
+    url: "/common",
+    templateUrl: "partials/common-partial.html",
+    controller: 'CommonController'
+  })
+
+  .state('operator', {
+    url: "/operator",
+    templateUrl: "partials/operator-partial.html",
+    controller: 'OperatorController'
+  })
+  
+  .state('comsys', {
+    url: "/comsys",
+    templateUrl: "partials/comsys-partial.html",
+    controller: 'ComsysController'
+  })
+  
+  .state('master', {
+    url: "/master",
+    templateUrl: "partials/master-partial.html",
+    controller: 'MasterController'
+  });
+
+  // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/common');
+
+});
