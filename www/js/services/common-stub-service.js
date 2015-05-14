@@ -1,4 +1,4 @@
-/*app.factory('CommonStubService', ['$http', '$rootScope', '$cordovaBatteryStatus',
+app.factory('CommonStubService', ['$http', '$rootScope', '$cordovaBatteryStatus',
  function ($http, $rootScope, $cordovaBatteryStatus) {
 
 	var data = {};
@@ -6,6 +6,7 @@
 	data.isPluggedIn = false;
 
 	data.getBatteryLevel = function(){
+		data.batteryLevel ++;
 		return data.batteryLevel;
 	};
 	
@@ -25,4 +26,4 @@
 	});
 	
 	return data;
-}]);*/
+}]);
