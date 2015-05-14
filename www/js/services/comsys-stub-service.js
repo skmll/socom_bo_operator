@@ -1,3 +1,3 @@
-app.service('ComsysStubService', function() {
+app.factory('ComsysStubService', ['$http', function ($http) {
 
-});
+}]);

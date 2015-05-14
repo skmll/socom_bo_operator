@@ -1,3 +1,3 @@
-app.service('MasterStubService', function() {
+app.factory('MasterStubService', ['$http', function ($http) {
 
-});
+}]);

@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('starter', ['ionic']);
+var app = angular.module('starter', ['ionic']);//, 'ngCordova']);
 
 
 app.run(function($ionicPlatform) {
@@ -16,13 +16,29 @@ app.run(function($ionicPlatform) {
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-  }); 
+    
+  });
+  
+
+
+   
 })
 
-app.controller('OperatorTestCtrl', function($scope, operatorService) {
+app.controller('OperatorTestCtrl', ['$scope', 'OperatorStubService', function($scope, OperatorStubService) {
   $scope.operators = 'Loading data..';  
-  operatorService.getRandomWord().then(function(data){
-    console.log(data);
-    $scope.operators = data['data'].content;
-  });
-})
+  OperatorStubService.getHelloWorld()
+    .success(function (data) {
+        console.log(data);
+        $scope.operators = data.content;
+    })
+    .error(function (error) {
+        $scope.operators = 'Unable to load data: ' + error.message;
+    });
+    /*
+    $scope.getBatteryLevel = function() {
+      var lvl = CommonStubService.getBatteryLevel();
+      console.log('battery level -> ' + lvl);
+      $scope.batterylvl = lvl;
+      alert(lvl);
+    }*/
+}])

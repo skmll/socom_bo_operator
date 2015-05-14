@@ -16,6 +16,7 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
+    <!--<script src="lib/ngCordova/dist/ng-cordova.js"></script> -->
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
@@ -33,7 +34,12 @@
         <h1 class="title"> {{operators}} </h1>
       </ion-header-bar>
       <ion-content>
+          <button class="button button-light" ng-click="getBatteryLevel()">
+            Get Battery Status
+          </button>
+          <span ng-bind="batterylvl"></span>
       </ion-content>
     </ion-pane>
+
   </body>
 </html>
