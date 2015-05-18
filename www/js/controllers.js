@@ -11,7 +11,7 @@ app.controller('OperatorController', ['$scope', 'OperatorStubService', function(
         $scope.operators = data.content;
     })
     .error(function (error) {
-        $scope.operators = 'Unable to load data: ' + error.message;
+        $scope.operators = 'Unable to load data: ' + error;
     });
 	
 	$scope.unlockSquadSession = function() {
@@ -22,7 +22,7 @@ app.controller('OperatorController', ['$scope', 'OperatorStubService', function(
 	})
 	.error(function(error) {
 		console.log(error);
-		$scope.unlockResult = 'Unable to unlock the squad session ' + error.message;
+		$scope.unlockResult = 'Unable to unlock the squad session ' + error;
 	});
 }
 
@@ -41,7 +41,7 @@ app.controller('CommonController', ['$scope', 'CommonStubService', function($sco
       $scope.events = data;
     })
     .error(function (error) {
-      $scope.events = 'Unable to load events: ' + error.message;
+      $scope.events = 'Unable to load events: ' + error;
     });
   }
 
@@ -54,7 +54,7 @@ app.controller('CommonController', ['$scope', 'CommonStubService', function($sco
 	})
 	.error(function(error) {
 		console.log(error);
-		$scope.event = 'Unable to get the event ' + error.message;
+		$scope.event = 'Unable to get the event ' + error;
 	});
 }
   
@@ -80,7 +80,7 @@ $scope.attachMapToEvent = function() {
 	})
 	.error(function(error) {
 		console.log(error);
-		$scope.attachMapResult = 'can not attach map to event ' + error.message;
+		$scope.attachMapResult = 'can not attach map to event ' + error;
 	});
 }
 }]);
@@ -99,7 +99,7 @@ app.controller('MasterController', ['$scope', 'MasterStubService', function($sco
         $scope.loginResult = data;
     })
     .error(function (error) {
-        $scope.loginResult = 'Unable to load data: ' + error.message;
+        $scope.loginResult = 'Unable to load data: ' + error;
     });
     
   }
@@ -118,7 +118,7 @@ var account = {
 		$scope.refuseResult = data;
 	})
 	.error(function(error) {
-		$scope.refuseResult = 'An error acurred ' + error.message;
+		$scope.refuseResult = 'An error acurred ' + error;
 	});
   }
   

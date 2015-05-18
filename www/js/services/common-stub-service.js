@@ -3,6 +3,7 @@ app.factory('CommonStubService', ['$http', '$rootScope', '$cordovaBatteryStatus'
 
 	// Battery events
 	$rootScope.$on('$cordovaBatteryStatus:status', function (result) {
+		alert(result.level);
 		data.batteryLevel = result.level;       // (0 - 100)
 		data.isPluggedIn  = result.isPlugged;   // bool
 	});

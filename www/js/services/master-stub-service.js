@@ -4,7 +4,7 @@ app.factory('MasterStubService', ['$http', function ($http) {
 	var data = {};
 
 	data.login = function (user) {
-		return $http.get(baseUrl + 'master/login', user);
+		return $http.post(baseUrl + 'master/login', user);
 	};
 		
 	return data;
