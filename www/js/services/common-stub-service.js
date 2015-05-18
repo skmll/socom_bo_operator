@@ -27,6 +27,10 @@ app.factory('CommonStubService', ['$http', '$rootScope', '$cordovaBatteryStatus'
 	
 	data.getAllEvents = function(){
 		return $http.get('http://192.168.234.37/SOCOM_BO/public/v0/event/get/all');
+	};
+	
+	data.getEvent = function(event){
+		return $http.get('http://192.168.234.37/SOCOM_BO/public/v0/event/get', event.IDEvent);
 	}
 	
 	

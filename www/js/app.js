@@ -61,6 +61,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
     url: "/master",
     templateUrl: "partials/master-partial.html",
     controller: 'MasterController'
+  })
+
+    .state('superadmin', {
+    url: "/superadmin",
+    templateUrl: "partials/superadmin-partial.html",
+    controller: 'SuperAdminController'
   });
 
   // if none of the above states are matched, use this as the fallback

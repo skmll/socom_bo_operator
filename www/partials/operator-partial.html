@@ -4,5 +4,13 @@
   </ion-header-bar>
   <ion-content>
     <span ng-bind="operators"></span>
+	
+	  <div>
+      <button class="button button-light" ng-click="unlockSquadSession()">
+        Unlock Squad Session
+      </button>
+      <span ng-bind="unlockResult"></span>
+    </div>
+
   </ion-content>
 </ion-pane>
