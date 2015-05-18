@@ -9,5 +9,9 @@ app.factory('OperatorStubService', ['$http', function ($http) {
 		return $http.get(baseUrlExample);
 	};
 
+	data.getOperatorPersonalConfig = function(){
+		var url = baseUrl + 'operator/config/personal/get';
+		return $http.get(url);
+	}
 	return data;
 }]);

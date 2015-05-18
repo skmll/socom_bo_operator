@@ -4,6 +4,11 @@
   </ion-header-bar>
   <ion-content>
     <span ng-bind="hello"></span>
-
+    <div>
+      <button class="button button-light" ng-click="getOperatorPersonalConfig()">
+        Get Operator Personal Config
+      </button>
+      <span ng-bind="getOperatorPersonalConfigResult"></span>
+    </div>
   </ion-content>
 </ion-pane>
