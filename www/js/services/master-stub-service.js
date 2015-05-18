@@ -13,7 +13,7 @@ app.factory('MasterStubService', ['$http', function ($http) {
 		 },
 		 params: { username: escape(username), password: escape(password) }
 		}
-		return $http(req);//baseUrl + 'master/login', user);
+		return $http(req);
 	};
 		
 	return data;
