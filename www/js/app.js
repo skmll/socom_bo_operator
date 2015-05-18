@@ -6,7 +6,7 @@
 var app = angular.module('starter', ['ionic', 'ngCordova']);
 
 
-app.run(function($ionicPlatform, $ionicPopup) {
+app.run(function($ionicPlatform, $ionicPopup, $rootScope, $cordovaBatteryStatus) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -17,21 +17,23 @@ app.run(function($ionicPlatform, $ionicPopup) {
       StatusBar.styleDefault();
     }
     
-    // Check for network connection
-    if(window.Connection) {
-      if(navigator.connection.type == Connection.NONE) {
-        $ionicPopup.confirm({
-          title: 'No Internet Connection',
-          content: 'Sorry, no Internet connectivity detected. Please reconnect and try again.'
-        })
-        .then(function(result) {
-          if(!result) {
-            ionic.Platform.exitApp();
-          }
-        });
-      }
-    }
-    
+    $rootScope.$on('$cordovaBatteryStatus:status', function (result) {
+      console.log(result);
+      alert(result);
+      var batteryLevel = result.level;       // (0 - 100)
+      var isPluggedIn  = result.isPlugged;   // bool
+    });
+
+    $rootScope.$on('$cordovaBatteryStatus:critical', function (result) {
+      var batteryLevel = result.level;       // (0 - 100)
+      var isPluggedIn  = result.isPlugged;   // bool
+    });
+
+    $rootScope.$on('$cordovaBatteryStatus:low', function (result) {
+      var batteryLevel = result.level;       // (0 - 100)
+      var isPluggedIn  = result.isPlugged;   // bool
+    });
+     
   });
   
 })
