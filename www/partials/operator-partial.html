@@ -10,5 +10,31 @@
       </button>
       <span ng-bind="getOperatorPersonalConfigResult"></span>
     </div>
+	
+	<div>
+      <button class="button button-light" ng-click="loginCheckOperator()">
+        loginCheckOperator
+      </button>
+      <span ng-bind="loginCheckOperatorResult"></span>
+    </div>
+
+	  <div>
+      <button class="button button-light" ng-click="changeOperatorPassword('', '')">Test Button</button>
+      <span ng-bind="changeOperatorPasswordResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="loginOperator()">
+        Login
+      </button>
+      <span ng-bind="loginResult"></span>
+    </div>
+    
+    <div>
+      <button class="button button-light" ng-click="updateOperatorPersonalConfig()">
+        updateOperatorPersonalConfig
+      </button>
+      <span ng-bind="updateOperatorPersonalConfigResult"></span>
+    </div>
+  
   </ion-content>
 </ion-pane>

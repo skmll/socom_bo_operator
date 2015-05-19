@@ -9,5 +9,18 @@
       </button>
       <span ng-bind="changeMasterPasswordResult"></span>
     </div>
+	
+	<div>
+      <button class="button button-light" ng-click="loginSuperadmin('', '')">Test Button</button>
+      <span ng-bind="loginSuperadminResult"></span>
+    </div>
+  
+    <div>
+      <button class="button button-light" ng-click="logout()">
+        Logout
+      </button>
+      <span ng-bind="logoutResult"></span>
+    </div>
+  
   </ion-content>
 </ion-pane>

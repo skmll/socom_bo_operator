@@ -33,5 +33,31 @@
       </button>
       <span ng-bind="getAllMasterSponsorsResult"></span>
     </div>
+	
+	  <div>
+      <button class="button button-light" ng-click="updateMasterSponsor('', '', '')">Test Button</button>
+      <span ng-bind="updateMasterSponsorResult"></span>
+    </div>
+  
+  <div>
+      <button class="button button-light" ng-click="getMasterSponsorByName()">
+        getMasterSponsorByName
+      </button>
+      <span ng-bind="getMasterSponsorByNameResult"></span>
+    </div>
+    
+    <div>
+      <button class="button button-light" ng-click="createMasterSponsor('', '')">
+            createMasterSponsor
+      </button>
+      <span ng-bind="createMasterSponsorResult"></span>
+    </div>
+	   <div>
+      <button class="button button-light" ng-click="createMaster()">
+        Create Master
+      </button>
+      <span ng-bind="createMasterResult"></span>
+    </div>
+  
   </ion-content>
 </ion-pane>
