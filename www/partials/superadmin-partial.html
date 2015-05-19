@@ -11,7 +11,9 @@
     </div>
 	
 	<div>
-      <button class="button button-light" ng-click="loginSuperadmin('', '')">Test Button</button>
+      <button class="button button-light" ng-click="loginSuperadmin('', '')">
+	  login superAdmin
+	  </button>
       <span ng-bind="loginSuperadminResult"></span>
     </div>
   
@@ -21,6 +23,41 @@
       </button>
       <span ng-bind="logoutResult"></span>
     </div>
-  
+
+	<div>
+      <button class="button button-light" ng-click="loginCheckSuperadmin()">
+        loginCheckSuperadmin
+      </button>
+      <span ng-bind="loginCheckResult"></span>
+    </div>
+
+	<div>
+      <button class="button button-light" ng-click="acceptMasterRegistration()">
+        acceptMasterRegistration
+      </button>
+      <span ng-bind="acceptMasterRegistrationResult"></span>
+    </div>
+
+	<div>
+      <button class="button button-light" ng-click="refuseMasterRegistration('')">
+        refuseMasterRegistration
+      </button>
+      <span ng-bind="refuseMasterRegistrationResult"></span>
+    </div>
+
+	<div>
+      <button class="button button-light" ng-click="banMaster('')">
+        banMaster
+      </button>
+      <span ng-bind="banMasterResult"></span>
+    </div>
+	
+		<div>
+      <button class="button button-light" ng-click="getAllMasters()">
+        getAllMasters
+      </button>
+      <span ng-bind="getAllMastersResult"></span>
+    </div>
+
   </ion-content>
 </ion-pane>

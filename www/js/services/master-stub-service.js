@@ -51,6 +51,12 @@ app.factory('MasterStubService', ['$http', function ($http) {
 		return $http.get(url);	
 	}
 
+	data.changeMasterPassword = function (oldPassword, newPassword) {
+		requestPost.url = baseUrl + 'master/password/update';
+		requestPost.params = { old: escape(oldPassword), new: escape(newPassword) };
+		return $http(requestPost);
+	}
+	
 	data.updateMasterSponsor = function (sponsorID, name, logo) {
 		requestPost.url = baseUrl + 'master/sponsor/update/' + sponsorID;
 		requestPost.params = { name: escape(name), logo: escape(logo) };

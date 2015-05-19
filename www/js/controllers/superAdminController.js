@@ -48,10 +48,10 @@ app.controller('SuperAdminController', ['$scope', 'SuperAdminStubService', funct
 		SuperAdminStubService.acceptMasterRegistration(masterID)
 		.success(function (data) {
 			console.log(data);
-			$scope.loginResult = data.response;
+			$scope.acceptMasterRegistrationResult = data.response;
 		})
 		.error(function (error) {
-			$scope.loginResult = 'Unable to load data: ' + error;
+			$scope.acceptMasterRegistrationResult = 'Unable to load data: ' + error;
 		});
 	};
 
@@ -59,10 +59,10 @@ app.controller('SuperAdminController', ['$scope', 'SuperAdminStubService', funct
 		SuperAdminStubService.refuseMasterRegistration(masterAccount)
 		.success(function(data) {
 			console.log(data);
-			$scope.refuseResult = data.response;
+			$scope.refuseMasterRegistrationResult = data.response;
 		})
 		.error(function(error) {
-			$scope.refuseResult = 'Unable to load data: ' + error;
+			$scope.refuseMasterRegistrationResult = 'Unable to load data: ' + error;
 		});
 	}
 
@@ -81,10 +81,10 @@ app.controller('SuperAdminController', ['$scope', 'SuperAdminStubService', funct
 		SuperAdminStubService.getAllMasters()
 		.success(function (data) {
 			console.log(data);
-			$scope.loginResult = data.response;
+			$scope.getAllMastersResult = data.response;
 		})
 		.error(function (error) {
-			$scope.loginResult = 'Unable to load data: ' + error;
+			$scope.getAllMastersResult = 'Unable to load data: ' + error;
 		});
 	}
 

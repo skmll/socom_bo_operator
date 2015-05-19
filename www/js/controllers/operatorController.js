@@ -16,9 +16,10 @@ app.controller('OperatorController', ['$scope', 'OperatorStubService', function(
 		OperatorStubService.getOperatorPersonalConfig()
 		.success(function (data) {
 			console.log(data);
-			$scope.getOperatorPersonalConfigResult = data.responset;
+			$scope.getOperatorPersonalConfigResult = data.response;
 		})
 		.error(function (error) {
+			Console.log(error);
 			$scope.getOperatorPersonalConfigResult = 'Unable to load data: ' + error;
 		});
 	}
@@ -60,7 +61,7 @@ app.controller('OperatorController', ['$scope', 'OperatorStubService', function(
 		OperatorStubService.operatorLogout()
 		.success(function (data) {
 			console.log(data);
-			$scope.logoutResult = reponse;
+			$scope.logoutResult = data.response;
 		})
 		.error(function (error) {
 			$scope.logoutResult = 'Unable to load data: ' + error;

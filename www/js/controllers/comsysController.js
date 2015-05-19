@@ -11,6 +11,18 @@ app.controller('ComsysController', ['$scope', 'ComsysStubService', function($sco
 		});
 	}
 
+		$scope.createComsys = function(username, password, nickname) {    
+		ComsysStubService.createComsys(username, password, nickname)
+		.success(function (data) {
+			console.log(data);
+			$scope.createComsysResult = data.response;
+		})
+		.error(function (error) {
+			console.log(error);
+			$scope.createComsysResult = 'Unable to load data: ' + error;
+		});    
+	}
+
 	$scope.updateComsysPersonalConfig = function(nickname, display_grid, coord_format) {    
 		ComsysStubService.updateComsysPersonalConfig(nickname, display_grid, coord_format)
 		.success(function (data) {

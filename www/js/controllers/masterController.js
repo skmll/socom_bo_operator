@@ -37,10 +37,10 @@ app.controller('MasterController', ['$scope', 'MasterStubService', function($sco
 		MasterStubService.changeMasterPassword(oldPassword, newPassword)
 		.success(function (data) {
 			console.log(data);
-			$scope.loginResult = data.response;
+			$scope.changeMasterPasswordResult = data.response;
 		})
 		.error(function (error) {
-			$scope.loginResult = 'Unable to load data: ' + error;
+			$scope.changeMasterPasswordResult = 'Unable to load data: ' + error;
 		});
 	};
 
@@ -79,8 +79,8 @@ app.controller('MasterController', ['$scope', 'MasterStubService', function($sco
 		});
 	}
 
-	$scope.updateMasterSponsor = function(masterID, name, logo) {    
-		MasterStubService.updateMasterSponsor(masterID, name, logo)
+	$scope.updateMasterSponsor = function(sponsorID, name, logo) {    
+		MasterStubService.updateMasterSponsor(sponsorID, name, logo)
 		.success(function (data) {
 			console.log(data);
 			$scope.updateMasterSponsorResult = data.response;
@@ -105,10 +105,10 @@ app.controller('MasterController', ['$scope', 'MasterStubService', function($sco
 		MasterStubService.getAllPerks()
 		.success(function(data) {
 			console.log(data);
-			$scope.perksResult = data.response;
+			$scope.getAllPerksResult = data.response;
 		})
 		.error(function(error) {
-			$scope.perksResult = 'Unable to load data: ' + error;
+			$scope.getAllPerksResult = 'Unable to load data: ' + error;
 		});
 	}
 
