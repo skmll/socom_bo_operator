@@ -1,92 +1,103 @@
 <ion-pane>
   <ion-header-bar class="bar-stable">
-    <h1 class="title"> Master Stub </h1>
+    <h1 class="title">Master Stub</h1>
   </ion-header-bar>
   <ion-content>
     <div>
-      <button class="button button-light" ng-click="login()">
-        Login
-      </button>
+      <button class="button button-light" ng-click="login()">Login</button>
       <span ng-bind="loginResult"></span>
     </div>
-	
     <div>
-      <button class="button button-light" ng-click="loginCheck()">
-        Login Check
-      </button>
+      <button class="button button-light" ng-click="loginCheck()">Login Check</button>
       <span ng-bind="loginCheckResult"></span>
     </div>
-	
     <div>
-      <button class="button button-light" ng-click="logout()">
-        Logout
-      </button>
+      <button class="button button-light" ng-click="logout()">Logout</button>
       <span ng-bind="logoutResult"></span>
     </div>
-	
     <div>
-      <button class="button button-light" ng-click="updateMasterConfig()">
-        Update Master Personal Config
-      </button>
+      <button class="button button-light" ng-click="updateMasterConfig()">Update Master Personal Config</button>
       <span ng-bind="updateMasterConfigResult"></span>
     </div>
-	
     <div>
-      <button class="button button-light" ng-click="getAllMasterSponsors()">
-        Get All Master Sponsors
-      </button>
+      <button class="button button-light" ng-click="getAllMasterSponsors()">Get All Master Sponsors</button>
       <span ng-bind="getAllMasterSponsorsResult"></span>
     </div>
-	
-	  <div>
-      <button class="button button-light" ng-click="updateMasterSponsor('1', '', '')">
-	  updateMasterSponsor
-	  </button>
+    <div>
+      <button class="button button-light" ng-click="updateMasterSponsor('1', '', '')">updateMasterSponsor</button>
       <span ng-bind="updateMasterSponsorResult"></span>
     </div>
-  
-  <div>
-      <button class="button button-light" ng-click="getMasterSponsorByName()">
-        getMasterSponsorByName
-      </button>
+    <div>
+      <button class="button button-light" ng-click="getMasterSponsorByName()">getMasterSponsorByName</button>
       <span ng-bind="getMasterSponsorByNameResult"></span>
     </div>
-    
     <div>
-      <button class="button button-light" ng-click="createMasterSponsor('', '')">
-            createMasterSponsor
-      </button>
+      <button class="button button-light" ng-click="createMasterSponsor('', '')">createMasterSponsor</button>
       <span ng-bind="createMasterSponsorResult"></span>
     </div>
-	
-	   <div>
-      <button class="button button-light" ng-click="createMaster()">
-        Create Master
-      </button>
+    <div>
+      <button class="button button-light" ng-click="createMaster()">Create Master</button>
       <span ng-bind="createMasterResult"></span>
     </div>
-
-	   <div>
-      <button class="button button-light" ng-click="changeMasterPassword()">
-        changeMasterPassword
-      </button>
+    <div>
+      <button class="button button-light" ng-click="changeMasterPassword()">changeMasterPassword</button>
       <span ng-bind="changeMasterPasswordResult"></span>
     </div>
-	
-		   <div>
-      <button class="button button-light" ng-click="deleteMasterSponsor('')">
-        deleteMasterSponsor
-      </button>
+    <div>
+      <button class="button button-light" ng-click="deleteMasterSponsor('')">deleteMasterSponsor</button>
       <span ng-bind="deleteMasterSponsorResult"></span>
     </div>
-
-			   <div>
-      <button class="button button-light" ng-click="getAllPerks()">
-        getAllPerks
-      </button>
+    <div>
+      <button class="button button-light" ng-click="getAllPerks()">getAllPerks</button>
       <span ng-bind="getAllPerksResult"></span>
     </div>
-
-	
+    <div>
+      <button class="button button-light" ng-click="createZoneType()">createZoneType</button>
+      <span ng-bind="createZoneTypeResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="updateZoneType()">updateZoneType</button>
+      <span ng-bind="updateZoneTypeResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="deleteZoneType()">deleteZoneType</button>
+      <span ng-bind="deleteZoneTypeResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="getAllZoneTypes()">getAllZoneTypes</button>
+      <span ng-bind="getAllZoneTypesResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="getServerDefinedZoneTypes()">getServerDefinedZoneTypes</button>
+      <span ng-bind="getServerDefinedZoneTypesResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="getMasterDefinedZoneTypes()">getMasterDefinedZoneTypes</button>
+      <span ng-bind="getMasterDefinedZoneTypesResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="getZoneTypesByName()">getZoneTypesByName</button>
+      <span ng-bind="getZoneTypesByNameResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="getZoneTypeByID()">getZoneTypeByID</button>
+      <span ng-bind="getZoneTypeByIDResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="createMasterZone()">createMasterZone</button>
+      <span ng-bind="createMasterZoneResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="updateMasterZone()">updateMasterZone</button>
+      <span ng-bind="updateMasterZoneResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="deleteMasterZone()">deleteMasterZone</button>
+      <span ng-bind="deleteMasterZoneResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="getAllMasterZones()">getAllMasterZones</button>
+      <span ng-bind="getAllMasterZonesResult"></span>
+    </div>
   </ion-content>
 </ion-pane>
