@@ -1,6 +1,6 @@
 app.controller('ComsysController', function($scope, ComsysStubService) {
 
-	$scope.getComsysPersonalConfig = function(){
+	$scope.getComsysPersonalConfig = function() { 
 		ComsysStubService.getComsysPersonalConfig()
 		.success(function (data) {
 			console.log(data);
@@ -10,7 +10,7 @@ app.controller('ComsysController', function($scope, ComsysStubService) {
 			$scope.getComsysPersonalConfigResult = 'Unable to load data: ' + error;
 		});
 	}
-
+	
 	$scope.createComsys = function(username, password, nickname) {    
 		ComsysStubService.createComsys(username, password, nickname)
 		.success(function (data) {
@@ -27,10 +27,10 @@ app.controller('ComsysController', function($scope, ComsysStubService) {
 		ComsysStubService.updateComsysPersonalConfig(nickname, display_grid, coord_format)
 		.success(function (data) {
 			console.log(data);
-			$scope.updateResult = data.response;
+			$scope.updateComsysPersonalConfigResult = data.response;
 		})
 		.error(function (error) {
-			$scope.updateResult = 'Unable to load data: ' + error;
+			$scope.updateComsysPersonalConfigResult = 'Unable to load data: ' + error;
 		});    
 	}
 
