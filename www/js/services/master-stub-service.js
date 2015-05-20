@@ -79,6 +79,22 @@ app.factory('MasterStubService', function ($http) {
 			requestPost.url = baseUrl + 'master/sponsor/create';
 			requestPost.params = { name: escape(name), logo: escape(logo) };
 			return $http(requestPost);
+		},
+
+		attachPerkRuleSetToEvent: function(eventId, perkRuleSetId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/perk/attach/' + perkRuleSetId);
+		},
+
+		removePerkRuleSetOfEvent: function(eventId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/perk/remove');
+		},
+
+		attachTacticalActionRuleSetToEvent: function(eventId, tacticalActionRuleSetId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/tacticalaction/attach/' + tacticalActionRuleSetId);
+		},
+
+		removeTactionalRuleSetOfEvent: function(eventId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/tacticalaction/remove');
 		}
 
 	}
