@@ -19,7 +19,7 @@ app.controller('OperatorController', function($scope, OperatorStubService) {
 			$scope.getOperatorPersonalConfigResult = data.response;
 		})
 		.error(function (error) {
-			Console.log(error);
+			console.log(error);
 			$scope.getOperatorPersonalConfigResult = 'Unable to load data: ' + error;
 		});
 	};
