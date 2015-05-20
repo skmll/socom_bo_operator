@@ -1,4 +1,4 @@
-app.controller('ComsysController', ['$scope', 'ComsysStubService', function($scope, ComsysStubService) {
+app.controller('ComsysController', function($scope, ComsysStubService) {
 
 	$scope.getComsysPersonalConfig = function(){
 		ComsysStubService.getComsysPersonalConfig()
@@ -11,7 +11,7 @@ app.controller('ComsysController', ['$scope', 'ComsysStubService', function($sco
 		});
 	}
 
-		$scope.createComsys = function(username, password, nickname) {    
+	$scope.createComsys = function(username, password, nickname) {    
 		ComsysStubService.createComsys(username, password, nickname)
 		.success(function (data) {
 			console.log(data);
@@ -78,4 +78,4 @@ app.controller('ComsysController', ['$scope', 'ComsysStubService', function($sco
 		});
 	}
 
-}]);
+});

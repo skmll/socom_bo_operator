@@ -1,4 +1,4 @@
-app.controller('MasterController', ['$scope', 'MasterStubService', function($scope, MasterStubService) {
+app.controller('MasterController', function($scope, MasterStubService) {
 
 	$scope.login = function(username, password) {
 		MasterStubService.login(username, password)
@@ -134,5 +134,4 @@ app.controller('MasterController', ['$scope', 'MasterStubService', function($sco
 		});
 	}
 
-}]);
-
+});

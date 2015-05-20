@@ -1,4 +1,4 @@
-app.controller('OperatorController', ['$scope', 'OperatorStubService', function($scope, OperatorStubService) {
+app.controller('OperatorController', function($scope, OperatorStubService) {
 
 	$scope.createOperator = function (username, password, nickname, country, rank_ornumber, specialization_id) {
 		OperatorStubService.createOperator(username, password, nickname, country, rank_ornumber, specialization_id)
@@ -79,4 +79,4 @@ app.controller('OperatorController', ['$scope', 'OperatorStubService', function(
 		});
 	}
 
-}]);
+});

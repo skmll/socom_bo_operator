@@ -1,4 +1,4 @@
-app.controller('SuperAdminController', ['$scope', 'SuperAdminStubService', function($scope, SuperAdminStubService) {
+app.controller('SuperAdminController', function($scope, SuperAdminStubService) {
 
 	$scope.loginSuperadmin = function(username, password) {  
 		SuperAdminStubService.loginSuperadmin(username, password)
@@ -88,4 +88,4 @@ app.controller('SuperAdminController', ['$scope', 'SuperAdminStubService', funct
 		});
 	}
 
-}]);
+});

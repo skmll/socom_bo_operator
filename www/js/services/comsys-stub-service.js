@@ -14,7 +14,7 @@ app.factory('ComsysStubService', ['$http', function ($http) {
 		return $http.get(baseUrl + 'comsys/logout/');
 	}
 
-	data.getComsysPersonalConfig = function () {t
+	data.getComsysPersonalConfig = function () {
 		return $http.get(baseUrl + 'comsys/config/personal/get');
 	}
 

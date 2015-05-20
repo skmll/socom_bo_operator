@@ -1,4 +1,4 @@
-app.controller('CommonController', ['$scope', 'CommonStubService', function($scope, CommonStubService) {
+app.controller('CommonController', function($scope, CommonStubService) {
 
 	$scope.getAllEvents = function(){
 		CommonStubService.getAllEvents()
@@ -11,4 +11,4 @@ app.controller('CommonController', ['$scope', 'CommonStubService', function($sco
 		});
 	}
 
-}]);
+});
