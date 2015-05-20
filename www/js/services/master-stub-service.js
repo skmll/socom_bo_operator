@@ -79,8 +79,78 @@ app.factory('MasterStubService', function ($http) {
 			requestPost.url = baseUrl + 'master/sponsor/create';
 			requestPost.params = { name: escape(name), logo: escape(logo) };
 			return $http(requestPost);
-		}
+		},
+		
+		getPerksByName:  function() {
+			return $http.get(baseUrl +  'master/perk/get/name/{name}');			
 
+		},
+		
+		getPerkByID:  function() {
+			return $http.get(baseUrl +  'master/perk/get/id/{IDPerk}');			
+
+		},
+		
+		createMasterPerkRuleSet: function(description) {
+			requestPost.url = baseUrl + 'master/perk/ruleset/create';
+			requestPost.params = { description: escape(description)};
+			return $http(requestPost);
+		},
+		
+		updateMasterPerkRuleSet: function(description) {
+			requestPost.url = baseUrl + 'master/perk/ruleset/update/{IDPerkRuleSet}';
+			requestPost.params = { description: escape(description)};
+			return $http(requestPost);
+		},
+		
+		deleteMasterPerkRuleSet: function() {
+			return $http.get(baseUrl +  'master/perk/ruleset/delete/{IDPerkRuleSet}');	
+		},
+		
+		getAllMasterPerkRuleSets: function() {
+			return $http.get(baseUrl +  'master/perk/ruleset/get/all');	
+		},
+		
+		createPerkRuleSetRule:function(master_perk_rule_id, perk_id, p_initial_time_delay, 
+		p_cooldown_time, p_duration_time, p_vision_range, p_detection_range, p_max_units, p_cost) {
+			requestPost.url = baseUrl + 'master/perk/ruleset/rule/create';
+			requestPost.params = { desmaster_perk_rule_idription: escape(master_perk_rule_id), 
+			perk_id: escape(perk_id),p_initial_time_delay: escape(p_initial_time_delay),
+			 p_cooldown_time: escape(p_cooldown_time), p_duration_time: escape(p_duration_time),
+			p_vision_range: escape(p_vision_range), p_detection_range: escape(p_detection_range), 
+			p_max_units: escape(p_max_units),p_cost: escape(p_cost)
+			};
+			return $http(requestPost);
+		},
+		
+		updatePerkRuleSetRule:function(master_perk_rule_id, perk_id, p_initial_time_delay, 
+		p_cooldown_time, p_duration_time, p_vision_range, p_detection_range, p_max_units, p_cost) {
+			requestPost.url = baseUrl + 'master/perk/ruleset/rule/create';
+			requestPost.params = { desmaster_perk_rule_idription: escape(master_perk_rule_id), 
+			perk_id: escape(perk_id),p_initial_time_delay: escape(p_initial_time_delay),
+			 p_cooldown_time: escape(p_cooldown_time), p_duration_time: escape(p_duration_time),
+			p_vision_range: escape(p_vision_range), p_detection_range: escape(p_detection_range), 
+			p_max_units: escape(p_max_units),p_cost: escape(p_cost)
+			};
+			return $http(requestPost);
+		},
+		
+		deletePerkRuleSetRule: function() {
+			return $http.get(baseUrl +  'master/perk/ruleset/rule/delete/{IDPerkRule}');	
+		},
+		
+		getPerkRuleSetRulesByPerkRuleSetID: function() {
+			return $http.get(baseUrl +  'master/perk/ruleset/rule/get/id/{IDPerkRuleSet}');	
+		},
+		
+		getMasterZoneByID: function() {
+			return $http.get(baseUrl +  'master/zone/get/id/{IDMasterZone}');	
+		},
+		
+		getMasterZoneByZoneTypeID: function() {
+			return $http.get(baseUrl +  'master/zone/get/type/id/{IDZoneType}');	
+		}
+		
 	}
 	
 });
