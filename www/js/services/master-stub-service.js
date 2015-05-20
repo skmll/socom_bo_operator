@@ -81,6 +81,7 @@ app.factory('MasterStubService', function ($http) {
 			return $http(requestPost);
 		},
 
+
 		createZoneType: function (name) {
 			requestPost.url = baseUrl + 'master/zone/type/create';
 			requestPost.params = { name: escape(name) };
@@ -135,6 +136,22 @@ app.factory('MasterStubService', function ($http) {
 		
 		getAllMasterZones : function () {
 			return $http.get(baseUrl + 'master/zone/get/all');
+		},
+		
+		attachPerkRuleSetToEvent: function(eventId, perkRuleSetId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/perk/attach/' + perkRuleSetId);
+		},
+
+		removePerkRuleSetOfEvent: function(eventId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/perk/remove');
+		},
+
+		attachTacticalActionRuleSetToEvent: function(eventId, tacticalActionRuleSetId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/tacticalaction/attach/' + tacticalActionRuleSetId);
+		},
+
+		removeTactionalRuleSetOfEvent: function(eventId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/tacticalaction/remove');
 		}
 
 	};

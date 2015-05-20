@@ -134,6 +134,7 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 		});
 	};
 
+
 	$scope.createZoneType = function () {
 
 		MasterStubService.createZoneType('name')
@@ -278,4 +279,53 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 		});
 	};
 	
+
+	$scope.attachPerkRuleSetToEvent = function() {
+		//1 = eventId and perkRuleSetId examples
+		MasterStubService.attachPerkRuleSetToEvent('1', '1')
+		.success(function(data) {
+			console.log(data);
+			$scope.attachPerkRuleSetToEventResult = data.response;
+		})
+		.error(function(error) {
+			$scope.attachPerkRuleSetToEventResult = 'Unable to load data: ' + error;
+		});
+	};
+
+	$scope.removePerkRuleSetOfEvent = function() {
+		//1 = event id example
+		MasterStubService.removePerkRuleSetOfEvent('1')
+		.success(function(data) {
+			console.log(data);
+			$scope.removePerkRuleSetOfEventResult = data.response;
+		})
+		.error(function(error) {
+			$scope.removePerkRuleSetOfEventResult = 'Unable to load data: ' + error;
+		});
+	};
+
+	$scope.attachTacticalActionRuleSetToEvent = function() {
+		//1 = eventId, tacticalActionRuleSetId examples
+		MasterStubService.attachTacticalActionRuleSetToEvent('1', '1')
+		.success(function(data) {
+			console.log(data);
+			$scope.attachTacticalActionRuleSetToEventResult = data.response;
+		})
+		.error(function(error) {
+			$scope.attachTacticalActionRuleSetToEventResult = 'Unable to load data: ' + error;
+		});
+	};
+
+	$scope.removeTactionalRuleSetOfEvent = function() {
+		//1 = event id example
+		MasterStubService.removeTactionalRuleSetOfEvent('1')
+		.success(function(data) {
+			console.log(data);
+			$scope.removeTactionalRuleSetOfEventResult = data.response;
+		})
+		.error(function(error) {
+			$scope.removeTactionalRuleSetOfEventResult = 'Unable to load data: ' + error;
+		});
+	};
+
 });
