@@ -9,7 +9,7 @@ app.controller('MasterController', function($scope, MasterStubService) {
 		.error(function (error) {
 			$scope.loginResult = 'Unable to load data: ' + error;
 		});    
-	}
+	};
 
 	$scope.loginCheck = function() {    
 		MasterStubService.loginCheckMaster()
@@ -20,7 +20,7 @@ app.controller('MasterController', function($scope, MasterStubService) {
 		.error(function (error) {
 			$scope.loginCheckResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.logout = function() {
 		MasterStubService.logoutMaster()
@@ -31,7 +31,7 @@ app.controller('MasterController', function($scope, MasterStubService) {
 		.error(function (error) {
 			$scope.logoutResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.changeMasterPassword = function(oldPassword, newPassword) {    
 		MasterStubService.changeMasterPassword(oldPassword, newPassword)
@@ -53,7 +53,7 @@ app.controller('MasterController', function($scope, MasterStubService) {
 		.error(function (error) {
 			$scope.createMasterResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.updateMasterConfig = function(display_grid, coord_format, nickname, logo, 
 			phone, address, zipcode, country, association_description, association_link, association_link_promo) {
@@ -66,7 +66,7 @@ app.controller('MasterController', function($scope, MasterStubService) {
 				.error(function (error) {
 					$scope.updateMasterConfigResult = 'Unable to load data: ' + error;
 				});
-	}
+	};
 
 	$scope.getAllMasterSponsors = function(){
 		MasterStubService.getAllMasterSponsors()
@@ -77,7 +77,7 @@ app.controller('MasterController', function($scope, MasterStubService) {
 		.error(function (error) {
 			$scope.getAllMasterSponsorsResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.updateMasterSponsor = function(sponsorID, name, logo) {    
 		MasterStubService.updateMasterSponsor(sponsorID, name, logo)
@@ -99,7 +99,7 @@ app.controller('MasterController', function($scope, MasterStubService) {
 		.error(function(error) {
 			$scope.deleteMasterSponsorResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.getAllPerks = function() {
 		MasterStubService.getAllPerks()
@@ -110,7 +110,7 @@ app.controller('MasterController', function($scope, MasterStubService) {
 		.error(function(error) {
 			$scope.getAllPerksResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.getMasterSponsorByName = function(name){
 		MasterStubService.getMasterSponsorByName(name)
@@ -121,7 +121,7 @@ app.controller('MasterController', function($scope, MasterStubService) {
 		.error(function (error) {
 			$scope.getMasterSponsorByNameResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.createMasterSponsor = function(name, logo) {
 		MasterStubService.createMasterSponsor(name, logo)
@@ -132,6 +132,6 @@ app.controller('MasterController', function($scope, MasterStubService) {
 		.error(function (error) {
 			$scope.createMasterSponsorResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 });

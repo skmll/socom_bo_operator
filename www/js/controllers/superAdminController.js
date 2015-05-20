@@ -20,7 +20,7 @@ app.controller('SuperAdminController', function($scope, SuperAdminStubService) {
 		.error(function (error) {
 			$scope.logoutResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.changeMasterPassword = function(oldPassword, newPassword) {
 		SuperAdminStubService.changeMasterPassword(oldPassword, newPassword)
@@ -31,7 +31,7 @@ app.controller('SuperAdminController', function($scope, SuperAdminStubService) {
 		.error(function (error) {
 			$scope.changeMasterPasswordResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.loginCheckSuperadmin = function() {
 		SuperAdminStubService.loginCheckSuperadmin()
@@ -42,7 +42,7 @@ app.controller('SuperAdminController', function($scope, SuperAdminStubService) {
 		.error(function(error) {
 			$scope.loginCheckResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.acceptMasterRegistration = function(masterID) {    
 		SuperAdminStubService.acceptMasterRegistration(masterID)
@@ -64,7 +64,7 @@ app.controller('SuperAdminController', function($scope, SuperAdminStubService) {
 		.error(function(error) {
 			$scope.refuseMasterRegistrationResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.banMaster = function(masterAccount) {
 		SuperAdminStubService.banMaster(masterAccount)
@@ -75,7 +75,7 @@ app.controller('SuperAdminController', function($scope, SuperAdminStubService) {
 		.error(function(error) {
 			$scope.banMasterResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.getAllMasters = function() {
 		SuperAdminStubService.getAllMasters()
@@ -86,6 +86,6 @@ app.controller('SuperAdminController', function($scope, SuperAdminStubService) {
 		.error(function (error) {
 			$scope.getAllMastersResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 });

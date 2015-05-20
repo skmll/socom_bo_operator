@@ -9,7 +9,7 @@ app.controller('ComsysController', function($scope, ComsysStubService) {
 		.error(function (error) {
 			$scope.getComsysPersonalConfigResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 	
 	$scope.createComsys = function(username, password, nickname) {    
 		ComsysStubService.createComsys(username, password, nickname)
@@ -21,7 +21,7 @@ app.controller('ComsysController', function($scope, ComsysStubService) {
 			console.log(error);
 			$scope.createComsysResult = 'Unable to load data: ' + error;
 		});    
-	}
+	};
 
 	$scope.updateComsysPersonalConfig = function(nickname, display_grid, coord_format) {    
 		ComsysStubService.updateComsysPersonalConfig(nickname, display_grid, coord_format)
@@ -32,7 +32,7 @@ app.controller('ComsysController', function($scope, ComsysStubService) {
 		.error(function (error) {
 			$scope.updateComsysPersonalConfigResult = 'Unable to load data: ' + error;
 		});    
-	}
+	};
 
 	$scope.loginComsys = function(username, password) {
 		ComsysStubService.loginComsys(username, password)
@@ -43,7 +43,7 @@ app.controller('ComsysController', function($scope, ComsysStubService) {
 		.error(function (error) {
 			$scope.loginComsysResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.loginCheckComsys = function() {
 		ComsysStubService.loginCheckComsys()
@@ -54,7 +54,7 @@ app.controller('ComsysController', function($scope, ComsysStubService) {
 		.error(function (error) {
 			$scope.loginCheckComsysResult = 'Unable to load data: ' + error;
 		});    
-	}
+	};
 
 	$scope.changeComsysPassword = function(oldPassword, newPassword) {
 		ComsysStubService.changeComsysPassword(oldPassword, newPassword)
@@ -65,7 +65,7 @@ app.controller('ComsysController', function($scope, ComsysStubService) {
 		.error(function (error) {
 			$scope.changeComsysPasswordResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.logout = function(){
 		ComsysStubService.logoutComsys()
@@ -76,6 +76,6 @@ app.controller('ComsysController', function($scope, ComsysStubService) {
 		.error(function (error) {
 			$scope.logoutResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 });

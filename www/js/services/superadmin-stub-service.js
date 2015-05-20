@@ -46,6 +46,6 @@ app.factory('SuperAdminStubService', function ($http) {
 			return $http.get(baseUrl + 'superadmin/masters/get/all');
 		}
 
-	}
+	};
 	
 });

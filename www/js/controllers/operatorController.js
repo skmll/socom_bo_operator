@@ -10,7 +10,7 @@ app.controller('OperatorController', function($scope, OperatorStubService) {
 			console.log(error);
 			$scope.createOperatorResult = 'Error: ' + error.message;
 		});
-	}
+	};
 
 	$scope.getOperatorPersonalConfig = function(){
 		OperatorStubService.getOperatorPersonalConfig()
@@ -22,7 +22,7 @@ app.controller('OperatorController', function($scope, OperatorStubService) {
 			Console.log(error);
 			$scope.getOperatorPersonalConfigResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.loginOperator = function(username, password) {    
 		OperatorStubService.loginOperator(username, password)
@@ -44,7 +44,7 @@ app.controller('OperatorController', function($scope, OperatorStubService) {
 		.error(function (error) {
 			$scope.loginCheckOperatorResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.updateOperatorPersonalConfig = function(display_grid, coord_format, nickname, country, rank_ornumber, specialization_id) {
 		OperatorStubService.updateOperatorPersonalConfig(display_grid, coord_format, nickname, country, rank_ornumber, specialization_id )
@@ -55,7 +55,7 @@ app.controller('OperatorController', function($scope, OperatorStubService) {
 		.error(function (error) {
 			$scope.updateOperatorPersonalConfigResult = 'Unable to load data: ' + error;
 		});   
-	}
+	};
 
 	$scope.operatorLogout = function() {
 		OperatorStubService.operatorLogout()
@@ -77,6 +77,6 @@ app.controller('OperatorController', function($scope, OperatorStubService) {
 		.error(function (error) {
 			$scope.changeOperatorPasswordResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 });
