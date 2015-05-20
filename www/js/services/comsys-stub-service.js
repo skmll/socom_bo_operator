@@ -41,7 +41,7 @@ app.factory('ComsysStubService', function ($http) {
 		},
 
 		logoutComsys: function(){
-			return $http.get(baseUrl + 'comsys/logout/');
+			return $http.get(baseUrl + 'comsys/logout');
 		},
 
 		changeComsysPassword: function(oldPassword, newPassword) {
