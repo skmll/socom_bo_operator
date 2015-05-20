@@ -80,6 +80,7 @@ app.factory('MasterStubService', function ($http) {
 			requestPost.params = { name: escape(name), logo: escape(logo) };
 			return $http(requestPost);
 		},
+
 		
 		getPerksByName:  function() {
 			return $http.get(baseUrl +  'master/perk/get/name/{name}');			
@@ -149,8 +150,80 @@ app.factory('MasterStubService', function ($http) {
 		
 		getMasterZoneByZoneTypeID: function() {
 			return $http.get(baseUrl +  'master/zone/get/type/id/{IDZoneType}');	
-		}
+		},
 		
-	}
+		createZoneType: function (name) {
+			requestPost.url = baseUrl + 'master/zone/type/create';
+			requestPost.params = { name: escape(name) };
+			return $http(requestPost);
+		},
+		
+		updateZoneType: function (ID, newName) {
+			requestPost.url = baseUrl + 'master/zone/type/update/' + ID;
+			requestPost.params = { name: escape(newName) };
+			return $http(requestPost);
+		},
+		
+		deleteZoneType: function (ID) {
+			return $http.get(baseUrl + 'master/zone/type/delete/' + ID);
+		},
+		
+		getAllZoneTypes: function () {
+			return $http.get(baseUrl + 'master/zone/type/get/all');
+		},
+		
+		getServerDefinedZoneTypes : function () {
+			return $http.get(baseUrl + 'master/zone/type/get/server/defined');
+		},
+		
+		getMasterDefinedZoneTypes : function () {
+			return $http.get(baseUrl + 'master/zone/type/get/master/defined');
+		},
+		
+		getZoneTypesByName : function (name) {
+			return $http.get(baseUrl + 'master/zone/type/get/name/' + name);
+		},
+		
+		getZoneTypeByID : function (ID) {
+			return $http.get(baseUrl + 'master/zone/type/get/id/' + ID);
+		},
+		
+		createMasterZone : function (ID, description, capture_points) {
+			requestPost.url = baseUrl + 'master/zone/create';
+			requestPost.params = { zone_id: escape(ID), description: escape(description), capture_points: escape(capture_points) };
+			return $http(requestPost);
+		},
+		
+		updateMasterZone : function (ID, description, capture_points) {
+			requestPost.url = baseUrl + 'master/zone/update/' + ID;
+			requestPost.params = { zone_id: escape(ID), description: escape(description), capture_points: escape(capture_points) };
+			return $http(requestPost);
+		},
+		
+		deleteMasterZone : function (ID) {
+			return $http.get(baseUrl + 'master/zone/delete/' + ID);
+		},
+		
+		getAllMasterZones : function () {
+			return $http.get(baseUrl + 'master/zone/get/all');
+		},
+		
+		attachPerkRuleSetToEvent: function(eventId, perkRuleSetId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/perk/attach/' + perkRuleSetId);
+		},
+
+		removePerkRuleSetOfEvent: function(eventId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/perk/remove');
+		},
+
+		attachTacticalActionRuleSetToEvent: function(eventId, tacticalActionRuleSetId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/tacticalaction/attach/' + tacticalActionRuleSetId);
+		},
+
+		removeTactionalRuleSetOfEvent: function(eventId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/tacticalaction/remove');
+		}
+
+	};
 	
 });
