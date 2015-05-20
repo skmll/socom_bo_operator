@@ -1,4 +1,4 @@
-app.factory('OperatorStubService', ['$http', function ($http) {
+app.factory('OperatorStubService', function ($http) {
 
 	var baseUrl = 'http://192.168.234.37/SOCOM_BO/public/v1/';	
 	var data = {};
@@ -50,4 +50,4 @@ app.factory('OperatorStubService', ['$http', function ($http) {
 	}
 
 	return data;
-}]);
+});
