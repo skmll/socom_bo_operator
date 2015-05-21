@@ -63,8 +63,8 @@ app.factory('MasterStubService', function ($http) {
 			return $http(requestPost);
 		},
 
-		deleteMasterSponsor: function(masterSponsor) {
-			return $http.get(baseUrl + 'master/sponsor/delete/' + masterSponsor.IDSponsor);
+		deleteMasterSponsor: function(IDSponsor) {
+			return $http.get(baseUrl + 'master/sponsor/delete/' + IDSponsor);
 		},
 
 		getAllPerks: function() {
@@ -222,8 +222,57 @@ app.factory('MasterStubService', function ($http) {
 
 		removeTactionalRuleSetOfEvent: function(eventId) {
 			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/tacticalaction/remove');
-		}
+		},
 
-	};
+		createZoneCoord: function(IDMasterPersonalZone, lat_c, lat_d, lat_m, lat_s, lng_c, lng_d, lng_m, lng_s) {
+			requestPost.url = baseUrl + 'master/zone/coord/create';
+			requestPost.params = {IDMasterPersonalZone: escape(IDMasterPersonalZone), lat_c: escape(lat_c), lat_d: escape(lat_d), lat_m: escape(lat_m), lat_s: escape(lat_s), lng_c: escape(lng_c), lng_d: escape(lng_d), lng_m: escape(lng_m), lng_s: escape(lng_s)};
+			return $http(requestPost);
+		},
+		
+		updateZoneCoord: function(IDCoord, IDMasterPersonalZone, lat_c, lat_d, lat_m, lat_s, lng_c, lng_d, lng_m, lng_s) {
+			requestPost.url = baseUrl + 'master/zone/coord/update/' + IDCoord;
+			requestPost.params = {IDMasterPersonalZone: escape(IDMasterPersonalZone), lat_c: escape(lat_c), lat_d: escape(lat_d), lat_m: escape(lat_m), lat_s: escape(lat_s), lng_c: escape(lng_c), lng_d: escape(lng_d), lng_m: escape(lng_m), lng_s: escape(lng_s)};
+			return $http(requestPost);
+		},
+		
+				deleteZoneCoord: function(IDCoord) {
+			return $http.get(baseUrl + 'master/zone/coord/delete/' + IDCoord);
+		},
+
+getZoneCoordByID: function(IDCoord) {
+			return $http.get(baseUrl + 'master/zone/coord/get/id/' + IDCoord);
+		},
+
+		getZoneCoordByMasterZoneID: function(IDMasterZone) {
+			return $http.get(baseUrl + 'master/zone/coord/get/zone/id/' + IDMasterZone);
+		},
+
+getAllMasterEvents: function() {
+			return $http.get(baseUrl + 'master/event/get/all');
+		},
+
+getMasterEventByID: function(IDEvent) {
+			return $http.get(baseUrl + 'master/event/get/id/' + IDEvent);
+		},
+
+		
+createEvent: function(description_briefing, address, rules, prohibitions, proceedment, additional_informations, registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max, see_enemies_bases, see_enemies_reswap) {
+			requestPost.url = baseUrl + 'event/create';
+			requestPost.params = {description_briefing: escape(description_briefing), address: escape(address), rules: escape(rules), prohibitions: escape(prohibitions), proceedment: escape(proceedment), additional_informations: escape(additional_informations), registration_date_start: escape(registration_date_start), registration_date_end: escape(registration_date_end), event_date_start: escape(event_date_start), event_date_end: escape(event_date_end), operator_inicial_perk_points: escape(operator_inicial_perk_points), max_comsys_per_faction: escape(max_comsys_per_faction), max_operators_per_faction: escape(max_operators_per_faction), respawn_delay: escape(respawn_delay), gps_refresh_rate_min: escape(gps_refresh_rate_min), gps_refresh_rate_max: escape(gps_refresh_rate_max), see_enemies_bases: escape(see_enemies_bases), see_enemies_reswap: escape(see_enemies_reswap)};
+			return $http(requestPost);
+		},
+
+		updateEvent: function(IDEvent, description_briefing, address, rules, prohibitions, proceedment, additional_informations, registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max, see_enemies_bases, see_enemies_reswap) {
+			requestPost.url = baseUrl + 'event/update/' + IDEvent;
+			requestPost.params = {description_briefing: escape(description_briefing), address: escape(address), rules: escape(rules), prohibitions: escape(prohibitions), proceedment: escape(proceedment), additional_informations: escape(additional_informations), registration_date_start: escape(registration_date_start), registration_date_end: escape(registration_date_end), event_date_start: escape(event_date_start), event_date_end: escape(event_date_end), operator_inicial_perk_points: escape(operator_inicial_perk_points), max_comsys_per_faction: escape(max_comsys_per_faction), max_operators_per_faction: escape(max_operators_per_faction), respawn_delay: escape(respawn_delay), gps_refresh_rate_min: escape(gps_refresh_rate_min), gps_refresh_rate_max: escape(gps_refresh_rate_max), see_enemies_bases: escape(see_enemies_bases), see_enemies_reswap: escape(see_enemies_reswap)};
+			return $http(requestPost);
+		},
+
+deleteEvent: function(IDEvent) {
+			return $http.get(baseUrl + 'event/delete/' + IDEvent);
+		}
+		
+	}
 	
 });

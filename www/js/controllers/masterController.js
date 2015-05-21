@@ -90,8 +90,8 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 		});
 	};
 
-	$scope.deleteMasterSponsor = function (masterSponsor) {
-		MasterStubService.deleteMasterSponsor(masterSponsor)
+	$scope.deleteMasterSponsor = function (IDSponsor) {
+		MasterStubService.deleteMasterSponsor(IDSponsor)
 			.success(function (data) {
 			console.log(data);
 			$scope.deleteMasterSponsorResult = data.response;
@@ -461,6 +461,116 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 		})
 		.error(function(error) {
 			$scope.removeTactionalRuleSetOfEventResult = 'Unable to load data: ' + error;
+		});
+	};
+
+	$scope.createZoneCoord = function(IDMasterPersonalZone, lat_c, lat_d, lat_m, lat_s, lng_c, lng_d, lng_m, lng_s) {
+		MasterStubService.createZoneCoord(IDMasterPersonalZone, lat_c, lat_d, lat_m, lat_s, lng_c, lng_d, lng_m, lng_s)
+		.success(function (data) {
+			console.log(data);
+			$scope.createZoneCoordResult = data.response;
+		})
+		.error(function (error) {
+			$scope.createZoneCoordResult = 'Unable to load data: ' + error;
+		});
+	};
+
+			$scope.updateZoneCoord = function(IDCoord, IDMasterPersonalZone, lat_c, lat_d, lat_m, lat_s, lng_c, lng_d, lng_m, lng_s) {
+		MasterStubService.updateZoneCoord(IDCoord, IDMasterPersonalZone, lat_c, lat_d, lat_m, lat_s, lng_c, lng_d, lng_m, lng_s)
+		.success(function (data) {
+			console.log(data);
+			$scope.updateZoneCoordResult = data.response;
+		})
+		.error(function (error) {
+			$scope.updateZoneCoordResult = 'Unable to load data: ' + error;
+		});
+	};
+
+				$scope.deleteZoneCoord = function(IDCoord) {
+		MasterStubService.deleteZoneCoord(IDCoord)
+		.success(function (data) {
+			console.log(data);
+			$scope.deleteZoneCoordResult = data.response;
+		})
+		.error(function (error) {
+			$scope.deleteZoneCoordResult = 'Unable to load data: ' + error;
+		});
+	};
+
+					$scope.getZoneCoordByID = function(IDCoord) {
+		MasterStubService.getZoneCoordByID(IDCoord)
+		.success(function (data) {
+			console.log(data);
+			$scope.getZoneCoordByIDResult = data.response;
+		})
+		.error(function (error) {
+			$scope.getZoneCoordByIDResult = 'Unable to load data: ' + error;
+		});
+	};
+
+						$scope.getZoneCoordByMasterZoneID = function(IDMasterZone) {
+		MasterStubService.getZoneCoordByMasterZoneID(IDMasterZone)
+		.success(function (data) {
+			console.log(data);
+			$scope.getZoneCoordByMasterZoneIDResult = data.response;
+		})
+		.error(function (error) {
+			$scope.getZoneCoordByMasterZoneIDResult = 'Unable to load data: ' + error;
+		});
+	};
+
+$scope.getAllMasterEvents = function() {
+		MasterStubService.getAllMasterEvents()
+		.success(function (data) {
+			console.log(data);
+			$scope.getAllMasterEventsResult = data.response;
+		})
+		.error(function (error) {
+			$scope.getAllMasterEventsResult = 'Unable to load data: ' + error;
+		});
+	};
+
+	$scope.getMasterEventByID = function(IDEvent) {
+		MasterStubService.getMasterEventByID(IDEvent)
+		.success(function (data) {
+			console.log(data);
+			$scope.getMasterEventByIDResult = data.response;
+		})
+		.error(function (error) {
+			$scope.getMasterEventByIDResult = 'Unable to load data: ' + error;
+		});
+	};
+
+			$scope.createEvent = function(description_briefing, address, rules, prohibitions, proceedment, additional_informations, registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max, see_enemies_bases, see_enemies_reswap) {
+		MasterStubService.createEvent(description_briefing, address, rules, prohibitions, proceedment, additional_informations, registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max, see_enemies_bases, see_enemies_reswap)
+		.success(function (data) {
+			console.log(data);
+			$scope.createEventResult = data.response;
+		})
+		.error(function (error) {
+			$scope.createEventResult = 'Unable to load data: ' + error;
+		});
+	};
+
+				$scope.updateEvent = function(IDEvent, description_briefing, address, rules, prohibitions, proceedment, additional_informations, registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max, see_enemies_bases, see_enemies_reswap) {
+		MasterStubService.updateEvent(IDEvent, description_briefing, address, rules, prohibitions, proceedment, additional_informations, registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max, see_enemies_bases, see_enemies_reswap)
+		.success(function (data) {
+			console.log(data);
+			$scope.updateEventResult = data.response;
+		})
+		.error(function (error) {
+			$scope.updateEventResult = 'Unable to load data: ' + error;
+		});
+	};
+
+		$scope.deleteEvent = function(IDEvent) {
+		MasterStubService.deleteEvent(IDEvent)
+		.success(function (data) {
+			console.log(data);
+			$scope.deleteEventResult = data.response;
+		})
+		.error(function (error) {
+			$scope.deleteEventResult = 'Unable to load data: ' + error;
 		});
 	};
 
