@@ -87,6 +87,96 @@
       <span ng-bind="getAllPerksResult"></span>
     </div>
 
+<div>
+      <button class="button button-light" ng-click="removeSponsorOfEvent(1, 1)">
+        removeSponsorOfEvent
+      </button>
+      <span ng-bind="removeSponsorOfEventResult"></span>
+    </div>
+
+<div>
+      <button class="button button-light" ng-click="attachSponsorToEvent(1, 1)">
+        attachSponsorToEvent
+      </button>
+      <span ng-bind="attachSponsorToEventResult"></span>
+    </div>
+
+<div>
+      <button class="button button-light" ng-click="getTacticalActionRuleSetRulesByTacticalActionRuleSetID(1)">
+        getTacticalActionRuleSetRulesByTacticalActionRuleSetID
+      </button>
+      <span ng-bind="getTacticalActionRuleSetRulesByTacticalActionRuleSetIDResult"></span>
+    </div>
+
+<div>
+      <button class="button button-light" ng-click="deleteTacticalActionRuleSetRule(1)">
+        deleteTacticalActionRuleSetRule
+      </button>
+      <span ng-bind="deleteTacticalActionRuleSetRuleResult"></span>
+    </div>
+
+<div>
+      <button class="button button-light" ng-click="getAllMasterTacticalActionRuleSets()">
+        getAllMasterTacticalActionRuleSets
+      </button>
+      <span ng-bind="getAllMasterTacticalActionRuleSetsResult"></span>
+    </div>
+
+<div>
+      <button class="button button-light" ng-click="deleteMasterTacticalActionRuleSet(1)">
+        deleteMasterTacticalActionRuleSet
+      </button>
+      <span ng-bind="deleteMasterTacticalActionRuleSetResult"></span>
+    </div>
+	
+<div>
+      <button class="button button-light" ng-click="getTacticalActionByID(1)">
+        getTacticalActionByID
+      </button>
+      <span ng-bind="getTacticalActionByIDResult"></span>
+    </div>
+
+<div>
+      <button class="button button-light" ng-click="getTacticalActionsByName('1')">
+        getTacticalActionsByName
+      </button>
+      <span ng-bind="getTacticalActionsByNameResult"></span>
+    </div>
+
+<div>
+      <button class="button button-light" ng-click="getAllTacticalActions()">
+        getAllTacticalActions
+      </button>
+      <span ng-bind="getAllTacticalActionsResult"></span>
+    </div>
+
+<div>
+      <button class="button button-light" ng-click="createMasterTacticalActionRuleSet('1')">
+        createMasterTacticalActionRuleSet
+      </button>
+      <span ng-bind="createMasterTacticalActionRuleSetResult"></span>
+    </div>
+
+<div>
+      <button class="button button-light" ng-click="updateMasterTacticalActionRuleSet('1', '1')">
+        updateMasterTacticalActionRuleSet
+      </button>
+      <span ng-bind="updateMasterTacticalActionRuleSetResult"></span>
+    </div>
+
+<div>
+      <button class="button button-light" ng-click="createTacticalActionRuleSetRule()">
+        createTacticalActionRuleSetRule
+      </button>
+      <span ng-bind="createTacticalActionRuleSetRuleResult"></span>
+    </div>
+
+<div>
+      <button class="button button-light" ng-click="updateTacticalActionRuleSetRule('1', '1', '1', '1', '1', '1', '1', '1', '1', '1')">
+        updateTacticalActionRuleSetRule
+      </button>
+      <span ng-bind="updateTacticalActionRuleSetRuleResult"></span>
+    </div>
 	
   </ion-content>
 </ion-pane>
