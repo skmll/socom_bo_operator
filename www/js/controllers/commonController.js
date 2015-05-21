@@ -1,4 +1,5 @@
 app.controller('CommonController', function($scope, CommonStubService) {
+	
 	$scope.getAllEvents = function(){
 		CommonStubService.getAllEvents()
 		.success(function (data) {
@@ -10,7 +11,6 @@ app.controller('CommonController', function($scope, CommonStubService) {
 			$scope.getAllEventsResult = 'Unable to load data: ' + error;
 		});
 	};
-
 
 	$scope.getEventsByMasterID = function(masterId){
 		CommonStubService.getEventsByMasterID(masterId)

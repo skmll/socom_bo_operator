@@ -1,7 +1,7 @@
 app.factory('OperatorStubService', function ($http) {
 
 	var baseUrl = 'http://192.168.234.37/SOCOM_BO/public/v1/';	
-	requestPost = 
+	var requestPost = 
 	{
 			method: 'POST',
 			headers: {
@@ -10,6 +10,7 @@ app.factory('OperatorStubService', function ($http) {
 	}
 
 	return {
+		
 		createOperator: function(username, password, nickname, country, rank_ornumber, specialization_id) {
 			requestPost.url = baseUrl + 'operator/create';
 			requestPost.params = {username: escape(username), password: escape(password), nickname: escape(nickname), country: escape(country), rank_ornumber: escape(rank_ornumber), specialization_id: escape(specialization_id) }; 
@@ -48,7 +49,6 @@ app.factory('OperatorStubService', function ($http) {
 			requestPost.params = { old: escape(oldPassword), new: escape(newPassword) };
 			return $http(requestPost);
 		}
-
-	}
-	
+		
+	};
 });
