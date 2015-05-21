@@ -162,7 +162,87 @@ app.factory('MasterStubService', function ($http) {
 			requestPost.params = { name: escape(name) };
 			return $http(requestPost);
 		},
-		
+
+		removeSponsorOfEvent: function (IDEvent, IDSponsor) {
+			return $http.get(baseUrl + 'event/' + IDEvent + '/sponsor/remove/' + IDSponsor);
+		},
+
+		attachSponsorToEvent: function (IDEvent, IDSponsor) {
+			return $http.get(baseUrl + 'event/' + IDEvent + '/sponsor/attach/' + IDSponsor);
+		},
+
+		getTacticalActionRuleSetRulesByTacticalActionRuleSetID: function (IDTacticalActionRuleSet) {
+			return $http.get(baseUrl + 'master/tacticalaction/ruleset/rule/get/id/' + IDTacticalActionRuleSet);
+		},
+
+		deleteTacticalActionRuleSetRule: function (IDTacticalActionRule) {
+			return $http.get(baseUrl + 'master/tacticalaction/ruleset/rule/delete/' + IDTacticalActionRule);
+		},
+
+		getAllMasterTacticalActionRuleSets: function () {
+			return $http.get(baseUrl + 'master/tacticalaction/ruleset/get/all');
+		},
+
+		deleteMasterTacticalActionRuleSet: function (IDTacticalActionRuleSet) {
+			return $http.get(baseUrl + 'master/tacticalaction/ruleset/delete/' + IDTacticalActionRuleSet);
+		},
+
+		getTacticalActionByID: function (IDTacticalAction) {
+			return $http.get(baseUrl + 'master/tacticalaction/get/id/' + IDTacticalAction);
+		},
+
+		getTacticalActionsByName: function (name) {
+			return $http.get(baseUrl + 'master/tacticalaction/get/name/' + name);
+		},
+
+		getAllTacticalActions: function () {
+			return $http.get(baseUrl + 'master/tacticalaction/get/all');
+		},
+
+		createMasterTacticalActionRuleSet: function(description) {
+			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/create';
+			requestPost.params = { description: escape(description) };
+			return $http(requestPost);
+		},
+
+		updateMasterTacticalActionRuleSet: function (IDTacticalActionRuleSet, description) {
+			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/update/' + IDTacticalActionRuleSet;
+			requestPost.params = { description: escape(description) };
+			return $http(requestPost);
+		},
+
+		createTacticalActionRuleSetRule: function (master_tacticalaction_rule_id, tacticalaction_id, ta_initial_time_delay, ta_cooldown_time, ta_duration_time, ta_vision_range, ta_detection_range, ta_death_range, ta_cost) {
+			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/rule/create';
+			requestPost.params = {
+					master_tacticalaction_rule_id: escape(master_tacticalaction_rule_id),
+					tacticalaction_id: escape(tacticalaction_id),
+					ta_initial_time_delay: escape(ta_initial_time_delay),
+					ta_cooldown_time: escape(ta_cooldown_time),
+					ta_duration_time: escape(ta_duration_time),
+					ta_vision_range: escape(ta_vision_range),
+					ta_detection_range: escape(ta_detection_range),
+					ta_death_range: escape(ta_death_range),
+					ta_cost: escape(ta_cost)					
+			};
+			return $http(requestPost);
+		},
+
+		updateTacticalActionRuleSetRule: function (IDTacticalActionRule, master_tacticalaction_rule_id, tacticalaction_id, ta_initial_time_delay, ta_cooldown_time, ta_duration_time, ta_vision_range, ta_detection_range, ta_death_range, ta_cost) {
+			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/rule/update/' + IDTacticalActionRule;
+			requestPost.params = {
+					master_tacticalaction_rule_id: escape(master_tacticalaction_rule_id),
+					tacticalaction_id: escape(tacticalaction_id),
+					ta_initial_time_delay: escape(ta_initial_time_delay),
+					ta_cooldown_time: escape(ta_cooldown_time),
+					ta_duration_time: escape(ta_duration_time),
+					ta_vision_range: escape(ta_vision_range),
+					ta_detection_range: escape(ta_detection_range),
+					ta_death_range: escape(ta_death_range),
+					ta_cost: escape(ta_cost)					
+			};
+			return $http(requestPost);
+		},
+
 		updateZoneType: function (ID, newName) {
 			requestPost.url = baseUrl + 'master/zone/type/update/' + ID;
 			requestPost.params = { name: escape(newName) };
