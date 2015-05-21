@@ -28,12 +28,12 @@ app.factory('SuperAdminStubService', function ($http) {
 			return $http.get(baseUrl + 'superadmin/masters/accept/' + masterID);
 		},
 
-		refuseMasterRegistration: function(masterAccount) {
-			return $http.get(baseUrl + 'superadmin/masters/refuse/' + masterAccount.IDMasterAccount);
+		refuseMasterRegistration: function(masterAccountId) {
+			return $http.get(baseUrl + 'superadmin/masters/refuse/' + masterAccountId);
 		},
 
-		banMaster: function(masterAccount) {
-			return $http.get(baseUrl + 'superadmin/masters/ban/' + masterAccount.IDMasterAccount);
+		banMaster: function(masterAccountId) {
+			return $http.get(baseUrl + 'superadmin/masters/ban/' + masterAccountId);
 		},
 
 		changeMasterPassword: function(oldPassword, newPassword){

@@ -12,8 +12,8 @@ app.controller('CommonController', function($scope, CommonStubService) {
 	};
 
 
-	$scope.getEventsByMasterID = function(){
-		CommonStubService.getEventsByMasterID('1')
+	$scope.getEventsByMasterID = function(masterId){
+		CommonStubService.getEventsByMasterID(masterId)
 		.success(function (data) {
 			console.log(data);
 			$scope.getEventsByMasterIDResult = data.response;
@@ -24,9 +24,8 @@ app.controller('CommonController', function($scope, CommonStubService) {
 		});
 	};
 
-	$scope.getEventsByYear = function(){
-		//2015 = example of year
-		CommonStubService.getEventsByYear('2015')
+	$scope.getEventsByYear = function(year){
+		CommonStubService.getEventsByYear(year)
 		.success(function (data) {
 			console.log(data);
 			$scope.getEventsByYearResult = data.response;
@@ -37,10 +36,8 @@ app.controller('CommonController', function($scope, CommonStubService) {
 		});
 	};
 
-	$scope.getEventsByYearAndMonth = function(){
-		//2015 = example of year
-		//10 = example of month
-		CommonStubService.getEventsByYearAndMonth('2015', '10')
+	$scope.getEventsByYearAndMonth = function(year, month){
+		CommonStubService.getEventsByYearAndMonth(year, month)
 		.success(function (data) {
 			console.log(data);
 			$scope.getEventsByYearAndMonthResult = data.response;
@@ -51,9 +48,8 @@ app.controller('CommonController', function($scope, CommonStubService) {
 		});
 	};
 
-	$scope.getEventByID = function(){
-		//1 = example of event id
-		CommonStubService.getEventByID('1')
+	$scope.getEventByID = function(eventId){
+		CommonStubService.getEventByID(eventId)
 		.success(function (data) {
 			console.log(data);
 			$scope.getEventByIDResult = data.response;
@@ -64,9 +60,8 @@ app.controller('CommonController', function($scope, CommonStubService) {
 		});
 	};
 
-	$scope.getAllEventSponsors = function(){
-		//1 = example of event id
-		CommonStubService.getAllEventSponsors('1')
+	$scope.getAllEventSponsors = function(eventId){
+		CommonStubService.getAllEventSponsors(eventId)
 		.success(function (data) {
 			console.log(data);
 			$scope.getAllEventSponsorsResult = data.response;
@@ -77,9 +72,8 @@ app.controller('CommonController', function($scope, CommonStubService) {
 		});
 	};
 
-	$scope.getPerkRuleSetOfEvent = function(){
-		//1 = example of event id
-		CommonStubService.getPerkRuleSetOfEvent('1')
+	$scope.getPerkRuleSetOfEvent = function(eventId){
+		CommonStubService.getPerkRuleSetOfEvent(eventId)
 		.success(function (data) {
 			console.log(data);
 			$scope.getPerkRuleSetOfEventResult = data.response;
@@ -90,9 +84,8 @@ app.controller('CommonController', function($scope, CommonStubService) {
 		});
 	};
 
-	$scope.getTacticalActionRuleSetOfEvent = function(){
-		//1 = example of event id
-		CommonStubService.getTacticalActionRuleSetOfEvent('1')
+	$scope.getTacticalActionRuleSetOfEvent = function(eventId){
+		CommonStubService.getTacticalActionRuleSetOfEvent(eventId)
 		.success(function (data) {
 			console.log(data);
 			$scope.getTacticalActionRuleSetOfEventResult = data.response;

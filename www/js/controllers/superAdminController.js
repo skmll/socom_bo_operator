@@ -44,8 +44,8 @@ app.controller('SuperAdminController', function($scope, SuperAdminStubService) {
 		});
 	};
 
-	$scope.acceptMasterRegistration = function(masterID) {    
-		SuperAdminStubService.acceptMasterRegistration(masterID)
+	$scope.acceptMasterRegistration = function(masterId) {    
+		SuperAdminStubService.acceptMasterRegistration(masterId)
 		.success(function (data) {
 			console.log(data);
 			$scope.acceptMasterRegistrationResult = data.response;
@@ -55,8 +55,8 @@ app.controller('SuperAdminController', function($scope, SuperAdminStubService) {
 		});
 	};
 
-	$scope.refuseMasterRegistration = function(masterAccount) {
-		SuperAdminStubService.refuseMasterRegistration(masterAccount)
+	$scope.refuseMasterRegistration = function(masterAccountId) {
+		SuperAdminStubService.refuseMasterRegistration(masterAccountId)
 		.success(function(data) {
 			console.log(data);
 			$scope.refuseMasterRegistrationResult = data.response;
@@ -66,8 +66,8 @@ app.controller('SuperAdminController', function($scope, SuperAdminStubService) {
 		});
 	};
 
-	$scope.banMaster = function(masterAccount) {
-		SuperAdminStubService.banMaster(masterAccount)
+	$scope.banMaster = function(masterAccountId) {
+		SuperAdminStubService.banMaster(masterAccountId)
 		.success(function(data) {
 			console.log(data);
 			$scope.banMasterResult = data.response;
