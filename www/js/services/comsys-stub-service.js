@@ -1,6 +1,7 @@
 app.factory('ComsysStubService', function ($http) {
 
 	var baseUrl = 'http://192.168.234.37/SOCOM_BO/public/v1/';
+	
 	var requestPost = 
 	{
 			method: 'POST',
@@ -10,6 +11,7 @@ app.factory('ComsysStubService', function ($http) {
 	}
 
 	return {
+		
 		logoutComsys: function(){
 			return $http.get(baseUrl + 'comsys/logout/');
 		},
@@ -41,7 +43,7 @@ app.factory('ComsysStubService', function ($http) {
 		},
 
 		logoutComsys: function(){
-			return $http.get(baseUrl + 'comsys/logout/');
+			return $http.get(baseUrl + 'comsys/logout');
 		},
 
 		changeComsysPassword: function(oldPassword, newPassword) {
@@ -49,7 +51,6 @@ app.factory('ComsysStubService', function ($http) {
 			requestPost.params = { old: escape(oldPassword), new: escape(newPassword) };
 			return $http(requestPost);
 		}
-
-	}
-	
+		
+	};
 });

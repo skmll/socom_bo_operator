@@ -19,7 +19,7 @@ app.controller('OperatorController', ['$scope', 'OperatorStubService', function(
         .error(function (error) {
             $scope.getOperatorPersonalConfigResult = 'Unable to load data: ' + error;
         });
-    }
+    };
 }]);
 
 app.controller('CommonController', ['$scope', 'CommonStubService', function($scope, CommonStubService) {
@@ -36,7 +36,7 @@ app.controller('ComsysController', ['$scope', 'ComsysStubService', function($sco
         .error(function (error) {
             $scope.logoutResult = 'Unable to load data: ' + error;
         });
-    }
+    };
 }]);
 
 app.controller('MasterController', ['$scope', 'MasterStubService', function($scope, MasterStubService) {
@@ -54,7 +54,7 @@ app.controller('MasterController', ['$scope', 'MasterStubService', function($sco
     .error(function (error) {
         $scope.loginResult = 'Unable to load data: ' + error;
     });
-  }
+  };
   
   $scope.loginCheck = function() {
     
@@ -66,7 +66,7 @@ app.controller('MasterController', ['$scope', 'MasterStubService', function($sco
     .error(function (error) {
         $scope.loginCheckResult = 'Unable to load data: ' + error;
     });
-  }
+  };
   
     $scope.logout = function() {
     
@@ -78,7 +78,7 @@ app.controller('MasterController', ['$scope', 'MasterStubService', function($sco
     .error(function (error) {
         $scope.logoutResult = 'Unable to load data: ' + error;
     });
-  }
+  };
   
   $scope.updateMasterConfig = function() {
       MasterStubService.updateMasterPersonalConfig('display_grid', 'coord_format', 'nickname', 'logo', 
@@ -90,7 +90,7 @@ app.controller('MasterController', ['$scope', 'MasterStubService', function($sco
     .error(function (error) {
         $scope.updateMasterConfigResult = 'Unable to load data: ' + error;
     });
-  }
+  };
   
   $scope.getAllMastSponsors = function(){
       MasterStubService.getAllMasterSponsors()
@@ -101,7 +101,7 @@ app.controller('MasterController', ['$scope', 'MasterStubService', function($sco
     .error(function (error) {
         $scope.getAllMasterSponsorsResult = 'Unable to load data: ' + error;
     });
-  }
+  };
 }]);
 
 
@@ -117,5 +117,5 @@ app.controller('SuperAdminController', ['$scope', 'SuperAdminStubService', funct
         .error(function (error) {
             $scope.changeMasterPasswordResult = 'Unable to load data: ' + error;
         });
-    }
+    };
 }]);
