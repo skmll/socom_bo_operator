@@ -79,8 +79,8 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 		});
 	};
 
-	$scope.updateMasterSponsor = function (sponsorID, name, logo) {
-		MasterStubService.updateMasterSponsor(sponsorID, name, logo)
+	$scope.updateMasterSponsor = function (sponsorId, name, logo) {
+		MasterStubService.updateMasterSponsor(sponsorId, name, logo)
 		.success(function (data) {
 			console.log(data);
 			$scope.updateMasterSponsorResult = data.response;
@@ -90,8 +90,8 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 		});
 	};
 
-	$scope.deleteMasterSponsor = function (sponsorID) {
-		MasterStubService.deleteMasterSponsor(sponsorID)
+	$scope.deleteMasterSponsor = function (sponsorId) {
+		MasterStubService.deleteMasterSponsor(sponsorId)
 		.success(function (data) {
 			console.log(data);
 			$scope.deleteMasterSponsorResult = data.response;
@@ -366,9 +366,9 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 		});
 	};
 	
-	$scope.createMasterZone  = function (masterZoneId, description, capturePoints) {
+	$scope.createMasterZone  = function (zoneTypeId, description, capturePoints) {
 
-		MasterStubService.createMasterZone(masterZoneId, description, capturePoints)
+		MasterStubService.createMasterZone(zoneTypeId, description, capturePoints)
 		.success(function (data) {
 			console.log(data);
 			$scope.createMasterZoneResult = data.response;
@@ -378,9 +378,9 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 		});
 	};
 	
-	$scope.updateMasterZone  = function (masterZoneId, description, capturePoints) {
+	$scope.updateMasterZone  = function (masterZoneId, zoneTypeId, description, capturePoints) {
 
-		MasterStubService.updateMasterZone(masterZoneId, description, capturePoints)
+		MasterStubService.updateMasterZone(masterZoneId, zoneTypeId, description, capturePoints)
 		.success(function (data) {
 			console.log(data);
 			$scope.updateMasterZoneResult = data.response;

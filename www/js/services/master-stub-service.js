@@ -188,15 +188,15 @@ app.factory('MasterStubService', function ($http) {
 					return $http.get(baseUrl + 'master/zone/type/get/id/' + zoneTypeId);
 				},
 
-				createMasterZone : function (masterZoneId, description, capturePoints) {
+				createMasterZone : function (zoneTypeId, description, capturePoints) {
 					requestPost.url = baseUrl + 'master/zone/create';
-					requestPost.params = { zone_id: escape(masterZoneId), description: escape(description), capture_points: escape(capturePoints) };
+					requestPost.params = { zone_id: escape(zoneTypeId), description: escape(description), capture_points: escape(capturePoints) };
 					return $http(requestPost);
 				},
 
-				updateMasterZone : function (masterZoneId, description, capturePoints) {
+				updateMasterZone : function (masterZoneId, zoneTypeId, description, capturePoints) {
 					requestPost.url = baseUrl + 'master/zone/update/' + masterZoneId;
-					requestPost.params = { zone_id: escape(masterZoneId), description: escape(description), capture_points: escape(capturePoints) };
+					requestPost.params = { zone_id: escape(zoneTypeId), description: escape(description), capture_points: escape(capturePoints) };
 					return $http(requestPost);
 				},
 
