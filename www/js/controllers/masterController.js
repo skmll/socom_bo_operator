@@ -569,4 +569,59 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 		});
 	};
 
+		$scope.attachMapToEvent = function(eventId, masterZoneId) {
+		MasterStubService.attachMapToEvent(eventId, masterZoneId)
+		.success(function (data) {
+			console.log(data);
+			$scope.attachMapToEventResult = data.response;
+		})
+		.error(function (error) {
+			$scope.attachMapToEventResult = 'Unable to load data: ' + error;
+		});
+	};
+
+			$scope.removeMapOfEvent = function(IDEvent) {
+		MasterStubService.removeMapOfEvent(IDEvent)
+		.success(function (data) {
+			console.log(data);
+			$scope.removeMapOfEventResult = data.response;
+		})
+		.error(function (error) {
+			$scope.removeMapOfEventResult = 'Unable to load data: ' + error;
+		});
+	};
+
+				$scope.createFaction = function(IDEvent, name, pin) {
+		MasterStubService.createFaction(IDEvent, name, pin)
+		.success(function (data) {
+			console.log(data);
+			$scope.createFactionResult = data.response;
+		})
+		.error(function (error) {
+			$scope.createFactionResult = 'Unable to load data: ' + error;
+		});
+	};
+
+					$scope.updateFaction = function(IDEvent, oldPin, name, pin) {
+		MasterStubService.updateFaction(IDEvent, oldPin, name, pin)
+		.success(function (data) {
+			console.log(data);
+			$scope.updateFactionResult = data.response;
+		})
+		.error(function (error) {
+			$scope.updateFactionResult = 'Unable to load data: ' + error;
+		});
+	};
+	
+						$scope.deleteFaction = function(IDEvent, pin) {
+		MasterStubService.deleteFaction(IDEvent, pin)
+		.success(function (data) {
+			console.log(data);
+			$scope.deleteFactionResult = data.response;
+		})
+		.error(function (error) {
+			$scope.deleteFactionResult = 'Unable to load data: ' + error;
+		});
+	};
+
 });

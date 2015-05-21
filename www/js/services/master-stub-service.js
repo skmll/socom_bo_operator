@@ -271,7 +271,32 @@ app.factory('MasterStubService', function ($http) {
 
 				deleteEvent: function(eventId) {
 					return $http.get(baseUrl + 'event/delete/' + eventId);
+				},
+
+								attachMapToEvent: function(eventId, masterZoneId) {
+					return $http.get(baseUrl + 'event/' + eventId + '/map/attach/' + masterZoneId);
+				},
+
+												removeMapOfEvent: function(IDEvent) {
+					return $http.get(baseUrl + 'event/' + IDEvent+ '/map/remove');
+				},
+
+																createFaction: function(IDEvent, name, pin) {
+																						requestPost.url = baseUrl + 'event/' + IDEvent + '/faction/create';
+					requestPost.params = {name: escape(name), pin: escape(pin)};
+					return $http(requestPost);
+				},
+
+																				updateFaction: function(IDEvent, oldPin, name, pin) {
+																						requestPost.url = baseUrl + 'event/' + IDEvent + '/faction/update/' + oldPin;
+					requestPost.params = {name: escape(name), pin: escape(pin)};
+					return $http(requestPost);
+				},
+
+																deleteFaction: function(IDEvent, pin) {
+					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/delete/' + pin);
 				}
+
 
 			}
 

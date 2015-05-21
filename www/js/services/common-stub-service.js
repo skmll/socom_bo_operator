@@ -33,7 +33,12 @@ app.factory('CommonStubService', function ($http) {
 
 		getTacticalActionRuleSetOfEvent: function(eventId){
 			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/tacticalaction/get/all');
+		},
+		
+		getMap: function(IDEvent){
+			return $http.get(baseUrl + 'event/' + IDEvent + '/map/get');
 		}
+		
 	}
 	
 });

@@ -95,5 +95,17 @@ app.controller('CommonController', function($scope, CommonStubService) {
 			$scope.getTacticalActionRuleSetOfEventResult = 'Unable to load data: ' + error;
 		});
 	};
-	
+
+$scope.getMap = function(IDEvent){
+		CommonStubService.getMap(IDEvent)
+		.success(function (data) {
+			console.log(data);
+			$scope.getMapResult = data.response;
+		})
+		.error(function (error) {
+			console.log(error);
+			$scope.getMapResult = 'Unable to load data: ' + error;
+		});
+	};
+		
 });
