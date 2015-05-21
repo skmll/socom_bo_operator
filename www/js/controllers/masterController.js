@@ -134,8 +134,8 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 		});
 	};
 	
-		$scope.getPerksByName = function() {
-		MasterStubService.getPerksByName()
+		$scope.getPerksByName = function(name) {
+		MasterStubService.getPerksByName(name)
 		.success(function (data) {
 			console.log(data);
 			$scope.getPerksByNameResult = data.response;
@@ -145,8 +145,8 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 		});
 	};
 	
-	$scope.getPerkByID = function() {
-		MasterStubService.getPerkByID()
+	$scope.getPerkByID = function(perkID) {
+		MasterStubService.getPerkByID(perkID)
 		.success(function (data) {
 			console.log(data);
 			$scope.getPerkByIDResult = data.response;
@@ -167,7 +167,7 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 		});
 	};
 	
-	$scope.updateMasterPerkRuleSet = function(description) {
+	$scope.updateMasterPerkRuleSet = function(description, perkRuleSetID) {
 		MasterStubService.updateMasterPerkRuleSet(description)
 		.success(function (data) {
 			console.log(data);
@@ -178,8 +178,8 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 		});
 	};
 	
-	$scope.deleteMasterPerkRuleSet = function() {
-		MasterStubService.deleteMasterPerkRuleSet()
+	$scope.deleteMasterPerkRuleSet = function(IDPerkRuleSet) {
+		MasterStubService.deleteMasterPerkRuleSet(IDPerkRuleSet)
 		.success(function (data) {
 			console.log(data);
 			$scope.deleteMasterPerkRuleSet = data.response;

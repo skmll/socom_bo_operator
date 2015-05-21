@@ -82,13 +82,13 @@ app.factory('MasterStubService', function ($http) {
 		},
 
 		
-		getPerksByName:  function() {
-			return $http.get(baseUrl +  'master/perk/get/name/{name}');			
+		getPerksByName:  function(name) {
+			return $http.get(baseUrl +  'master/perk/get/name/'+name);			
 
 		},
 		
-		getPerkByID:  function() {
-			return $http.get(baseUrl +  'master/perk/get/id/{IDPerk}');			
+		getPerkByID:  function(perkID) {
+			return $http.get(baseUrl +  'master/perk/get/id/'+perkID);			
 
 		},
 		
@@ -98,14 +98,14 @@ app.factory('MasterStubService', function ($http) {
 			return $http(requestPost);
 		},
 		
-		updateMasterPerkRuleSet: function(description) {
-			requestPost.url = baseUrl + 'master/perk/ruleset/update/{IDPerkRuleSet}';
+		updateMasterPerkRuleSet: function(description, perkRuleSetID) {
+			requestPost.url = baseUrl + 'master/perk/ruleset/update/'+perkRuleSetID;
 			requestPost.params = { description: escape(description)};
 			return $http(requestPost);
 		},
 		
-		deleteMasterPerkRuleSet: function() {
-			return $http.get(baseUrl +  'master/perk/ruleset/delete/{IDPerkRuleSet}');	
+		deleteMasterPerkRuleSet: function(IDPerkRuleSet) {
+			return $http.get(baseUrl +  'master/perk/ruleset/delete/'+IDPerkRuleSet);	
 		},
 		
 		getAllMasterPerkRuleSets: function() {
@@ -136,20 +136,20 @@ app.factory('MasterStubService', function ($http) {
 			return $http(requestPost);
 		},
 		
-		deletePerkRuleSetRule: function() {
-			return $http.get(baseUrl +  'master/perk/ruleset/rule/delete/{IDPerkRule}');	
+		deletePerkRuleSetRule: function(IDPerkRule) {
+			return $http.get(baseUrl +  'master/perk/ruleset/rule/delete/'+IDPerkRule);	
 		},
 		
-		getPerkRuleSetRulesByPerkRuleSetID: function() {
-			return $http.get(baseUrl +  'master/perk/ruleset/rule/get/id/{IDPerkRuleSet}');	
+		getPerkRuleSetRulesByPerkRuleSetID: function(IDPerkRuleSet) {
+			return $http.get(baseUrl +  'master/perk/ruleset/rule/get/id/'+IDPerkRuleSet);	
 		},
 		
-		getMasterZoneByID: function() {
-			return $http.get(baseUrl +  'master/zone/get/id/{IDMasterZone}');	
+		getMasterZoneByID: function(IDMasterZone) {
+			return $http.get(baseUrl +  'master/zone/get/id/'+IDMasterZone);	
 		},
 		
-		getMasterZoneByZoneTypeID: function() {
-			return $http.get(baseUrl +  'master/zone/get/type/id/{IDZoneType}');	
+		getMasterZoneByZoneTypeID: function(IDMasterZone) {
+			return $http.get(baseUrl +  'master/zone/get/type/id/'+IDMasterZone);	
 		},
 		
 		createZoneType: function (name) {
