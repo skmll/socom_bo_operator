@@ -107,5 +107,45 @@ $scope.getMap = function(IDEvent){
 			$scope.getMapResult = 'Unable to load data: ' + error;
 		});
 	};
+
+
+$scope.getFactionZonesByID = function(IDEvent, PINFaction, IDEventZone){
+		CommonStubService.getFactionZonesByID(IDEvent, PINFaction, IDEventZone)
+		.success(function (data) {
+			console.log(data);
+			$scope.getFactionZonesByIDResult = data.response;
+		})
+		.error(function (error) {
+			console.log(error);
+			$scope.getFactionZonesByIDResult = 'Unable to load data: ' + error;
+		});
+	};
 		
+
+$scope.getAllFactionSquads = function(IDEvent, PINFaction){
+		CommonStubService.getAllFactionSquads(IDEvent, PINFaction)
+		.success(function (data) {
+			console.log(data);
+			$scope.getAllFactionSquadsResult = data.response;
+		})
+		.error(function (error) {
+			console.log(error);
+			$scope.getAllFactionSquadsResult = 'Unable to load data: ' + error;
+		});
+	};
+		
+
+
+$scope.getOperatorOfSquadByID = function(IDEvent, PINFaction, IDSquad, IDOperator){
+		CommonStubService.getOperatorOfSquadByID(IDEvent, PINFaction, IDSquad, IDOperator)
+		.success(function (data) {
+			console.log(data);
+			$scope.getOperatorOfSquadByIDResult = data.response;
+		})
+		.error(function (error) {
+			console.log(error);
+			$scope.getOperatorOfSquadByIDResult = 'Unable to load data: ' + error;
+		});
+	};
+				
 });
