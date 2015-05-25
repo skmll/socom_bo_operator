@@ -96,8 +96,8 @@ app.controller('CommonController', function($scope, CommonStubService) {
 		});
 	};
 
-	$scope.getMap = function(IDEvent){
-		CommonStubService.getMap(IDEvent)
+	$scope.getMap = function(eventId){
+		CommonStubService.getMap(eventId)
 		.success(function (data) {
 			console.log(data);
 			$scope.getMapResult = data.response;
@@ -108,8 +108,8 @@ app.controller('CommonController', function($scope, CommonStubService) {
 		});
 	};
 
-	$scope.getCoordFactionZonesByID = function(IDEvent,PINFaction, IDEventZone){
-		CommonStubService.getCoordFactionZonesByID(IDEvent,PINFaction, IDEventZone)
+	$scope.getCoordFactionZonesByID = function(eventId, factionPIN, eventZoneId){
+		CommonStubService.getCoordFactionZonesByID(eventId,factionPIN, eventZoneId)
 		.success(function (data) {
 			console.log(data);
 			$scope.getCoordFactionZonesByIDResult = data.response;
@@ -120,8 +120,8 @@ app.controller('CommonController', function($scope, CommonStubService) {
 		});
 	};
 
-	$scope.getFactionSquadByID = function(IDEvent,PINFaction, IDSquad){
-		CommonStubService.getFactionSquadByID(IDEvent,PINFaction, IDSquad)
+	$scope.getFactionSquadByID = function(eventId, factionPIN, squadId){
+		CommonStubService.getFactionSquadByID(eventId,factionPIN, squadId)
 		.success(function (data) {
 			console.log(data);
 			$scope.getFactionSquadByIDResult = data.response;
@@ -132,8 +132,8 @@ app.controller('CommonController', function($scope, CommonStubService) {
 		});
 	};
 
-	$scope.getAllOperatorsOfSquad = function(IDEvent,PINFaction, IDSquad){
-		CommonStubService.getAllOperatorsOfSquad(IDEvent,PINFaction, IDSquad)
+	$scope.getAllOperatorsOfSquad = function(eventId, factionPIN, squadId){
+		CommonStubService.getAllOperatorsOfSquad(eventId,factionPIN, squadId)
 		.success(function (data) {
 			console.log(data);
 			$scope.getAllOperatorsOfSquadResult = data.response;
@@ -144,8 +144,8 @@ app.controller('CommonController', function($scope, CommonStubService) {
 		});
 	};
 
-	$scope.getFactionZonesByID = function(IDEvent, PINFaction, IDEventZone){
-		CommonStubService.getFactionZonesByID(IDEvent, PINFaction, IDEventZone)
+	$scope.getFactionZonesByID = function(eventId, factionPIN, eventZoneId){
+		CommonStubService.getFactionZonesByID(eventId, factionPIN, eventZoneId)
 		.success(function (data) {
 			console.log(data);
 			$scope.getFactionZonesByIDResult = data.response;
@@ -157,8 +157,8 @@ app.controller('CommonController', function($scope, CommonStubService) {
 	};
 
 
-	$scope.getAllFactionSquads = function(IDEvent, PINFaction){
-		CommonStubService.getAllFactionSquads(IDEvent, PINFaction)
+	$scope.getAllFactionSquads = function(eventId, factionPIN){
+		CommonStubService.getAllFactionSquads(eventId, factionPIN)
 		.success(function (data) {
 			console.log(data);
 			$scope.getAllFactionSquadsResult = data.response;
@@ -171,8 +171,8 @@ app.controller('CommonController', function($scope, CommonStubService) {
 
 
 
-	$scope.getOperatorOfSquadByID = function(IDEvent, PINFaction, IDSquad, IDOperator){
-		CommonStubService.getOperatorOfSquadByID(IDEvent, PINFaction, IDSquad, IDOperator)
+	$scope.getOperatorOfSquadByID = function(eventId, factionPIN, squadId, IDOperator){
+		CommonStubService.getOperatorOfSquadByID(eventId, factionPIN, squadId, IDOperator)
 		.success(function (data) {
 			console.log(data);
 			$scope.getOperatorOfSquadByIDResult = data.response;
