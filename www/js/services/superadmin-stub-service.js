@@ -1,6 +1,7 @@
 app.factory('SuperAdminStubService', function ($http) {
 
 	var baseUrl = 'http://192.168.234.37/SOCOM_BO/public/v1/';
+	
 	var requestPost = 
 	{
 			method: 'POST',
@@ -10,6 +11,7 @@ app.factory('SuperAdminStubService', function ($http) {
 	}
 
 	return {
+		
 		loginSuperadmin: function (username, password) {
 			requestPost.url = baseUrl + 'superadmin/login';
 			requestPost.params = { username: escape(username), password: escape(password) };

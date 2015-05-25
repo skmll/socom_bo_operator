@@ -79,4 +79,81 @@ app.controller('OperatorController', function($scope, OperatorStubService) {
 		});
 	};
 
+	$scope.createSquad = function(eventId, factionPIN) {
+		OperatorStubService.createSquad(eventId, factionPIN)
+		.success(function (data) {
+			console.log(data);
+			$scope.createSquadResult = data.response;
+		})
+		.error(function (error) {
+			$scope.createSquadResult = 'Unable to load data: ' + error;
+		});
+	};
+
+	$scope.deleteSquad = function(eventId, factionPIN) {
+		OperatorStubService.deleteSquad(eventId, factionPIN)
+		.success(function (data) {
+			console.log(data);
+			$scope.deleteSquadResult = data.response;
+		})
+		.error(function (error) {
+			$scope.deleteSquadResult = 'Unable to load data: ' + error;
+		});
+	};
+
+	$scope.lockFactionSquad = function(eventId, factionPIN) {
+		OperatorStubService.lockFactionSquad(eventId, factionPIN)
+		.success(function (data) {
+			console.log(data);
+			$scope.lockFactionSquadResult = data.response;
+		})
+		.error(function (error) {
+			$scope.lockFactionSquadResult = 'Unable to load data: ' + error;
+		});
+	};
+
+	$scope.unlockFactionSquad = function(eventId, factionPIN) {
+		OperatorStubService.unlockFactionSquad(eventId, factionPIN)
+		.success(function (data) {
+			console.log(data);
+			$scope.unlockFactionSquadResult = data.response;
+		})
+		.error(function (error) {
+			$scope.unlockFactionSquadResult = 'Unable to load data: ' + error;
+		});
+	};
+
+	$scope.kickOperatorFromFactionSquad = function(eventId, factionPIN, operatorId) {
+		OperatorStubService.kickOperatorFromFactionSquad(eventId, factionPIN, operatorId)
+		.success(function (data) {
+			console.log(data);
+			$scope.kickOperatorFromFactionSquadResult = data.response;
+		})
+		.error(function (error) {
+			$scope.kickOperatorFromFactionSquadResult = 'Unable to load data: ' + error;
+		});
+	};
+
+	$scope.joinFactionSquad = function(eventId, factionPIN, squadId) {
+		OperatorStubService.joinFactionSquad(eventId, factionPIN, squadId)
+		.success(function (data) {
+			console.log(data);
+			$scope.joinFactionSquadResult = data.response;
+		})
+		.error(function (error) {
+			$scope.joinFactionSquadResult = 'Unable to load data: ' + error;
+		});
+	};
+
+	$scope.leaveFactionSquad = function(eventId, factionPIN, squadId) {
+		OperatorStubService.leaveFactionSquad(eventId, factionPIN, squadId)
+		.success(function (data) {
+			console.log(data);
+			$scope.leaveFactionSquadResult = data.response;
+		})
+		.error(function (error) {
+			$scope.leaveFactionSquadResult = 'Unable to load data: ' + error;
+		});
+	};
+
 });

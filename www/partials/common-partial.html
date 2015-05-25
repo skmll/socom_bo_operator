@@ -1,63 +1,97 @@
 <ion-pane>
   <ion-header-bar class="bar-stable">
-    <h1 class="title"> Common Stub </h1>
+    <h1 class="title">Common Stub</h1>
   </ion-header-bar>
   <ion-content>
     <div>
-      <button class="button button-light" ng-click="getAllEvents()">
-        getAllEvents
-      </button>
+      <button class="button button-light" ng-click="getAllEvents()">getAllEvents</button>
       <span ng-bind="getAllEventsResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="getEventsByMasterID('1')">getEventsByMasterID</button>
+      <span ng-bind="getEventsByMasterIDResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="getEventsByYear('2015')">getEventsByYear</button>
+      <span ng-bind="getEventsByYearResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="getEventsByYearAndMonth('2015', '10')">getEventsByYearAndMonth</button>
+      <span ng-bind="getEventsByYearAndMonthResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="getEventByID('1')">getEventByID</button>
+      <span ng-bind="getEventByIDResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="getAllEventSponsors('1')">getAllEventSponsors</button>
+      <span ng-bind="getAllEventSponsorsResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="getPerkRuleSetOfEvent('1')">getPerkRuleSetOfEvent</button>
+      <span ng-bind="getPerkRuleSetOfEventResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="getTacticalActionRuleSetOfEvent('1')">getTacticalActionRuleSetOfEvent</button>
+      <span ng-bind="getTacticalActionRuleSetOfEventResult"></span>
+    </div>
+	
+	    <div>
+      <button class="button button-light" ng-click="getMap()">
+        getMap
+      </button>
+      <span ng-bind="getMapResult"></span>
+    </div>
+
+	    <div>
+      <button class="button button-light" ng-click="getCoordFactionZonesByID('1', '1', '1')">
+        getCoordFactionZonesByID
+      </button>
+      <span ng-bind="getCoordFactionZonesByIDResult"></span>
+    </div>
+
+<div>
+      <button class="button button-light" ng-click="getFactionSquadByID('1', '1', '1')">
+        getFactionSquadByID
+      </button>
+      <span ng-bind="getFactionSquadByIDResult"></span>
     </div>
     
     <div>
-      <button class="button button-light" ng-click="getEventsByMasterID('1')">
-        getEventsByMasterID
+      <button class="button button-light" ng-click="getAllOperatorsOfSquad('1', '1', '1')">
+        getAllOperatorsOfSquad
       </button>
-      <span ng-bind="getEventsByMasterIDResult"></span>
+      <span ng-bind="getAllOperatorsOfSquadResult"></span>
+    </div>
+    
+		    <div>
+      <button class="button button-light" ng-click="getFactionZonesByID()">
+        getFactionZonesByID
+      </button>
+      <span ng-bind="getFactionZonesByIDResult"></span>
+    </div>
+
+			    <div>
+      <button class="button button-light" ng-click="getAllFactionSquads()">
+        getAllFactionSquads
+      </button>
+      <span ng-bind="getAllFactionSquadsResult"></span>
     </div>
 
     <div>
-      <button class="button button-light" ng-click="getEventsByYear('2015')">
-        getEventsByYear
+      <button class="button button-light" ng-click="getOperatorOfSquadByID()">
+        getOperatorOfSquadByID
       </button>
-      <span ng-bind="getEventsByYearResult"></span>
+      <span ng-bind="getOperatorOfSquadByIDResult"></span>
     </div>
 
     <div>
-      <button class="button button-light" ng-click="getEventsByYearAndMonth('2015', '10')">
-        getEventsByYearAndMonth
+      <button class="button button-light" ng-click="getAllFactionsScore()">
+        getAllFactionsScore
       </button>
-      <span ng-bind="getEventsByYearAndMonthResult"></span>
+      <span ng-bind="getAllFactionsScoreResult"></span>
     </div>
 
-    <div>
-      <button class="button button-light" ng-click="getEventByID('1')">
-        getEventByID
-      </button>
-      <span ng-bind="getEventByIDResult"></span>
-    </div>
-
-    <div>
-      <button class="button button-light" ng-click="getAllEventSponsors('1')">
-        getAllEventSponsors
-      </button>
-      <span ng-bind="getAllEventSponsorsResult"></span>
-    </div>
-
-    <div>
-      <button class="button button-light" ng-click="getPerkRuleSetOfEvent('1')">
-        getPerkRuleSetOfEvent
-      </button>
-      <span ng-bind="getPerkRuleSetOfEventResult"></span>
-    </div>
-
-    <div>
-      <button class="button button-light" ng-click="getTacticalActionRuleSetOfEvent('1')">
-        getTacticalActionRuleSetOfEvent
-      </button>
-      <span ng-bind="getTacticalActionRuleSetOfEventResult"></span>
-    </div>
     
     <div>
       <button class="button button-light" ng-click="getAllFactionComsys()">

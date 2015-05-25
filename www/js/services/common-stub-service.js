@@ -3,6 +3,7 @@ app.factory('CommonStubService', function ($http) {
 	var baseUrl = 'http://192.168.234.37/SOCOM_BO/public/v1/';
 
 	return {
+
 		getAllEvents: function(){
 			return $http.get(baseUrl + 'event/get/all');
 		},
@@ -34,6 +35,7 @@ app.factory('CommonStubService', function ($http) {
 		getTacticalActionRuleSetOfEvent: function(eventId){
 			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/tacticalaction/get/all');
 		},
+
 		
 		getAllFactionComsys: function(eventId, factionPIN){
 			return $http.get(baseUrl + 'event/' + eventId + '/faction/'+factionPIN+'/comsys/get/all');
@@ -57,8 +59,43 @@ app.factory('CommonStubService', function ($http) {
 		
 		getAllFactionZones: function(eventId , factionPIN){
 			return $http.get(baseUrl + 'event/' + eventId + '/zone/faction/'+factionPIN+'/get/all');
-		}
+		},
 		
-	};
+
 	
+
+		getMap: function(eventId){
+			return $http.get(baseUrl + 'event/' + eventId + '/map/get');
+		},
+
+		getCoordFactionZonesByID: function(eventId, factionPIN, eventZoneId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/zone/faction/' + factionPIN + '/coord/get/id/' + eventZoneId);
+		},
+
+		getFactionSquadByID: function(eventId, factionPIN, squadId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/get/id/' + squadId);
+		},
+
+		getAllOperatorsOfSquad: function(eventId, factionPIN, squadId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/' + squadId + '/operators/get/all');
+		},
+		
+		getFactionZonesByID: function(eventId, factionPIN, eventZoneId){
+			return $http.get(baseUrl + 'event/' + eventId + '/zone/faction/' + factionPIN + '/get/id/' + eventZoneId);
+		},
+
+		getAllFactionSquads: function(eventId, factionPIN	){
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/get/all');
+		},
+
+		getOperatorOfSquadByID: function(eventId, factionPIN, squadId, operatorId){
+			return $http.get(baseUrl + 'event/' + eventId+ '/faction/' + factionPIN + '/squad/' + squadId + '/operators/get/id/' + operatorId);
+		},
+
+		getAllFactionsScore: function(eventId){
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/get/scores');
+		}
+
+	};
+
 });

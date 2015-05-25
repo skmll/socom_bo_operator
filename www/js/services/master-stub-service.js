@@ -1,15 +1,17 @@
 app.factory('MasterStubService', function ($http) {
 
 	var baseUrl = 'http://192.168.234.37/SOCOM_BO/public/v1/';
+	
 	var requestPost = 
 	{
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded'
 		},
-	}
+	};
 
 	return {
+		
 		login: function (username, password) {
 			requestPost.url = baseUrl + 'master/login';
 			requestPost.params = { username: escape(username), password: escape(password) };
@@ -27,16 +29,20 @@ app.factory('MasterStubService', function ($http) {
 		},
 
 		createMaster: function (email, password, nickname, logo,
-			phone, address, zipcode, country, association_description, association_link, association_link_promo  ){
-			requestPost.url = baseUrl + 'master/create';
-			requestPost.params = { email: escape(email), password: escape(password), nickname: escape(nickname),
-				logo: escape(logo), phone: escape(phone),address: escape(address),zipcode: escape(zipcode),country: escape(country),
-				association_description: escape(association_description),association_link: escape(association_link),
-				association_link_promo: escape(association_link_promo)};
-				return $http(requestPost);
-			},
-
-			updateMasterPersonalConfig: function (display_grid, coord_format, nickname, logo, 
+				phone, address, zipcode, country, association_description, association_link, association_link_promo  ){
+				requestPost.url = baseUrl + 'master/create';
+				requestPost.params = { email: escape(email), password: escape(password), nickname: escape(nickname),
+					logo: escape(logo), phone: escape(phone),address: escape(address),zipcode: escape(zipcode),country: escape(country),
+					association_description: escape(association_description),association_link: escape(association_link),
+					association_link_promo: escape(association_link_promo)};
+					return $http(requestPost);
+		},
+			
+		getMasterPersonalConfig: function () {
+			return $http.get(baseUrl + 'master/config/personal/get');
+		},
+				
+		updateMasterPersonalConfig: function (display_grid, coord_format, nickname, logo, 
 				phone, address, zipcode, country, association_description, association_link, association_link_promo) {
 				requestPost.url = baseUrl + 'master/config/personal/update';
 				requestPost.params = { display_grid: display_grid, coord_format: coord_format, nickname: nickname,
@@ -85,12 +91,10 @@ app.factory('MasterStubService', function ($http) {
 		
 		getPerksByName:  function(name) {
 			return $http.get(baseUrl +  'master/perk/get/name/'+name);			
-
 		},
 		
 		getPerkByID:  function(perkID) {
 			return $http.get(baseUrl +  'master/perk/get/id/'+perkID);			
-
 		},
 		
 		createMasterPerkRuleSet: function(description) {
@@ -105,8 +109,8 @@ app.factory('MasterStubService', function ($http) {
 			return $http(requestPost);
 		},
 		
-		deleteMasterPerkRuleSet: function(IDPerkRuleSet) {
-			return $http.get(baseUrl +  'master/perk/ruleset/delete/'+IDPerkRuleSet);	
+		deleteMasterPerkRuleSet: function(perkRuleSetId) {
+			return $http.get(baseUrl +  'master/perk/ruleset/delete/' + perkRuleSetId);	
 		},
 		
 		getAllMasterPerkRuleSets: function() {
@@ -158,7 +162,87 @@ app.factory('MasterStubService', function ($http) {
 			requestPost.params = { name: escape(name) };
 			return $http(requestPost);
 		},
-		
+
+		removeSponsorOfEvent: function (IDEvent, IDSponsor) {
+			return $http.get(baseUrl + 'event/' + IDEvent + '/sponsor/remove/' + IDSponsor);
+		},
+
+		attachSponsorToEvent: function (IDEvent, IDSponsor) {
+			return $http.get(baseUrl + 'event/' + IDEvent + '/sponsor/attach/' + IDSponsor);
+		},
+
+		getTacticalActionRuleSetRulesByTacticalActionRuleSetID: function (IDTacticalActionRuleSet) {
+			return $http.get(baseUrl + 'master/tacticalaction/ruleset/rule/get/id/' + IDTacticalActionRuleSet);
+		},
+
+		deleteTacticalActionRuleSetRule: function (IDTacticalActionRule) {
+			return $http.get(baseUrl + 'master/tacticalaction/ruleset/rule/delete/' + IDTacticalActionRule);
+		},
+
+		getAllMasterTacticalActionRuleSets: function () {
+			return $http.get(baseUrl + 'master/tacticalaction/ruleset/get/all');
+		},
+
+		deleteMasterTacticalActionRuleSet: function (IDTacticalActionRuleSet) {
+			return $http.get(baseUrl + 'master/tacticalaction/ruleset/delete/' + IDTacticalActionRuleSet);
+		},
+
+		getTacticalActionByID: function (IDTacticalAction) {
+			return $http.get(baseUrl + 'master/tacticalaction/get/id/' + IDTacticalAction);
+		},
+
+		getTacticalActionsByName: function (name) {
+			return $http.get(baseUrl + 'master/tacticalaction/get/name/' + name);
+		},
+
+		getAllTacticalActions: function () {
+			return $http.get(baseUrl + 'master/tacticalaction/get/all');
+		},
+
+		createMasterTacticalActionRuleSet: function(description) {
+			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/create';
+			requestPost.params = { description: escape(description) };
+			return $http(requestPost);
+		},
+
+		updateMasterTacticalActionRuleSet: function (IDTacticalActionRuleSet, description) {
+			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/update/' + IDTacticalActionRuleSet;
+			requestPost.params = { description: escape(description) };
+			return $http(requestPost);
+		},
+
+		createTacticalActionRuleSetRule: function (master_tacticalaction_rule_id, tacticalaction_id, ta_initial_time_delay, ta_cooldown_time, ta_duration_time, ta_vision_range, ta_detection_range, ta_death_range, ta_cost) {
+			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/rule/create';
+			requestPost.params = {
+					master_tacticalaction_rule_id: escape(master_tacticalaction_rule_id),
+					tacticalaction_id: escape(tacticalaction_id),
+					ta_initial_time_delay: escape(ta_initial_time_delay),
+					ta_cooldown_time: escape(ta_cooldown_time),
+					ta_duration_time: escape(ta_duration_time),
+					ta_vision_range: escape(ta_vision_range),
+					ta_detection_range: escape(ta_detection_range),
+					ta_death_range: escape(ta_death_range),
+					ta_cost: escape(ta_cost)					
+			};
+			return $http(requestPost);
+		},
+
+		updateTacticalActionRuleSetRule: function (IDTacticalActionRule, master_tacticalaction_rule_id, tacticalaction_id, ta_initial_time_delay, ta_cooldown_time, ta_duration_time, ta_vision_range, ta_detection_range, ta_death_range, ta_cost) {
+			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/rule/update/' + IDTacticalActionRule;
+			requestPost.params = {
+					master_tacticalaction_rule_id: escape(master_tacticalaction_rule_id),
+					tacticalaction_id: escape(tacticalaction_id),
+					ta_initial_time_delay: escape(ta_initial_time_delay),
+					ta_cooldown_time: escape(ta_cooldown_time),
+					ta_duration_time: escape(ta_duration_time),
+					ta_vision_range: escape(ta_vision_range),
+					ta_detection_range: escape(ta_detection_range),
+					ta_death_range: escape(ta_death_range),
+					ta_cost: escape(ta_cost)					
+			};
+			return $http(requestPost);
+		},
+
 		updateZoneType: function (ID, newName) {
 			requestPost.url = baseUrl + 'master/zone/type/update/' + ID;
 			requestPost.params = { name: escape(newName) };
@@ -389,7 +473,6 @@ app.factory('MasterStubService', function ($http) {
 					return $http.get(baseUrl + 'master/event/get/id/' + eventId);
 				},
 
-
 				createEvent: function(description_briefing, address, rules, prohibitions, proceedment, additional_informations, registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max, see_enemies_bases, see_enemies_respawn) {
 					requestPost.url = baseUrl + 'event/create';
 					requestPost.params = {description_briefing: escape(description_briefing), address: escape(address), rules: escape(rules), prohibitions: escape(prohibitions), proceedment: escape(proceedment), additional_informations: escape(additional_informations), registration_date_start: escape(registration_date_start), registration_date_end: escape(registration_date_end), event_date_start: escape(event_date_start), event_date_end: escape(event_date_end), operator_inicial_perk_points: escape(operator_inicial_perk_points), max_comsys_per_faction: escape(max_comsys_per_faction), max_operators_per_faction: escape(max_operators_per_faction), respawn_delay: escape(respawn_delay), gps_refresh_rate_min: escape(gps_refresh_rate_min), gps_refresh_rate_max: escape(gps_refresh_rate_max), see_enemies_bases: escape(see_enemies_bases), see_enemies_reswap: escape(see_enemies_respawn)};
@@ -404,8 +487,84 @@ app.factory('MasterStubService', function ($http) {
 
 				deleteEvent: function(eventId) {
 					return $http.get(baseUrl + 'event/delete/' + eventId);
+				},
+
+
+								attachMapToEvent: function(eventId, masterZoneId) {
+					return $http.get(baseUrl + 'event/' + eventId + '/map/attach/' + masterZoneId);
+				},
+
+												removeMapOfEvent: function(IDEvent) {
+					return $http.get(baseUrl + 'event/' + IDEvent+ '/map/remove');
+				},
+
+																createFaction: function(IDEvent, name, pin) {
+																						requestPost.url = baseUrl + 'event/' + IDEvent + '/faction/create';
+					requestPost.params = {name: escape(name), pin: escape(pin)};
+					return $http(requestPost);
+				},
+
+																				updateFaction: function(IDEvent, oldPin, name, pin) {
+																						requestPost.url = baseUrl + 'event/' + IDEvent + '/faction/update/' + oldPin;
+					requestPost.params = {name: escape(name), pin: escape(pin)};
+					return $http(requestPost);
+				},
+
+																deleteFaction: function(IDEvent, pin) {
+					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/delete/' + pin);
+				},
+
+				removeComsysOfFaction: function(eventId, factionPIN, comsysId) {
+					return $http.get(baseUrl + 'event/' + eventId + '/faction/' + 
+									 factionPIN + '/comsys/remove/' + comsysId);
+				},
+				
+				removeZoneOfEvent: function(eventId, zoneId) {
+					return $http.get(baseUrl + 'event/' + eventId + '/zone/remove/' + zoneId);
+				},
+				
+				attachCommonZoneToEvent: function(eventId, masterZoneId) {
+					return $http.get(baseUrl + 'event/' + eventId + '/zone/common/attach/' + masterZoneId);
+				},
+
+
+				attachFactionZoneToEvent: function(eventId, factionPIN, masterZoneId) {
+					return $http.get(baseUrl + 'event/' + eventId + '/zone/faction/' + factionPIN + "/attach/" + masterZoneId);
+				},
+				
+				prestartEvent: function(eventId) {
+					return $http.get(baseUrl + 'event/' + eventId + '/prestart');
+				},
+				
+				startEvent: function(eventId) {
+					return $http.get(baseUrl + 'event/' + eventId + '/start');
+				},
+				
+				pauseEvent: function(eventId) {
+					return $http.get(baseUrl + 'event/' + eventId + '/pause');
+				},
+				
+				stopEvent: function(eventId) {
+					return $http.get(baseUrl + 'event/' + eventId + '/stop');
+				},
+				
+					deleteFaction: function(IDEvent, PINFaction) {
+					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/delete/' + PINFaction);
+				},
+			
+					getAllFactions: function(IDEvent) {
+					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/get/all');
+				},
+			
+								getFactionByID: function(IDEvent, IDFaction) {
+					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/get/id/' + IDFaction);
+				},
+				
+												attachComsysToFaction: function(IDEvent, PINFaction, IDComsys) {
+					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/comsys/attach/' + IDComsys);
 				}
 
-			}
+				
 
+			};
 		});
