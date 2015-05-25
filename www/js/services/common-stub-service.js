@@ -50,6 +50,18 @@ app.factory('CommonStubService', function ($http) {
 
 		getAllOperatorsOfSquad: function(IDEvent,PINFaction, IDSquad) {
 			return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/squad/' + IDSquad + '/operators/get/all');
+		},
+		
+				getFactionZonesByID: function(IDEvent, PINFaction, IDEventZone){
+			return $http.get(baseUrl + 'event/' + IDEvent + '/zone/faction/' + PINFaction + '/get/id/' + IDEventZone);
+		},
+
+						getAllFactionSquads: function(IDEvent, PINFaction	){
+			return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/squad/get/all');
+		},
+
+								getOperatorOfSquadByID: function(IDEvent, PINFaction, IDSquad, IDOperator){
+			return $http.get(baseUrl + 'event/' + IDEvent+ '/faction/' +PINFaction + '/squad/' + IDSquad + '/operators/get/id/' + IDOperator);
 		}
 
 	};
