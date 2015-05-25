@@ -3,7 +3,7 @@ app.factory('CommonStubService', function ($http) {
 	var baseUrl = 'http://192.168.234.37/SOCOM_BO/public/v1/';
 
 	return {
-		
+
 		getAllEvents: function(){
 			return $http.get(baseUrl + 'event/get/all');
 		},
@@ -35,13 +35,23 @@ app.factory('CommonStubService', function ($http) {
 		getTacticalActionRuleSetOfEvent: function(eventId){
 			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/tacticalaction/get/all');
 		},
-		
+
 		getMap: function(IDEvent){
 			return $http.get(baseUrl + 'event/' + IDEvent + '/map/get');
+		},
+
+		getCoordFactionZonesByID: function(IDEvent,PINFaction, IDEventZone) {
+			return $http.get(baseUrl + 'event/' + IDEvent + '/zone/faction/' + PINFaction + '/coord/get/id/' + IDEventZone);
+		},
+
+		getFactionSquadByID: function(IDEvent,PINFaction, IDSquad) {
+			return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/squad/get/id/' + IDSquad);
+		},
+
+		getAllOperatorsOfSquad: function(IDEvent,PINFaction, IDSquad) {
+			return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/squad/' + IDSquad + '/operators/get/all');
 		}
 
-		
 	};
 
-	
 });

@@ -1,5 +1,5 @@
 app.controller('CommonController', function($scope, CommonStubService) {
-	
+
 	$scope.getAllEvents = function(){
 		CommonStubService.getAllEvents()
 		.success(function (data) {
@@ -96,7 +96,7 @@ app.controller('CommonController', function($scope, CommonStubService) {
 		});
 	};
 
-$scope.getMap = function(IDEvent){
+	$scope.getMap = function(IDEvent){
 		CommonStubService.getMap(IDEvent)
 		.success(function (data) {
 			console.log(data);
@@ -107,5 +107,41 @@ $scope.getMap = function(IDEvent){
 			$scope.getMapResult = 'Unable to load data: ' + error;
 		});
 	};
-		
+
+	$scope.getCoordFactionZonesByID = function(IDEvent,PINFaction, IDEventZone){
+		CommonStubService.getCoordFactionZonesByID(IDEvent,PINFaction, IDEventZone)
+		.success(function (data) {
+			console.log(data);
+			$scope.getCoordFactionZonesByIDResult = data.response;
+		})
+		.error(function (error) {
+			console.log(error);
+			$scope.getCoordFactionZonesByIDResult = 'Unable to load data: ' + error;
+		});
+	};
+
+	$scope.getFactionSquadByID = function(IDEvent,PINFaction, IDSquad){
+		CommonStubService.getFactionSquadByID(IDEvent,PINFaction, IDSquad)
+		.success(function (data) {
+			console.log(data);
+			$scope.getFactionSquadByIDResult = data.response;
+		})
+		.error(function (error) {
+			console.log(error);
+			$scope.getFactionSquadByIDResult = 'Unable to load data: ' + error;
+		});
+	};
+
+	$scope.getAllOperatorsOfSquad = function(IDEvent,PINFaction, IDSquad){
+		CommonStubService.getAllOperatorsOfSquad(IDEvent,PINFaction, IDSquad)
+		.success(function (data) {
+			console.log(data);
+			$scope.getAllOperatorsOfSquadResult = data.response;
+		})
+		.error(function (error) {
+			console.log(error);
+			$scope.getAllOperatorsOfSquadResult = 'Unable to load data: ' + error;
+		});
+	};
+
 });

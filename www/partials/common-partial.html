@@ -43,5 +43,26 @@
       <span ng-bind="getMapResult"></span>
     </div>
 
+	    <div>
+      <button class="button button-light" ng-click="getCoordFactionZonesByID('1', '1', '1')">
+        getCoordFactionZonesByID
+      </button>
+      <span ng-bind="getCoordFactionZonesByIDResult"></span>
+    </div>
+
+<div>
+      <button class="button button-light" ng-click="getFactionSquadByID('1', '1', '1')">
+        getFactionSquadByID
+      </button>
+      <span ng-bind="getFactionSquadByIDResult"></span>
+    </div>
+    
+    <div>
+      <button class="button button-light" ng-click="getAllOperatorsOfSquad('1', '1', '1')">
+        getAllOperatorsOfSquad
+      </button>
+      <span ng-bind="getAllOperatorsOfSquadResult"></span>
+    </div>
+    
   </ion-content>
 </ion-pane>
