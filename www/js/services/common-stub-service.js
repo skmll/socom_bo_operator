@@ -33,7 +33,32 @@ app.factory('CommonStubService', function ($http) {
 
 		getTacticalActionRuleSetOfEvent: function(eventId){
 			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/tacticalaction/get/all');
+		},
+		
+		getAllFactionComsys: function(eventId, factionPIN){
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/'+factionPIN+'/comsys/get/all');
+		},
+		
+		getFactionComsysByID: function(eventId, factionPIN, comsysID){
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/'+factionPIN+'/comsys/get/id/'+comsysID);
+		},
+		
+		getAllCommonZones: function(eventId){
+			return $http.get(baseUrl + 'event/' + eventId + '/zone/common/get/all');
+		},
+		
+		getCommonZoneByID: function(eventId , eventZoneID){
+			return $http.get(baseUrl + 'event/' + eventId + '/zone/common/get/id/'+eventZoneID);
+		},
+		
+		getCoordCommonZoneByID: function(eventId , eventZoneID){
+			return $http.get(baseUrl + 'event/' + eventId + '/zone/common/coord/get/id/'+eventZoneID);
+		},
+		
+		getAllFactionZones: function(eventId , factionPIN){
+			return $http.get(baseUrl + 'event/' + eventId + '/zone/faction/'+factionPIN+'/get/all');
 		}
-	}
+		
+	};
 	
 });
