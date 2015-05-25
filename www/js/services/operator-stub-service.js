@@ -48,6 +48,34 @@ app.factory('OperatorStubService', function ($http) {
 			requestPost.url = baseUrl + 'operator/password/update';
 			requestPost.params = { old: escape(oldPassword), new: escape(newPassword) };
 			return $http(requestPost);
+		},
+
+		createSquad: function (eventId, factionPIN) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/create');
+		},
+
+		deleteSquad: function (eventId, factionPIN) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/delete');
+		},
+
+		lockFactionSquad: function (eventId, factionPIN) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/lock');
+		},
+
+		unlockFactionSquad: function (eventId, factionPIN) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/unlock');
+		},
+
+		kickOperatorFromFactionSquad: function (eventId, factionPIN, operatorId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/kick/' + operatorId);
+		},
+
+		joinFactionSquad: function (eventId, factionPIN, squadId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/join/' + squadId);
+		},
+
+		leaveFactionSquad: function (eventId, factionPIN, squadId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/leave/' + squadId);
 		}
 		
 	};

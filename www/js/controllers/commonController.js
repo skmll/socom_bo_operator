@@ -144,7 +144,7 @@ app.controller('CommonController', function($scope, CommonStubService) {
 		});
 	};
 
-$scope.getFactionZonesByID = function(IDEvent, PINFaction, IDEventZone){
+	$scope.getFactionZonesByID = function(IDEvent, PINFaction, IDEventZone){
 		CommonStubService.getFactionZonesByID(IDEvent, PINFaction, IDEventZone)
 		.success(function (data) {
 			console.log(data);
@@ -155,9 +155,9 @@ $scope.getFactionZonesByID = function(IDEvent, PINFaction, IDEventZone){
 			$scope.getFactionZonesByIDResult = 'Unable to load data: ' + error;
 		});
 	};
-		
 
-$scope.getAllFactionSquads = function(IDEvent, PINFaction){
+
+	$scope.getAllFactionSquads = function(IDEvent, PINFaction){
 		CommonStubService.getAllFactionSquads(IDEvent, PINFaction)
 		.success(function (data) {
 			console.log(data);
@@ -168,10 +168,10 @@ $scope.getAllFactionSquads = function(IDEvent, PINFaction){
 			$scope.getAllFactionSquadsResult = 'Unable to load data: ' + error;
 		});
 	};
-		
 
 
-$scope.getOperatorOfSquadByID = function(IDEvent, PINFaction, IDSquad, IDOperator){
+
+	$scope.getOperatorOfSquadByID = function(IDEvent, PINFaction, IDSquad, IDOperator){
 		CommonStubService.getOperatorOfSquadByID(IDEvent, PINFaction, IDSquad, IDOperator)
 		.success(function (data) {
 			console.log(data);
@@ -182,5 +182,17 @@ $scope.getOperatorOfSquadByID = function(IDEvent, PINFaction, IDSquad, IDOperato
 			$scope.getOperatorOfSquadByIDResult = 'Unable to load data: ' + error;
 		});
 	};
-				
+
+	$scope.getAllFactionsScore = function(eventId){
+		CommonStubService.getAllFactionsScore(eventId)
+		.success(function (data) {
+			console.log(data);
+			$scope.getAllFactionsScoreResult = data.response;
+		})
+		.error(function (error) {
+			console.log(error);
+			$scope.getAllFactionsScoreResult = 'Unable to load data: ' + error;
+		});
+	};
+
 });

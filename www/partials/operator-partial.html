@@ -32,5 +32,33 @@
       <button class="button button-light" ng-click="operatorLogout()">logout</button>
       <span ng-bind="logoutResult"></span>
     </div>
+    <div>
+      <button class="button button-light" ng-click="createSquad('1', '123')">createSquad</button>
+      <span ng-bind="createSquadResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="deleteSquad('1', '123')">deleteSquad</button>
+      <span ng-bind="deleteSquadResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="lockFactionSquad('1', '123')">lockFactionSquad</button>
+      <span ng-bind="lockFactionSquadResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="unlockFactionSquad('1', '123')">unlockFactionSquad</button>
+      <span ng-bind="unlockFactionSquadResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="kickOperatorFromFactionSquad('1', '123', '1')">kickOperatorFromFactionSquad</button>
+      <span ng-bind="kickOperatorFromFactionSquadResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="joinFactionSquad('1', '123', '1')">joinFactionSquad</button>
+      <span ng-bind="joinFactionSquadResult"></span>
+    </div>
+    <div>
+      <button class="button button-light" ng-click="leaveFactionSquad('1', '123', '1')">leaveFactionSquad</button>
+      <span ng-bind="leaveFactionSquadResult"></span>
+    </div>
   </ion-content>
 </ion-pane>

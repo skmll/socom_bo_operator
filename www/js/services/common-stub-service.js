@@ -36,32 +36,36 @@ app.factory('CommonStubService', function ($http) {
 			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/tacticalaction/get/all');
 		},
 
-		getMap: function(IDEvent){
-			return $http.get(baseUrl + 'event/' + IDEvent + '/map/get');
+		getMap: function(eventId){
+			return $http.get(baseUrl + 'event/' + eventId + '/map/get');
 		},
 
-		getCoordFactionZonesByID: function(IDEvent,PINFaction, IDEventZone) {
-			return $http.get(baseUrl + 'event/' + IDEvent + '/zone/faction/' + PINFaction + '/coord/get/id/' + IDEventZone);
+		getCoordFactionZonesByID: function(eventId, factionPIN, eventZoneId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/zone/faction/' + factionPIN + '/coord/get/id/' + eventZoneId);
 		},
 
-		getFactionSquadByID: function(IDEvent,PINFaction, IDSquad) {
-			return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/squad/get/id/' + IDSquad);
+		getFactionSquadByID: function(eventId, factionPIN, squadId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/get/id/' + squadId);
 		},
 
-		getAllOperatorsOfSquad: function(IDEvent,PINFaction, IDSquad) {
-			return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/squad/' + IDSquad + '/operators/get/all');
+		getAllOperatorsOfSquad: function(eventId, factionPIN, squadId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/' + squadId + '/operators/get/all');
 		},
 		
-				getFactionZonesByID: function(IDEvent, PINFaction, IDEventZone){
-			return $http.get(baseUrl + 'event/' + IDEvent + '/zone/faction/' + PINFaction + '/get/id/' + IDEventZone);
+		getFactionZonesByID: function(eventId, factionPIN, eventZoneId){
+			return $http.get(baseUrl + 'event/' + eventId + '/zone/faction/' + factionPIN + '/get/id/' + eventZoneId);
 		},
 
-						getAllFactionSquads: function(IDEvent, PINFaction	){
-			return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/squad/get/all');
+		getAllFactionSquads: function(eventId, factionPIN	){
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/get/all');
 		},
 
-								getOperatorOfSquadByID: function(IDEvent, PINFaction, IDSquad, IDOperator){
-			return $http.get(baseUrl + 'event/' + IDEvent+ '/faction/' +PINFaction + '/squad/' + IDSquad + '/operators/get/id/' + IDOperator);
+		getOperatorOfSquadByID: function(eventId, factionPIN, squadId, operatorId){
+			return $http.get(baseUrl + 'event/' + eventId+ '/faction/' + factionPIN + '/squad/' + squadId + '/operators/get/id/' + operatorId);
+		},
+
+		getAllFactionsScore: function(eventId){
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/get/scores');
 		}
 
 	};
