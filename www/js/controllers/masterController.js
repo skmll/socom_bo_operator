@@ -869,6 +869,52 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 			$scope.stopEventResult = 'Unable to load data: ' + error;
 		});
 	};
-	
 
+$scope.deleteFaction = function (IDEvent, PINFaction) {
+		MasterStubService.deleteFaction(IDEvent, PINFaction)
+			.success(function (data) {
+			console.log(data);
+			$scope.deleteFactionResult = data.response;
+		})
+			.error(function (error) {
+			$scope.deleteFactionResult = 'Unable to load data: ' + error;
+		});
+	};
+		
+$scope.getAllFactions = function (IDEvent) {
+		MasterStubService.deleteFaction(IDEvent)
+			.success(function (data) {
+			console.log(data);
+			$scope.getAllFactionsResult = data.response;
+		})
+			.error(function (error) {
+			$scope.getAllFactionsResult = 'Unable to load data: ' + error;
+		});
+	};
+		
+
+$scope.getFactionByID = function (IDEvent, IDFaction) {
+		MasterStubService.getFactionByID(IDEvent, IDFaction)
+			.success(function (data) {
+			console.log(data);
+			$scope.getFactionByIDResult = data.response;
+		})
+			.error(function (error) {
+			$scope.getFactionByIDResult = 'Unable to load data: ' + error;
+		});
+	};
+
+
+$scope.attachComsysToFaction = function (IDEvent, PINFaction, IDComsys) {
+		MasterStubService.attachComsysToFaction(IDEvent, PINFaction, IDComsys)
+			.success(function (data) {
+			console.log(data);
+			$scope.attachComsysToFactionResult = data.response;
+		})
+			.error(function (error) {
+			$scope.attachComsysToFactionResult = 'Unable to load data: ' + error;
+		});
+	};
+				
+	
 });

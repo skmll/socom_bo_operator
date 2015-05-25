@@ -546,6 +546,25 @@ app.factory('MasterStubService', function ($http) {
 				
 				stopEvent: function(eventId) {
 					return $http.get(baseUrl + 'event/' + eventId + '/stop');
+				},
+				
+					deleteFaction: function(IDEvent, PINFaction) {
+					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/delete/' + PINFaction);
+				},
+			
+					getAllFactions: function(IDEvent) {
+					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/get/all');
+				},
+			
+								getFactionByID: function(IDEvent, IDFaction) {
+					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/get/id/' + IDFaction);
+				},
+				
+												attachComsysToFaction: function(IDEvent, PINFaction, IDComsys) {
+					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/comsys/attach/' + IDComsys);
 				}
+
+				
+
 			};
 		});
