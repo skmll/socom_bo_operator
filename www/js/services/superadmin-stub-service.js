@@ -7,9 +7,9 @@ app.factory('SuperAdminStubService', function ($http) {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
-			},
-	}
-
+			}
+	};
+	
 	return {
 		
 		loginSuperadmin: function (username, password) {

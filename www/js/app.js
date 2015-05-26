@@ -33,7 +33,10 @@ app.run(function($ionicPlatform, $ionicPopup, $rootScope, $cordovaBatteryStatus)
   
 })
 
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+  
+  //$httpProvider.defaults.useXDomain = true; // Needed?
+  $httpProvider.defaults.withCredentials = true;
   
   $stateProvider
     .state('common', {
