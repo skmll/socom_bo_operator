@@ -593,6 +593,25 @@ app.factory('MasterStubService', function ($http) {
 				
 					joinFactionComsys: function(IDEvent, PINFaction) {
 					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/comsys/join');
+				},
+				
+				sendNotificationToEvent: function(IDEvent, available_responses, response, sender, text) {
+					https://socom-bo-estg-2015.firebaseio.com/events_in_progress/10/event_notifications/
+						
+					var ref = new Firebase('https://1020wiki1020.firebaseio.com/');
+					var postsRef = ref.child(IDEvent);
+					var newPostRef = postsRef.push({
+						available_responses: available_responses,
+						response: response,
+						sender: sender,
+						text: text
+					});
+
+				},
+				
+				changeMasterScore: function () {
+					//https://socom-bo-estg-2015.firebaseio.com/events_in_progress/10/factions/1
+						
 				}
 				
 			};
