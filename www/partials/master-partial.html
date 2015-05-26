@@ -1,343 +1,11 @@
 <ion-pane>
 
-<ion-header-bar class="bar-stable">
-<h1 class="title">Master Stub</h1>
-</ion-header-bar>
-<ion-content>
-<div>
-  <button class="button button-light" ng-click="login('master01@socom.com', 'master01')">Login</button>
-  <span ng-bind="loginResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="loginCheck()">Login Check</button>
-  <span ng-bind="loginCheckResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="logout()">Logout</button>
-  <span ng-bind="logoutResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="updateMasterConfig()">Update Master Personal Config</button>
-  <span ng-bind="updateMasterConfigResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="getAllMasterSponsors()">Get All Master Sponsors</button>
-  <span ng-bind="getAllMasterSponsorsResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="updateMasterSponsor('1', '', '')">updateMasterSponsor</button>
-  <span ng-bind="updateMasterSponsorResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="getMasterSponsorByName()">getMasterSponsorByName</button>
-  <span ng-bind="getMasterSponsorByNameResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="createMasterSponsor('', '')">createMasterSponsor</button>
-  <span ng-bind="createMasterSponsorResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="createMaster()">Create Master</button>
-  <span ng-bind="createMasterResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="changeMasterPassword()">changeMasterPassword</button>
-  <span ng-bind="changeMasterPasswordResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="deleteMasterSponsor('1')">deleteMasterSponsor</button>
-  <span ng-bind="deleteMasterSponsorResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="getAllPerks()">getAllPerks</button>
-  <span ng-bind="getAllPerksResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="createZoneType('name')">createZoneType</button>
-  <span ng-bind="createZoneTypeResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="updateZoneType('1', 'name')">updateZoneType</button>
-  <span ng-bind="updateZoneTypeResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="deleteZoneType('1')">deleteZoneType</button>
-  <span ng-bind="deleteZoneTypeResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="getAllZoneTypes()">getAllZoneTypes</button>
-  <span ng-bind="getAllZoneTypesResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="getServerDefinedZoneTypes()">getServerDefinedZoneTypes</button>
-  <span ng-bind="getServerDefinedZoneTypesResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="getMasterDefinedZoneTypes()">getMasterDefinedZoneTypes</button>
-  <span ng-bind="getMasterDefinedZoneTypesResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="getZoneTypesByName('name')">getZoneTypesByName</button>
-  <span ng-bind="getZoneTypesByNameResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="getZoneTypeByID('1')">getZoneTypeByID</button>
-  <span ng-bind="getZoneTypeByIDResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="createMasterZone('1','description','capture points')">createMasterZone</button>
-  <span ng-bind="createMasterZoneResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="updateMasterZone('1','1','description','capture points')">updateMasterZone</button>
-  <span ng-bind="updateMasterZoneResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="deleteMasterZone('1')">deleteMasterZone</button>
-  <span ng-bind="deleteMasterZoneResult"></span>
-</div>
-<div>
-  <button class="button button-light" ng-click="getAllMasterZones()">getAllMasterZones</button>
-  <span ng-bind="getAllMasterZonesResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="getAllPerks()">
-    getAllPerks
-  </button>
-  <span ng-bind="getAllPerksResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="getPerksByName()">
-    getPerksByName
-  </button>
-  <span ng-bind="getPerksByNameResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="getPerkByID()">
-    getPerkByID
-  </button>
-  <span ng-bind="getPerkByIDResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="createMasterPerkRuleSet()">
-    createMasterPerkRuleSet
-  </button>
-  <span ng-bind="createMasterPerkRuleSetResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="updateMasterPerkRuleSet()">
-    updateMasterPerkRuleSet
-  </button>
-  <span ng-bind="updateMasterPerkRuleSetResult"></span>
-</div>
-
-
-<div>
-  <button class="button button-light" ng-click="deleteMasterPerkRuleSet('1')">
-    deleteMasterPerkRuleSet
-  </button>
-  <span ng-bind="deleteMasterPerkRuleSetResult"></span>
-</div>
-
-
-<div>
-  <button class="button button-light" ng-click="getAllMasterPerkRuleSets()">
-    getAllMasterPerkRuleSets
-  </button>
-  <span ng-bind="getAllMasterPerkRuleSetsResult"></span>
-</div>
-
-
-<div>
-  <button class="button button-light" ng-click="createPerkRuleSetRule()">
-    createPerkRuleSetRule
-  </button>
-  <span ng-bind="createPerkRuleSetRuleResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="updatePerkRuleSetRule()">
-    updatePerkRuleSetRule
-  </button>
-  <span ng-bind="updatePerkRuleSetRuleResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="deletePerkRuleSetRule()">
-    deletePerkRuleSetRule
-  </button>
-  <span ng-bind="deletePerkRuleSetRuleResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="getPerkRuleSetRulesByPerkRuleSetID()">
-    getPerkRuleSetRulesByPerkRuleSetID
-  </button>
-  <span ng-bind="getPerkRuleSetRulesByPerkRuleSetIDResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="getMasterZoneByID()">
-    getMasterZoneByID
-  </button>
-  <span ng-bind="getMasterZoneByIDResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="getMasterZoneByZoneTypeID()">
-    getMasterZoneByZoneTypeID
-  </button>
-  <span ng-bind="getMasterZoneByZoneTypeIDResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="attachPerkRuleSetToEvent('1', '1')">
-    attachPerkRuleSetToEvent
-  </button>
-  <span ng-bind="attachPerkRuleSetToEventResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="removePerkRuleSetOfEvent('1')">
-    removePerkRuleSetOfEvent
-  </button>
-  <span ng-bind="removePerkRuleSetOfEventResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="attachTacticalActionRuleSetToEvent('1', '1')">
-    attachTacticalActionRuleSetToEvent
-  </button>
-  <span ng-bind="attachTacticalActionRuleSetToEventResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="removeTactionalRuleSetOfEvent('1')">
-    removeTactionalRuleSetOfEvent
-  </button>
-  <span ng-bind="removeTactionalRuleSetOfEventResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="createZoneCoord()">
-    createZoneCoord
-  </button>
-  <span ng-bind="createZoneCoordResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="updateZoneCoord()">
-    updateZoneCoord
-  </button>
-  <span ng-bind="updateZoneCoordResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="deleteZoneCoord()">
-    deleteZoneCoord
-  </button>
-  <span ng-bind="deleteZoneCoordResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="getZoneCoordByID()">
-    getZoneCoordByID
-  </button>
-  <span ng-bind="getZoneCoordByIDResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="getZoneCoordByMasterZoneID()">
-    getZoneCoordByMasterZoneID
-  </button>
-  <span ng-bind="getZoneCoordByMasterZoneIDResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="getAllMasterEvents()">
-    getAllMasterEvents
-  </button>
-  <span ng-bind="getAllMasterEventsResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="getMasterEventByID()">
-    getMasterEventByID
-  </button>
-  <span ng-bind="getMasterEventByIDResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="createEvent()">
-    createEvent
-  </button>
-  <span ng-bind="createEventResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="updateEvent()">
-    updateEvent
-  </button>
-  <span ng-bind="updateEventResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="deleteEvent()">
-    deleteEvent
-  </button>
-  <span ng-bind="deleteEventResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="attachMapToEvent()">
-attachMapToEvent
-  </button>
-  <span ng-bind="attachMapToEventResult"></span>
-</div>
-
-
-<div>
-  <button class="button button-light" ng-click="removeMapOfEvent()">
-removeMapOfEvent
-  </button>
-  <span ng-bind="removeMapOfEventResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="createFaction()">
-createFaction
-  </button>
-  <span ng-bind="createFactionResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="updateFaction()">
-updateFaction
-  </button>
-  <span ng-bind="updateFactionResult"></span>
-</div>
-
-<div>
-  <button class="button button-light" ng-click="deleteFaction()">
-deleteFaction
-  </button>
-  <span ng-bind="deleteFactionResult"></span>
-</div>
-
-</ion-content>
-
   <ion-header-bar class="bar-stable">
     <h1 class="title">Master Stub</h1>
   </ion-header-bar>
   <ion-content>
     <div>
-      <button class="button button-light" ng-click="login()">Login</button>
+      <button class="button button-light" ng-click="login('master01@socom.com', 'master01')">Login</button>
       <span ng-bind="loginResult"></span>
     </div>
     <div>
@@ -389,97 +57,97 @@ deleteFaction
       <span ng-bind="getAllPerksResult"></span>
     </div>
 
-<div>
-      <button class="button button-light" ng-click="removeSponsorOfEvent(1, 1)">
+    <div>
+      <button class="button button-light" ng-click="removeSponsorOfEvent('1', '1')">
         removeSponsorOfEvent
       </button>
       <span ng-bind="removeSponsorOfEventResult"></span>
     </div>
 
-<div>
+    <div>
       <button class="button button-light" ng-click="attachSponsorToEvent(1, 1)">
         attachSponsorToEvent
       </button>
       <span ng-bind="attachSponsorToEventResult"></span>
     </div>
 
-<div>
+    <div>
       <button class="button button-light" ng-click="getTacticalActionRuleSetRulesByTacticalActionRuleSetID(1)">
         getTacticalActionRuleSetRulesByTacticalActionRuleSetID
       </button>
       <span ng-bind="getTacticalActionRuleSetRulesByTacticalActionRuleSetIDResult"></span>
     </div>
 
-<div>
+    <div>
       <button class="button button-light" ng-click="deleteTacticalActionRuleSetRule(1)">
         deleteTacticalActionRuleSetRule
       </button>
       <span ng-bind="deleteTacticalActionRuleSetRuleResult"></span>
     </div>
 
-<div>
+    <div>
       <button class="button button-light" ng-click="getAllMasterTacticalActionRuleSets()">
         getAllMasterTacticalActionRuleSets
       </button>
       <span ng-bind="getAllMasterTacticalActionRuleSetsResult"></span>
     </div>
 
-<div>
+    <div>
       <button class="button button-light" ng-click="deleteMasterTacticalActionRuleSet(1)">
         deleteMasterTacticalActionRuleSet
       </button>
       <span ng-bind="deleteMasterTacticalActionRuleSetResult"></span>
     </div>
-	
-<div>
+
+    <div>
       <button class="button button-light" ng-click="getTacticalActionByID(1)">
         getTacticalActionByID
       </button>
       <span ng-bind="getTacticalActionByIDResult"></span>
     </div>
 
-<div>
+    <div>
       <button class="button button-light" ng-click="getTacticalActionsByName('1')">
         getTacticalActionsByName
       </button>
       <span ng-bind="getTacticalActionsByNameResult"></span>
     </div>
 
-<div>
+    <div>
       <button class="button button-light" ng-click="getAllTacticalActions()">
         getAllTacticalActions
       </button>
       <span ng-bind="getAllTacticalActionsResult"></span>
     </div>
 
-<div>
+    <div>
       <button class="button button-light" ng-click="createMasterTacticalActionRuleSet('1')">
         createMasterTacticalActionRuleSet
       </button>
       <span ng-bind="createMasterTacticalActionRuleSetResult"></span>
     </div>
 
-<div>
+    <div>
       <button class="button button-light" ng-click="updateMasterTacticalActionRuleSet('1', '1')">
         updateMasterTacticalActionRuleSet
       </button>
       <span ng-bind="updateMasterTacticalActionRuleSetResult"></span>
     </div>
 
-<div>
+    <div>
       <button class="button button-light" ng-click="createTacticalActionRuleSetRule()">
         createTacticalActionRuleSetRule
       </button>
       <span ng-bind="createTacticalActionRuleSetRuleResult"></span>
     </div>
 
-<div>
+    <div>
       <button class="button button-light" ng-click="updateTacticalActionRuleSetRule('1', '1', '1', '1', '1', '1', '1', '1', '1', '1')">
         updateTacticalActionRuleSetRule
       </button>
       <span ng-bind="updateTacticalActionRuleSetRuleResult"></span>
     </div>
-	
+
     <div>
       <button class="button button-light" ng-click="createZoneType('name')">createZoneType</button>
       <span ng-bind="createZoneTypeResult"></span>
@@ -633,8 +301,8 @@ deleteFaction
       <span ng-bind="deleteEventResult"></span>
     </div>
     <div>
-      <button class="button button-light" ng-click="removeComsysOfFaction('1','1234','1')">removeComsysOfFaction</button>
-      <span ng-bind="removeComsysOfFactionResult"></span>
+      <button class="button button-light" ng-click="leaveFactionComsys('1','1234')">leaveFactionComsys</button>
+      <span ng-bind="leaveFactionComsysResult"></span>
     </div>
     <div>
       <button class="button button-light" ng-click="removeZoneOfEvent('1','1')">removeZoneOfEvent</button>
@@ -665,36 +333,63 @@ deleteFaction
       <span ng-bind="stopEventResult"></span>
     </div>
 
-<div>
+    <div>
+      <button class="button button-light" ng-click="attachMapToEvent()">
+    attachMapToEvent
+      </button>
+      <span ng-bind="attachMapToEventResult"></span>
+    </div>
+
+    <div>
+      <button class="button button-light" ng-click="removeMapOfEvent()">
+    removeMapOfEvent
+      </button>
+      <span ng-bind="removeMapOfEventResult"></span>
+    </div>
+
+    <div>
+      <button class="button button-light" ng-click="createFaction()">
+    createFaction
+      </button>
+      <span ng-bind="createFactionResult"></span>
+    </div>
+
+    <div>
+      <button class="button button-light" ng-click="updateFaction()">
+    updateFaction
+      </button>
+      <span ng-bind="updateFactionResult"></span>
+    </div>
+
+    <div>
       <button class="button button-light" ng-click="deleteFaction()">
-	  deleteFaction
-	  </button>
+      deleteFaction
+      </button>
       <span ng-bind="deleteFactionResult"></span>
     </div>
 
-
-<div>
+    <div>
       <button class="button button-light" ng-click="getAllFactions()">
-	  getAllFactions
-	  </button>
+      getAllFactions
+      </button>
       <span ng-bind="getAllFactionsResult"></span>
     </div>
         
-<div>
+    <div>
       <button class="button button-light" ng-click="getFactionByID()">
-getFactionByID
-	  </button>
+    getFactionByID
+      </button>
       <span ng-bind="getFactionByIDResult"></span>
     </div>
 
-	<div>
-      <button class="button button-light" ng-click="attachComsysToFaction()">
-attachComsysToFaction
-	  </button>
-      <span ng-bind="attachComsysToFactionResult"></span>
+    <div>
+      <button class="button button-light" ng-click="joinFactionComsys('1','1234')">
+    joinFactionComsys
+      </button>
+      <span ng-bind="joinFactionComsysResult"></span>
     </div>
 
-	
-		
-  </ion-content>
+
+      
+    </ion-content>
 </ion-pane>

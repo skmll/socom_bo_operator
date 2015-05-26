@@ -36,32 +36,64 @@ app.factory('CommonStubService', function ($http) {
 			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/tacticalaction/get/all');
 		},
 
-		getMap: function(IDEvent){
-			return $http.get(baseUrl + 'event/' + IDEvent + '/map/get');
-		},
-
-		getCoordFactionZonesByID: function(IDEvent,PINFaction, IDEventZone) {
-			return $http.get(baseUrl + 'event/' + IDEvent + '/zone/faction/' + PINFaction + '/coord/get/id/' + IDEventZone);
-		},
-
-		getFactionSquadByID: function(IDEvent,PINFaction, IDSquad) {
-			return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/squad/get/id/' + IDSquad);
-		},
-
-		getAllOperatorsOfSquad: function(IDEvent,PINFaction, IDSquad) {
-			return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/squad/' + IDSquad + '/operators/get/all');
+		
+		getAllFactionComsys: function(eventId, factionPIN){
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/'+factionPIN+'/comsys/get/all');
 		},
 		
-				getFactionZonesByID: function(IDEvent, PINFaction, IDEventZone){
-			return $http.get(baseUrl + 'event/' + IDEvent + '/zone/faction/' + PINFaction + '/get/id/' + IDEventZone);
+		getFactionComsysByID: function(eventId, factionPIN, comsysID){
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/'+factionPIN+'/comsys/get/id/'+comsysID);
+		},
+		
+		getAllCommonZones: function(eventId){
+			return $http.get(baseUrl + 'event/' + eventId + '/zone/common/get/all');
+		},
+		
+		getCommonZoneByID: function(eventId , eventZoneID){
+			return $http.get(baseUrl + 'event/' + eventId + '/zone/common/get/id/'+eventZoneID);
+		},
+		
+		getCoordCommonZoneByID: function(eventId , eventZoneID){
+			return $http.get(baseUrl + 'event/' + eventId + '/zone/common/coord/get/id/'+eventZoneID);
+		},
+		
+		getAllFactionZones: function(eventId , factionPIN){
+			return $http.get(baseUrl + 'event/' + eventId + '/zone/faction/'+factionPIN+'/get/all');
+		},
+		
+
+	
+
+		getMap: function(eventId){
+			return $http.get(baseUrl + 'event/' + eventId + '/map/get');
 		},
 
-						getAllFactionSquads: function(IDEvent, PINFaction	){
-			return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/squad/get/all');
+		getCoordFactionZonesByID: function(eventId, factionPIN, eventZoneId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/zone/faction/' + factionPIN + '/coord/get/id/' + eventZoneId);
 		},
 
-								getOperatorOfSquadByID: function(IDEvent, PINFaction, IDSquad, IDOperator){
-			return $http.get(baseUrl + 'event/' + IDEvent+ '/faction/' +PINFaction + '/squad/' + IDSquad + '/operators/get/id/' + IDOperator);
+		getFactionSquadByID: function(eventId, factionPIN, squadId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/get/id/' + squadId);
+		},
+
+		getAllOperatorsOfSquad: function(eventId, factionPIN, squadId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/' + squadId + '/operators/get/all');
+		},
+		
+		getFactionZonesByID: function(eventId, factionPIN, eventZoneId){
+			return $http.get(baseUrl + 'event/' + eventId + '/zone/faction/' + factionPIN + '/get/id/' + eventZoneId);
+		},
+
+		getAllFactionSquads: function(eventId, factionPIN	){
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/get/all');
+		},
+
+		getOperatorOfSquadByID: function(eventId, factionPIN, squadId, operatorId){
+			return $http.get(baseUrl + 'event/' + eventId+ '/faction/' + factionPIN + '/squad/' + squadId + '/operators/get/id/' + operatorId);
+		},
+
+		getAllFactionsScore: function(eventId){
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/get/scores');
 		}
 
 	};
