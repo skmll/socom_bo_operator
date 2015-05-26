@@ -930,4 +930,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 		});
 	};
 
+	$scope.sendNotificationToEvent = function (IDEvent, available_responses, response, sender, text) {
+MasterStubService.sendNotificationToEvent(IDEvent, available_responses, response, sender, text);
+	};
 });
