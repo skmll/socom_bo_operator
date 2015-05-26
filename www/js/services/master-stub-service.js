@@ -595,12 +595,12 @@ app.factory('MasterStubService', function ($http) {
 					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/comsys/join');
 				},
 				
-				sendNotificationToEvent: function(IDEvent, available_responses, response, sender, text) {
+				sendNotificationToEvent: function(IDEvent, available_responses_list, responses_list, sender, text) {
 					var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/');
 					var postsRef = ref.child("event_notifications");
 					var newPostRef = postsRef.push({
-						available_responses: available_responses,
-						response: response,
+						available_responses_list: available_responses_list,
+						responses_list: responses_list,
 						sender: sender,
 						text: text
 					});
