@@ -65,18 +65,18 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			$scope.getMasterPersonalConfigResult = 'Unable to load data: ' + error;
 		});
 	};
-	
+
 	$scope.updateMasterConfig = function (display_grid, coord_format, nickname, logo,
-		phone, address, zipcode, country, association_description, association_link, association_link_promo) {
+			phone, address, zipcode, country, association_description, association_link, association_link_promo) {
 		MasterStubService.updateMasterPersonalConfig(display_grid, coord_format, nickname, logo,
-			phone, address, zipcode, country, association_description, association_link, association_link_promo)
-		.success(function (data) {
-			console.log(data);
-			$scope.updateMasterConfigResult = data.response;
-		})
-		.error(function (error) {
-			$scope.updateMasterConfigResult = 'Unable to load data: ' + error;
-		});
+				phone, address, zipcode, country, association_description, association_link, association_link_promo)
+				.success(function (data) {
+					console.log(data);
+					$scope.updateMasterConfigResult = data.response;
+				})
+				.error(function (error) {
+					$scope.updateMasterConfigResult = 'Unable to load data: ' + error;
+				});
 	};
 
 	$scope.getAllMasterSponsors = function () {
@@ -213,29 +213,29 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 	};
 
 	$scope.createPerkRuleSetRule = function (master_perk_rule_id, perk_id, p_initial_time_delay,
-		p_cooldown_time, p_duration_time, p_vision_range, p_detection_range, p_max_units, p_cost) {
+			p_cooldown_time, p_duration_time, p_vision_range, p_detection_range, p_max_units, p_cost) {
 		MasterStubService.createPerkRuleSetRule(master_perk_rule_id, perk_id, p_initial_time_delay,
-			p_cooldown_time, p_duration_time, p_vision_range, p_detection_range, p_max_units, p_cost)
-		.success(function (data) {
-			console.log(data);
-			$scope.createPerkRuleSetRuleResult = data.response;
-		})
-		.error(function (error) {
-			$scope.createPerkRuleSetRuleResult = 'Unable to load data: ' + error;
-		});
+				p_cooldown_time, p_duration_time, p_vision_range, p_detection_range, p_max_units, p_cost)
+				.success(function (data) {
+					console.log(data);
+					$scope.createPerkRuleSetRuleResult = data.response;
+				})
+				.error(function (error) {
+					$scope.createPerkRuleSetRuleResult = 'Unable to load data: ' + error;
+				});
 	};
 
 	$scope.updatePerkRuleSetRule = function (master_perk_rule_id, perk_id, p_initial_time_delay,
-		p_cooldown_time, p_duration_time, p_vision_range, p_detection_range, p_max_units, p_cost) {
+			p_cooldown_time, p_duration_time, p_vision_range, p_detection_range, p_max_units, p_cost) {
 		MasterStubService.updatePerkRuleSetRule(master_perk_rule_id, perk_id, p_initial_time_delay,
-			p_cooldown_time, p_duration_time, p_vision_range, p_detection_range, p_max_units, p_cost)
-		.success(function (data) {
-			console.log(data);
-			$scope.updatePerkRuleSetRuleResult = data.response;
-		})
-		.error(function (error) {
-			$scope.updatePerkRuleSetRuleResult = 'Unable to load data: ' + error;
-		});
+				p_cooldown_time, p_duration_time, p_vision_range, p_detection_range, p_max_units, p_cost)
+				.success(function (data) {
+					console.log(data);
+					$scope.updatePerkRuleSetRuleResult = data.response;
+				})
+				.error(function (error) {
+					$scope.updatePerkRuleSetRuleResult = 'Unable to load data: ' + error;
+				});
 	};
 
 	$scope.deletePerkRuleSetRule = function () {
@@ -692,39 +692,39 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 	};
 
 	$scope.createEvent = function ( name, logo, description_briefing, address, rules, prohibitions, proceedment, additional_informations,
-								    registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
-								    max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
-									see_enemies_bases, see_enemies_respawn, points_per_kill ) {
-										
+			registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
+			max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
+			see_enemies_bases, see_enemies_respawn, points_per_kill ) {
+
 		MasterStubService.createEvent( name, logo, description_briefing, address, rules, prohibitions, proceedment, additional_informations,
-									   registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
-									   max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
-									   see_enemies_bases, see_enemies_respawn, points_per_kill )
-		.success(function (data) {
-			console.log(data);
-			$scope.createEventResult = data.response;
-		})
-		.error(function (error) {
-			$scope.createEventResult = 'Unable to load data: ' + error;
-		});
+				registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
+				max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
+				see_enemies_bases, see_enemies_respawn, points_per_kill )
+				.success(function (data) {
+					console.log(data);
+					$scope.createEventResult = data.response;
+				})
+				.error(function (error) {
+					$scope.createEventResult = 'Unable to load data: ' + error;
+				});
 	};
 
 	$scope.updateEvent = function ( eventId, name, logo, description_briefing, address, rules, prohibitions, proceedment, additional_informations,
-								    registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
-									max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
-									see_enemies_bases, see_enemies_respawn, points_per_kill ) {
-										
+			registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
+			max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
+			see_enemies_bases, see_enemies_respawn, points_per_kill ) {
+
 		MasterStubService.updateEvent( eventId, name, logo, description_briefing, address, rules, prohibitions, proceedment, additional_informations,
-									   registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
-									   max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
-									   see_enemies_bases, see_enemies_respawn, points_per_kill )
-		.success(function (data) {
-			console.log(data);
-			$scope.updateEventResult = data.response;
-		})
-		.error(function (error) {
-			$scope.updateEventResult = 'Unable to load data: ' + error;
-		});
+				registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
+				max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
+				see_enemies_bases, see_enemies_respawn, points_per_kill )
+				.success(function (data) {
+					console.log(data);
+					$scope.updateEventResult = data.response;
+				})
+				.error(function (error) {
+					$scope.updateEventResult = 'Unable to load data: ' + error;
+				});
 	};
 
 	$scope.deleteEvent = function (eventId) {
@@ -782,7 +782,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			$scope.updateFactionResult = 'Unable to load data: ' + error;
 		});
 	};
-	
+
 	$scope.deleteFaction = function(IDEvent, pin) {
 		MasterStubService.deleteFaction(IDEvent, pin)
 		.success(function (data) {
@@ -795,7 +795,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 	};
 
 
-	
+
 	$scope.leaveFactionComsys = function (eventId, factionPIN) {
 		MasterStubService.leaveFactionComsys(eventId, factionPIN)
 		.success(function (data) {
@@ -806,7 +806,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			$scope.leaveFactionComsysResult = 'Unable to load data: ' + error;
 		});
 	};
-	
+
 	$scope.removeZoneOfEvent = function (eventId, zoneId) {
 		MasterStubService.removeZoneOfEvent(eventId, zoneId)
 		.success(function (data) {
@@ -817,7 +817,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			$scope.removeZoneOfEventResult = 'Unable to load data: ' + error;
 		});
 	};
-	
+
 	$scope.attachCommonZoneToEvent = function (eventId, masterZoneId) {
 		MasterStubService.attachCommonZoneToEvent(eventId, masterZoneId)
 		.success(function (data) {
@@ -828,7 +828,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			$scope.attachCommonZoneToEventResult = 'Unable to load data: ' + error;
 		});
 	};
-	
+
 	$scope.attachFactionZoneToEvent = function (eventId, factionPIN, masterZoneId) {
 		MasterStubService.attachFactionZoneToEvent(eventId, factionPIN, masterZoneId)
 		.success(function (data) {
@@ -839,7 +839,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			$scope.attachFactionZoneToEventResult = 'Unable to load data: ' + error;
 		});
 	};
-	
+
 	$scope.prestartEvent = function (eventId) {
 		MasterStubService.prestartEvent(eventId)
 		.success(function (data) {
@@ -850,7 +850,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			$scope.prestartEventResult = 'Unable to load data: ' + error;
 		});
 	};
-	
+
 	$scope.startEvent = function (eventId) {
 		MasterStubService.startEvent(eventId)
 		.success(function (data) {
@@ -861,7 +861,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			$scope.startEventResult = 'Unable to load data: ' + error;
 		});
 	};
-	
+
 	$scope.pauseEvent = function (eventId) {
 		MasterStubService.pauseEvent(eventId)
 		.success(function (data) {
@@ -872,7 +872,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			$scope.pauseEventResult = 'Unable to load data: ' + error;
 		});
 	};
-	
+
 	$scope.stopEvent = function (eventId) {
 		MasterStubService.stopEvent(eventId)
 		.success(function (data) {
@@ -894,7 +894,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			$scope.deleteFactionResult = 'Unable to load data: ' + error;
 		});
 	};
-	
+
 	$scope.getAllFactions = function (IDEvent) {
 		MasterStubService.deleteFaction(IDEvent)
 		.success(function (data) {
@@ -905,7 +905,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			$scope.getAllFactionsResult = 'Unable to load data: ' + error;
 		});
 	};
-	
+
 
 	$scope.getFactionByID = function (IDEvent, IDFaction) {
 		MasterStubService.getFactionByID(IDEvent, IDFaction)
@@ -931,6 +931,26 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 	};
 
 	$scope.sendNotificationToEvent = function (IDEvent, available_responses, response, sender, text) {
-MasterStubService.sendNotificationToEvent(IDEvent, available_responses, responses_list, sender, text);
+		MasterStubService.sendNotificationToEvent(IDEvent, available_responses_list, responses_list, sender, text);
 	};
+
+	$scope.sendNotificationToFaction = function (IDEvent, IDFaction, available_responses, response, sender, text) {
+		MasterStubService.sendNotificationToFaction(IDEvent, IDFaction, available_responses_list, responses_list, sender, text);
+	};
+
+	$scope.sendNotificationToComsys = function (IDEvent, IDFaction, IDComsys, available_responses, response, sender, text) {
+		var IDEvent = 10;
+		var IDFaction = 1;
+		var IDComsys = 1;
+		var available_responses_list = ["Yes", "No"];
+		var 				responses_list = ["Yes", "Yes", "Yes", "No"];
+		var sender = "Cobra";
+		var text = "Anybody alive?";
+		MasterStubService.sendNotificationToComsys(IDEvent, IDFaction, IDComsys, available_responses_list, responses_list, sender, text);
+	};
+
+	$scope.changeMasterScore = function (IDEvent, IDFaction, score) {
+		MasterStubService.changeMasterScore(IDEvent, IDFaction, score);
+	};
+
 });
