@@ -2,7 +2,7 @@ app.controller('SuperAdminController', function($scope, SuperAdminStubService) {
 
 	$scope.loginSuperadmin = function(username, password) {  
 		SuperAdminStubService.loginSuperadmin(username, password)
-		.success(function (data) {
+		.success(function (data, status, headers, config) {
 			console.log(data);
 			$scope.loginSuperadminResult = data.response;
 		})
