@@ -691,8 +691,15 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 		});
 	};
 
-	$scope.createEvent = function (description_briefing, address, rules, prohibitions, proceedment, additional_informations, registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max, see_enemies_bases, see_enemies_respawn) {
-		MasterStubService.createEvent(description_briefing, address, rules, prohibitions, proceedment, additional_informations, registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max, see_enemies_bases, see_enemies_respawn)
+	$scope.createEvent = function ( name, logo, description_briefing, address, rules, prohibitions, proceedment, additional_informations,
+								    registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
+								    max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
+									see_enemies_bases, see_enemies_respawn, points_per_kill ) {
+										
+		MasterStubService.createEvent( name, logo, description_briefing, address, rules, prohibitions, proceedment, additional_informations,
+									   registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
+									   max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
+									   see_enemies_bases, see_enemies_respawn, points_per_kill )
 		.success(function (data) {
 			console.log(data);
 			$scope.createEventResult = data.response;
@@ -702,8 +709,15 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 		});
 	};
 
-	$scope.updateEvent = function (eventId, description_briefing, address, rules, prohibitions, proceedment, additional_informations, registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max, see_enemies_bases, see_enemies_respawn) {
-		MasterStubService.updateEvent(eventId, description_briefing, address, rules, prohibitions, proceedment, additional_informations, registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max, see_enemies_bases, see_enemies_respawn)
+	$scope.updateEvent = function ( eventId, name, logo, description_briefing, address, rules, prohibitions, proceedment, additional_informations,
+								    registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
+									max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
+									see_enemies_bases, see_enemies_respawn, points_per_kill ) {
+										
+		MasterStubService.updateEvent( eventId, name, logo, description_briefing, address, rules, prohibitions, proceedment, additional_informations,
+									   registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
+									   max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
+									   see_enemies_bases, see_enemies_respawn, points_per_kill )
 		.success(function (data) {
 			console.log(data);
 			$scope.updateEventResult = data.response;
@@ -782,14 +796,14 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 
 
 	
-	$scope.removeComsysOfFaction = function (eventId, factionPIN, comsysId) {
-		MasterStubService.deleteEvent(eventId, factionPIN, comsysId)
+	$scope.leaveFactionComsys = function (eventId, factionPIN) {
+		MasterStubService.leaveFactionComsys(eventId, factionPIN)
 		.success(function (data) {
 			console.log(data);
-			$scope.removeComsysOfFactionResult = data.response;
+			$scope.leaveFactionComsysResult = data.response;
 		})
 		.error(function (error) {
-			$scope.removeComsysOfFactionResult = 'Unable to load data: ' + error;
+			$scope.leaveFactionComsysResult = 'Unable to load data: ' + error;
 		});
 	};
 	
@@ -905,14 +919,14 @@ app.controller('MasterController', function ($scope, MasterStubService) {
 	};
 
 
-	$scope.attachComsysToFaction = function (IDEvent, PINFaction, IDComsys) {
-		MasterStubService.attachComsysToFaction(IDEvent, PINFaction, IDComsys)
+	$scope.joinFactionComsys = function (IDEvent, PINFaction) {
+		MasterStubService.joinFactionComsys(IDEvent, PINFaction)
 		.success(function (data) {
 			console.log(data);
-			$scope.attachComsysToFactionResult = data.response;
+			$scope.joinFactionComsysResult = data.response;
 		})
 		.error(function (error) {
-			$scope.attachComsysToFactionResult = 'Unable to load data: ' + error;
+			$scope.joinFactionComsysResult = 'Unable to load data: ' + error;
 		});
 	};
 	

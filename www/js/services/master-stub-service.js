@@ -473,16 +473,46 @@ app.factory('MasterStubService', function ($http) {
 					return $http.get(baseUrl + 'master/event/get/id/' + eventId);
 				},
 
-				createEvent: function(description_briefing, address, rules, prohibitions, proceedment, additional_informations, registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max, see_enemies_bases, see_enemies_respawn) {
-					requestPost.url = baseUrl + 'event/create';
-					requestPost.params = {description_briefing: escape(description_briefing), address: escape(address), rules: escape(rules), prohibitions: escape(prohibitions), proceedment: escape(proceedment), additional_informations: escape(additional_informations), registration_date_start: escape(registration_date_start), registration_date_end: escape(registration_date_end), event_date_start: escape(event_date_start), event_date_end: escape(event_date_end), operator_inicial_perk_points: escape(operator_inicial_perk_points), max_comsys_per_faction: escape(max_comsys_per_faction), max_operators_per_faction: escape(max_operators_per_faction), respawn_delay: escape(respawn_delay), gps_refresh_rate_min: escape(gps_refresh_rate_min), gps_refresh_rate_max: escape(gps_refresh_rate_max), see_enemies_bases: escape(see_enemies_bases), see_enemies_reswap: escape(see_enemies_respawn)};
-					return $http(requestPost);
+				createEvent: function( name, logo, description_briefing, address, rules, prohibitions, proceedment, additional_informations,
+									   registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
+									   max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
+									   see_enemies_bases, see_enemies_respawn, points_per_kill ) {
+										   
+							requestPost.url = baseUrl + 'event/create';
+							
+							requestPost.params = { name: escape(name), logo: escape(logo), description_briefing: escape(description_briefing),
+												   address: escape(address), rules: escape(rules), prohibitions: escape(prohibitions), 
+												   proceedment: escape(proceedment), additional_informations: escape(additional_informations), 
+												   registration_date_start: escape(registration_date_start), registration_date_end: escape(registration_date_end), 
+												   event_date_start: escape(event_date_start), event_date_end: escape(event_date_end), 
+												   operator_inicial_perk_points: escape(operator_inicial_perk_points), 
+												   max_comsys_per_faction: escape(max_comsys_per_faction), max_operators_per_faction: escape(max_operators_per_faction), 
+												   respawn_delay: escape(respawn_delay), gps_refresh_rate_min: escape(gps_refresh_rate_min), 
+												   gps_refresh_rate_max: escape(gps_refresh_rate_max), see_enemies_bases: escape(see_enemies_bases), 
+												   see_enemies_reswap: escape(see_enemies_respawn), points_per_kill: escape(points_per_kill) };
+							
+							return $http(requestPost);
 				},
 
-				updateEvent: function(eventId, description_briefing, address, rules, prohibitions, proceedment, additional_informations, registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max, see_enemies_bases, see_enemies_respawn) {
-					requestPost.url = baseUrl + 'event/update/' + eventId;
-					requestPost.params = {description_briefing: escape(description_briefing), address: escape(address), rules: escape(rules), prohibitions: escape(prohibitions), proceedment: escape(proceedment), additional_informations: escape(additional_informations), registration_date_start: escape(registration_date_start), registration_date_end: escape(registration_date_end), event_date_start: escape(event_date_start), event_date_end: escape(event_date_end), operator_inicial_perk_points: escape(operator_inicial_perk_points), max_comsys_per_faction: escape(max_comsys_per_faction), max_operators_per_faction: escape(max_operators_per_faction), respawn_delay: escape(respawn_delay), gps_refresh_rate_min: escape(gps_refresh_rate_min), gps_refresh_rate_max: escape(gps_refresh_rate_max), see_enemies_bases: escape(see_enemies_bases), see_enemies_reswap: escape(see_enemies_respawn)};
-					return $http(requestPost);
+				updateEvent: function( eventId, name, logo, description_briefing, address, rules, prohibitions, proceedment, additional_informations,
+									   registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
+									   max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
+									   see_enemies_bases, see_enemies_respawn, points_per_kill ) {
+										   
+							requestPost.url = baseUrl + 'event/update/' + eventId;
+							
+							requestPost.params = { name: escape(name), logo: escape(logo), description_briefing: escape(description_briefing),
+												   address: escape(address), rules: escape(rules), prohibitions: escape(prohibitions), 
+												   proceedment: escape(proceedment), additional_informations: escape(additional_informations), 
+												   registration_date_start: escape(registration_date_start), registration_date_end: escape(registration_date_end), 
+												   event_date_start: escape(event_date_start), event_date_end: escape(event_date_end), 
+												   operator_inicial_perk_points: escape(operator_inicial_perk_points), 
+												   max_comsys_per_faction: escape(max_comsys_per_faction), max_operators_per_faction: escape(max_operators_per_faction), 
+												   respawn_delay: escape(respawn_delay), gps_refresh_rate_min: escape(gps_refresh_rate_min), 
+												   gps_refresh_rate_max: escape(gps_refresh_rate_max), see_enemies_bases: escape(see_enemies_bases), 
+												   see_enemies_reswap: escape(see_enemies_respawn), points_per_kill: escape(points_per_kill) };
+							
+							return $http(requestPost);
 				},
 
 				deleteEvent: function(eventId) {
@@ -514,9 +544,9 @@ app.factory('MasterStubService', function ($http) {
 					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/delete/' + pin);
 				},
 
-				removeComsysOfFaction: function(eventId, factionPIN, comsysId) {
+				leaveFactionComsys: function(eventId, factionPIN) {
 					return $http.get(baseUrl + 'event/' + eventId + '/faction/' + 
-									 factionPIN + '/comsys/remove/' + comsysId);
+									 factionPIN + '/comsys/leave');
 				},
 				
 				removeZoneOfEvent: function(eventId, zoneId) {
@@ -560,11 +590,8 @@ app.factory('MasterStubService', function ($http) {
 					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/get/id/' + IDFaction);
 				},
 				
-												attachComsysToFaction: function(IDEvent, PINFaction, IDComsys) {
-					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/comsys/attach/' + IDComsys);
+					joinFactionComsys: function(IDEvent, PINFaction) {
+					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/comsys/join');
 				}
-
-				
-
 			};
 		});
