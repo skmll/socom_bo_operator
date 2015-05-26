@@ -1,6 +1,7 @@
 app.factory('MasterStubService', function ($http) {
 
 	var baseUrl = 'http://192.168.234.37/SOCOM_BO/public/v1/';
+	var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/10/event_notifications/');
 	
 	var requestPost = 
 	{
@@ -563,8 +564,6 @@ app.factory('MasterStubService', function ($http) {
 												attachComsysToFaction: function(IDEvent, PINFaction, IDComsys) {
 					return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/comsys/attach/' + IDComsys);
 				}
-
 				
-
 			};
 		});

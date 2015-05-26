@@ -1,4 +1,4 @@
-var app = angular.module('starter', ['ionic', 'ngCordova']);
+var app = angular.module('starter', ['ionic', 'ngCordova', 'firebase']);
 
 
 app.run(function($ionicPlatform, $ionicPopup, $rootScope, $cordovaBatteryStatus) {

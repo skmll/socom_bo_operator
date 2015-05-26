@@ -1,4 +1,4 @@
-app.controller('MasterController', function ($scope, MasterStubService) {
+app.controller('MasterController', function ($scope, MasterStubService, $firebaseArray) {
 
 	$scope.login = function (username, password) {
 		MasterStubService.login(username, password)
@@ -915,6 +915,5 @@ $scope.attachComsysToFaction = function (IDEvent, PINFaction, IDComsys) {
 			$scope.attachComsysToFactionResult = 'Unable to load data: ' + error;
 		});
 	};
-				
-	
+
 });
