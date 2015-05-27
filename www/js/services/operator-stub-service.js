@@ -7,7 +7,9 @@ app.factory('OperatorStubService', function ($http) {
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
-	}
+	};
+
+	$http.defaults.withCredentials = true;
 
 	return {
 		

@@ -11,6 +11,8 @@ app.factory('MasterStubService', function ($http) {
 			},
 	};
 
+	$http.defaults.withCredentials = true;
+
 	return {
 
 		login: function (username, password) {

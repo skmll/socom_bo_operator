@@ -9,7 +9,9 @@ app.factory('SuperAdminStubService', function ($http) {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			}
 	};
-	
+
+	$http.defaults.withCredentials = true;
+
 	return {
 		
 		loginSuperadmin: function (username, password) {
