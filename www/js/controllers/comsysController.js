@@ -1,104 +1,104 @@
-app.controller('ComsysController', function($scope, ComsysStubService) {
+app.controller('ComsysController', function ($scope, ComsysStubService) {
 
-	$scope.getComsysPersonalConfig = function() { 
+	$scope.getComsysPersonalConfig = function () {
 		ComsysStubService.getComsysPersonalConfig()
-		.success(function (data) {
+			.success(function (data) {
 			console.log(data);
 			$scope.getComsysPersonalConfigResult = data.response;
 		})
-		.error(function (error) {
+			.error(function (error) {
 			$scope.getComsysPersonalConfigResult = 'Unable to load data: ' + error;
 		});
 	};
-	
-	$scope.createComsys = function(username, password, nickname) {    
+
+	$scope.createComsys = function (username, password, nickname) {
 		ComsysStubService.createComsys(username, password, nickname)
-		.success(function (data) {
+			.success(function (data) {
 			console.log(data);
 			$scope.createComsysResult = data.response;
 		})
-		.error(function (error) {
+			.error(function (error) {
 			console.log(error);
 			$scope.createComsysResult = 'Unable to load data: ' + error;
-		});    
+		});
 	};
 
-	$scope.updateComsysPersonalConfig = function(nickname, display_grid, coord_format) {    
+	$scope.updateComsysPersonalConfig = function (nickname, display_grid, coord_format) {
 		ComsysStubService.updateComsysPersonalConfig(nickname, display_grid, coord_format)
-		.success(function (data) {
+			.success(function (data) {
 			console.log(data);
 			$scope.updateComsysPersonalConfigResult = data.response;
 		})
-		.error(function (error) {
+			.error(function (error) {
 			$scope.updateComsysPersonalConfigResult = 'Unable to load data: ' + error;
-		});    
+		});
 	};
 
-	$scope.loginComsys = function(username, password) {
+	$scope.loginComsys = function (username, password) {
 		ComsysStubService.loginComsys(username, password)
-		.success(function (data) {
+			.success(function (data) {
 			console.log(data);
 			$scope.loginComsysResult = data.response;
 		})
-		.error(function (error) {
+			.error(function (error) {
 			$scope.loginComsysResult = 'Unable to load data: ' + error;
 		});
 	};
 
-	$scope.loginCheckComsys = function() {
+	$scope.loginCheckComsys = function () {
 		ComsysStubService.loginCheckComsys()
-		.success(function (data) {
+			.success(function (data) {
 			console.log(data);
 			$scope.loginCheckComsysResult = data.response;
 		})
-		.error(function (error) {
+			.error(function (error) {
 			$scope.loginCheckComsysResult = 'Unable to load data: ' + error;
-		});    
+		});
 	};
 
-	$scope.changeComsysPassword = function(oldPassword, newPassword) {
+	$scope.changeComsysPassword = function (oldPassword, newPassword) {
 		ComsysStubService.changeComsysPassword(oldPassword, newPassword)
-		.success(function (data) {
+			.success(function (data) {
 			console.log(data);
 			$scope.changeComsysPasswordResult = data.response;
 		})
-		.error(function (error) {
+			.error(function (error) {
 			$scope.changeComsysPasswordResult = 'Unable to load data: ' + error;
 		});
 	};
 
-	$scope.logout = function(){
+	$scope.logout = function () {
 		ComsysStubService.logoutComsys()
-		.success(function (data) {
+			.success(function (data) {
 			console.log(data);
 			$scope.logoutResult = data.response;
 		})
-		.error(function (error) {
+			.error(function (error) {
 			$scope.logoutResult = 'Unable to load data: ' + error;
 		});
 	};
-	
-	$scope.sendNotificationToComsys = function (IDEvent, IDFaction, IDComsys, available_responses, response, sender, text) {
+
+	$scope.sendNotificationToComsys = function (IDEvent, IDFaction, IDComsys, available_responses_list, responses_list, sender, text) {
 		/*
-		var IDEvent = 1;
-		var IDFaction = 1;
-		var IDComsys = 1;
-		var available_responses_list = ["Devil", "Satan"];
-		var responses_list = ["Devil", "Devil", "Devil", "Satan"];
-		var sender = "Lucifer";
-		var text = "Is your soul for sale?";
+		IDEvent = 1;
+		IDFaction = 1;
+		IDComsys = 1;
+		available_responses_list = ["Devil", "Satan"];
+		responses_list = ["Devil", "Devil", "Devil", "Satan"];
+		sender = "Lucifer";
+		text = "Is your soul for sale?";
 		*/
 		ComsysStubService.sendNotificationToComsys(IDEvent, IDFaction, IDComsys, available_responses_list, responses_list, sender, text);
 	};
-	
+
 	$scope.sendNotificationToFaction = function (IDEvent, IDFaction, available_responses_list, responses_list, sender, text) {
 		/*
-		var IDEvent = 1;
-		var IDFaction = 1;
-		var available_responses_list = ["Devil", "Satan"];
-		var responses_list = ["Devil", "Devil", "Devil", "Satan"];
-		var sender = "Lucifer";
-		var text = "Is your soul for sale?";
+		IDEvent = 1;
+		IDFaction = 1;
+		available_responses_list = ["Devil", "Satan"];
+		responses_list = ["Devil", "Devil", "Devil", "Satan"];
+		sender = "Lucifer";
+		text = "Is your soul for sale?";
 		*/
 		ComsysStubService.sendNotificationToFaction(IDEvent, IDFaction, available_responses_list, responses_list, sender, text);
 	};

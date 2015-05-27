@@ -82,15 +82,15 @@ app.factory('OperatorStubService', function ($http) {
 			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/leave/' + squadId);
 		},
 		
+		// Firebase Services
 		sendNotificationToSquad: function(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
 			var ref = new Firebase(firebaseUrl + IDEvent + '/factions/' + IDFaction + '/squads/' + IDSquad + '/squad_notifications/');
-			var newPostRef = ref.push({
+			ref.push({
 				available_responses_list: available_responses_list,
 				responses_list: responses_list,
 				sender: sender,
 				text: text
 			});
-			console.log(newPostRef);
 		}
 		
 	};
