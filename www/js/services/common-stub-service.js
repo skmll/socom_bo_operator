@@ -38,7 +38,6 @@ app.factory('CommonStubService', function ($http) {
 			return $http.get(baseUrl + 'event/' + eventId + '/ruleset/tacticalaction/get/all');
 		},
 
-
 		getAllFactionComsys: function (eventId, factionPIN) {
 			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/comsys/get/all');
 		},

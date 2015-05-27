@@ -168,9 +168,7 @@ app.controller('CommonController', function ($scope, CommonStubService) {
 			$scope.getAllFactionZonesResult = 'Unable to load data: ' + error;
 		});
 	};
-
-
-
+	
 	$scope.getMap = function (eventId) {
 		CommonStubService.getMap(eventId)
 			.success(function (data) {
@@ -231,7 +229,6 @@ app.controller('CommonController', function ($scope, CommonStubService) {
 		});
 	};
 
-
 	$scope.getAllFactionSquads = function (eventId, factionPIN) {
 		CommonStubService.getAllFactionSquads(eventId, factionPIN)
 			.success(function (data) {
@@ -243,8 +240,6 @@ app.controller('CommonController', function ($scope, CommonStubService) {
 			$scope.getAllFactionSquadsResult = 'Unable to load data: ' + error;
 		});
 	};
-
-
 
 	$scope.getOperatorOfSquadByID = function (eventId, factionPIN, squadId, IDOperator) {
 		CommonStubService.getOperatorOfSquadByID(eventId, factionPIN, squadId, IDOperator)

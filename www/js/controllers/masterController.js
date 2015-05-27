@@ -793,9 +793,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			$scope.deleteFactionResult = 'Unable to load data: ' + error;
 		});
 	};
-
-
-
+	
 	$scope.leaveFactionComsys = function (eventId, factionPIN) {
 		MasterStubService.leaveFactionComsys(eventId, factionPIN)
 			.success(function (data) {
@@ -906,7 +904,6 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 		});
 	};
 
-
 	$scope.getFactionByID = function (IDEvent, IDFaction) {
 		MasterStubService.getFactionByID(IDEvent, IDFaction)
 			.success(function (data) {
@@ -917,7 +914,6 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			$scope.getFactionByIDResult = 'Unable to load data: ' + error;
 		});
 	};
-
 
 	$scope.joinFactionComsys = function (IDEvent, PINFaction) {
 		MasterStubService.joinFactionComsys(IDEvent, PINFaction)
