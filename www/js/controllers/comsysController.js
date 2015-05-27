@@ -77,5 +77,30 @@ app.controller('ComsysController', function($scope, ComsysStubService) {
 			$scope.logoutResult = 'Unable to load data: ' + error;
 		});
 	};
+	
+	$scope.sendNotificationToComsys = function (IDEvent, IDFaction, IDComsys, available_responses, response, sender, text) {
+		/*
+		var IDEvent = 1;
+		var IDFaction = 1;
+		var IDComsys = 1;
+		var available_responses_list = ["Devil", "Satan"];
+		var responses_list = ["Devil", "Devil", "Devil", "Satan"];
+		var sender = "Lucifer";
+		var text = "Is your soul for sale?";
+		*/
+		ComsysStubService.sendNotificationToComsys(IDEvent, IDFaction, IDComsys, available_responses_list, responses_list, sender, text);
+	};
+	
+	$scope.sendNotificationToFaction = function (IDEvent, IDFaction, available_responses_list, responses_list, sender, text) {
+		/*
+		var IDEvent = 1;
+		var IDFaction = 1;
+		var available_responses_list = ["Devil", "Satan"];
+		var responses_list = ["Devil", "Devil", "Devil", "Satan"];
+		var sender = "Lucifer";
+		var text = "Is your soul for sale?";
+		*/
+		ComsysStubService.sendNotificationToFaction(IDEvent, IDFaction, available_responses_list, responses_list, sender, text);
+	};
 
 });

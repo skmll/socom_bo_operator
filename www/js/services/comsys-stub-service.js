@@ -1,6 +1,7 @@
 app.factory('ComsysStubService', function ($http) {
 
 	var baseUrl = 'http://192.168.234.37/SOCOM_BO/public/v1/';
+	var firebaseUrl = 'https://socom-bo-estg-2015.firebaseio.com/events_in_progress/';
 	
 	var requestPost = 
 	{
@@ -52,6 +53,28 @@ app.factory('ComsysStubService', function ($http) {
 			requestPost.url = baseUrl + 'comsys/password/update';
 			requestPost.params = { old: escape(oldPassword), new: escape(newPassword) };
 			return $http(requestPost);
+		},
+		
+		sendNotificationToComsys: function(IDEvent, IDFaction, IDComsys, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase(firebaseUrl + IDEvent + '/factions/' + IDFaction + '/comsys_users/' + IDComsys + '/');
+			var postsRef = ref.child("comsys_notifications/");
+			var newPostRef = postsRef.push({
+				available_responses_list: available_responses_list,
+				responses_list: responses_list,
+				sender: sender,
+				text: text
+			});
+		},
+		
+		sendNotificationToFaction: function(IDEvent, IDFaction, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase(firebaseUrl + IDEvent + '/factions/' + IDFaction + '/faction_notifications/');
+			var newPostRef = ref.push({
+				available_responses_list: available_responses_list,
+				responses_list: responses_list,
+				sender: sender,
+				text: text
+			});
+			console.log(newPostRef);
 		}
 		
 	};

@@ -156,4 +156,16 @@ app.controller('OperatorController', function($scope, OperatorStubService) {
 		});
 	};
 
+	$scope.sendNotificationToSquad = function (IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
+		
+		var IDEvent = 1;
+		var IDFaction = 1;
+		var IDSquad = 1;
+		var available_responses_list = ["Devil", "Satan"];
+		var responses_list = ["Devil", "Devil", "Devil", "Satan"];
+		var sender = "Lucifer";
+		var text = "Is your soul for sale?";
+		OperatorStubService.sendNotificationToSquad(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text);
+	};
+
 });
