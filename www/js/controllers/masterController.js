@@ -387,7 +387,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			.error(function (error) {
 			$scope.removeSponsorOfEventResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.attachSponsorToEvent = function (IDEvent, IDSponsor) {
 		MasterStubService.attachSponsorToEvent(IDEvent, IDSponsor)
@@ -398,7 +398,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			.error(function (error) {
 			$scope.attachSponsorToEventResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.getTacticalActionRuleSetRulesByTacticalActionRuleSetID = function (IDTacticalActionRuleSet) {
 		MasterStubService.getTacticalActionRuleSetRulesByTacticalActionRuleSetID(IDTacticalActionRuleSet)
@@ -409,7 +409,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			.error(function (error) {
 			$scope.getTacticalActionRuleSetRulesByTacticalActionRuleSetIDResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.deleteTacticalActionRuleSetRule = function (IDTacticalActionRule) {
 		MasterStubService.deleteTacticalActionRuleSetRule(IDTacticalActionRule)
@@ -420,7 +420,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			.error(function (error) {
 			$scope.deleteTacticalActionRuleSetRuleResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.getAllMasterTacticalActionRuleSets = function () {
 		MasterStubService.getAllMasterTacticalActionRuleSets()
@@ -431,7 +431,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			.error(function (error) {
 			$scope.getAllMasterTacticalActionRuleSetsResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.deleteMasterTacticalActionRuleSet = function (IDTacticalActionRuleSet) {
 		MasterStubService.deleteMasterTacticalActionRuleSet(IDTacticalActionRuleSet)
@@ -442,7 +442,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			.error(function (error) {
 			$scope.deleteMasterTacticalActionRuleSetResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.getTacticalActionByID = function (IDTacticalAction) {
 		MasterStubService.getTacticalActionByID(IDTacticalAction)
@@ -453,7 +453,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			.error(function (error) {
 			$scope.getTacticalActionByIDResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.getTacticalActionsByName = function (name) {
 		MasterStubService.getTacticalActionsByName(name)
@@ -464,7 +464,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			.error(function (error) {
 			$scope.getTacticalActionsByNameResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.getAllTacticalActions = function () {
 		MasterStubService.getAllTacticalActions()
@@ -475,7 +475,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			.error(function (error) {
 			$scope.getAllTacticalActionsResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.createMasterTacticalActionRuleSet = function (description) {
 		MasterStubService.createMasterTacticalActionRuleSet(description)
@@ -486,7 +486,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			.error(function (error) {
 			$scope.createMasterTacticalActionRuleSetResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.updateMasterTacticalActionRuleSet = function (IDTacticalActionRuleSet, description) {
 		MasterStubService.updateMasterTacticalActionRuleSet(IDTacticalActionRuleSet, description)
@@ -497,7 +497,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			.error(function (error) {
 			$scope.updateMasterTacticalActionRuleSetResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.createTacticalActionRuleSetRule = function (master_tacticalaction_rule_id, tacticalaction_id, ta_initial_time_delay, ta_cooldown_time, ta_duration_time, ta_vision_range, ta_detection_range, ta_death_range, ta_cost) {
 		MasterStubService.createTacticalActionRuleSetRule(master_tacticalaction_rule_id, tacticalaction_id, ta_initial_time_delay, ta_cooldown_time, ta_duration_time, ta_vision_range, ta_detection_range, ta_death_range, ta_cost)
@@ -508,7 +508,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			.error(function (error) {
 			$scope.createTacticalActionRuleSetRuleResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.updateTacticalActionRuleSetRule = function (IDTacticalActionRule, master_tacticalaction_rule_id, tacticalaction_id, ta_initial_time_delay, ta_cooldown_time, ta_duration_time, ta_vision_range, ta_detection_range, ta_death_range, ta_cost) {
 		MasterStubService.updateTacticalActionRuleSetRule(IDTacticalActionRule, master_tacticalaction_rule_id, tacticalaction_id, ta_initial_time_delay, ta_cooldown_time, ta_duration_time, ta_vision_range, ta_detection_range, ta_death_range, ta_cost)
@@ -519,7 +519,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			.error(function (error) {
 			$scope.updateTacticalActionRuleSetRuleResult = 'Unable to load data: ' + error;
 		});
-	}
+	};
 
 	$scope.createMasterZone = function (zoneTypeId, description, capturePoints) {
 
@@ -926,22 +926,22 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 		});
 	};
 
-	$scope.sendNotificationToEvent = function (IDEvent, available_responses, response, sender, text) {
+	$scope.sendNotificationToEvent = function (IDEvent, available_responses_list, responses_list, sender, text) {
 		MasterStubService.sendNotificationToEvent(IDEvent, available_responses_list, responses_list, sender, text);
 	};
 
-	$scope.sendNotificationToFaction = function (IDEvent, IDFaction, available_responses, response, sender, text) {
+	$scope.sendNotificationToFaction = function (IDEvent, IDFaction, available_responses_list, responses_list, sender, text) {
 		MasterStubService.sendNotificationToFaction(IDEvent, IDFaction, available_responses_list, responses_list, sender, text);
 	};
 
-	$scope.sendNotificationToComsys = function (IDEvent, IDFaction, IDComsys, available_responses, response, sender, text) {
-		var IDEvent = 10;
-		var IDFaction = 1;
-		var IDComsys = 1;
-		var available_responses_list = ["Yes", "No"];
-		var responses_list = ["Yes", "Yes", "Yes", "No"];
-		var sender = "Cobra";
-		var text = "Anybody alive?";
+	$scope.sendNotificationToComsys = function (IDEvent, IDFaction, IDComsys, available_responses_list, responses_list, sender, text) {
+		IDEvent = 10;
+		IDFaction = 1;
+		IDComsys = 1;
+		available_responses_list = ["Yes", "No"];
+		responses_list = ["Yes", "Yes", "Yes", "No"];
+		sender = "Cobra";
+		text = "Anybody alive?";
 		MasterStubService.sendNotificationToComsys(IDEvent, IDFaction, IDComsys, available_responses_list, responses_list, sender, text);
 	};
 
