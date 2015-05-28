@@ -4,23 +4,27 @@ app.factory('ComsysStubService', function ($http) {
 	var firebaseUrl = 'https://socom-bo-estg-2015.firebaseio.com/events_in_progress/';
 
 	var requestPost =
-	{
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded'
-		},
-	};
+		{
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+		};
 
 	$http.defaults.withCredentials = true;
 
-	function escapeIfNotNull(variable){
-		if(variable != null){
+	function escapeIfNotNull(variable) {
+
+		if (variable != null) {
 			return escape(variable);
 		}
+
 		return null;
-	} 
+	}
 
 	return {
+		
+		/***** Laravel Services *****/
 
 		logoutComsys: function () {
 			return $http.get(baseUrl + 'comsys/logout/');
@@ -36,9 +40,9 @@ app.factory('ComsysStubService', function ($http) {
 			return $http(requestPost);
 		},
 
-		updateComsysPersonalConfig: function (nickname, display_grid, coord_format) {
+		updateComsysPersonalConfig: function (nickname, displayGrid, coordFormat) {
 			requestPost.url = baseUrl + 'comsys/config/personal/update';
-			requestPost.params = { nickname: escapeIfNotNull(nickname), display_grid: escapeIfNotNull(display_grid), coord_format: escapeIfNotNull(coord_format) };
+			requestPost.params = { nickname: escapeIfNotNull(nickname), display_grid: escapeIfNotNull(displayGrid), coord_format: escapeIfNotNull(coordFormat) };
 			return $http(requestPost);
 		},
 
@@ -62,35 +66,11 @@ app.factory('ComsysStubService', function ($http) {
 			return $http(requestPost);
 		},
 
-		
-		sendNotificationToOperator: function(IDEvent, IDFaction, IDOperator, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/operators/' + IDOperator + '/');
-			var postsRef = ref.child("operator_notifications/");
-			var newPostRef = postsRef.push({
-				available_responses_list: available_responses_list,
-				responses_list: responses_list,
-				sender: sender,
-				text: text
-			});
-		},
-
-		sendNotificationToSquad: function(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/squads/' + IDSquad + '/');
-			var postsRef = ref.child("squad_notifications/");
-			var newPostRef = postsRef.push({
-				available_responses_list: available_responses_list,
-				responses_list: responses_list,
-				sender: sender,
-				text: text
-			});
-		},
-
-
-		// Firebase Services
-		sendNotificationToComsys: function (IDEvent, IDFaction, IDComsys, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase(firebaseUrl + IDEvent + '/factions/' + IDFaction + '/comsys_users/' + IDComsys + '/comsys_notifications/');	
+		/***** Firebase Services *****/
+	
+		sendNotificationToOperator: function (eventId, factionId, operatorId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/operators/' + operatorId + '/operator_notifications/');
 			ref.push({
-
 				available_responses_list: available_responses_list,
 				responses_list: responses_list,
 				sender: sender,
@@ -98,11 +78,19 @@ app.factory('ComsysStubService', function ($http) {
 			});
 		},
 
-
-		addEnemyPing: function(IDEvent, IDFaction, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/');
-			var postsRef = ref.child("special_actions/");
-			var newPostRef = postsRef.push({
+		sendNotificationToSquad: function (eventId, factionId, squadId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/squads/' + squadId + '/squad_notifications/');
+			ref.push({
+				available_responses_list: available_responses_list,
+				responses_list: responses_list,
+				sender: sender,
+				text: text
+			});
+		},
+		
+		sendNotificationToComsys: function (eventId, factionId, comsysId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/' + comsysId + '/comsys_notifications/');
+			ref.push({
 				available_responses_list: available_responses_list,
 				responses_list: responses_list,
 				sender: sender,
@@ -110,8 +98,18 @@ app.factory('ComsysStubService', function ($http) {
 			});
 		},
 
-		sendNotificationToFaction: function (IDEvent, IDFaction, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase(firebaseUrl + IDEvent + '/factions/' + IDFaction + '/faction_notifications/');
+		addEnemyPing: function (eventId, factionId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/special_actions/');
+			ref.push({
+				available_responses_list: available_responses_list,
+				responses_list: responses_list,
+				sender: sender,
+				text: text
+			});
+		},
+
+		sendNotificationToFaction: function (eventId, factionId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/faction_notifications/');
 			ref.push({
 				available_responses_list: available_responses_list,
 				responses_list: responses_list,
@@ -119,6 +117,6 @@ app.factory('ComsysStubService', function ($http) {
 				text: text
 			});
 		}
+		
 	};
-	
 });
