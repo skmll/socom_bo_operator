@@ -51,5 +51,4 @@ app.factory('SuperAdminStubService', function ($http) {
 		}
 
 	};
-	
 });
