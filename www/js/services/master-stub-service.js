@@ -1,7 +1,8 @@
 app.factory('MasterStubService', function ($http) {
 
 	var baseUrl = 'http://192.168.234.37/SOCOM_BO/public/v1/';
-	var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/10/event_notifications/');
+
+	var firebaseUrl = 'https://socom-bo-estg-2015.firebaseio.com/events_in_progress/';
 
 	var requestPost = 
 	{
@@ -74,14 +75,14 @@ app.factory('MasterStubService', function ($http) {
 			return $http(requestPost);
 		},
 
-		updateMasterSponsor: function (sponsorID, name, logo) {
-			requestPost.url = baseUrl + 'master/sponsor/update/' + sponsorID;
+		updateMasterSponsor: function (sponsorId, name, logo) {
+			requestPost.url = baseUrl + 'master/sponsor/update/' + sponsorId;
 			requestPost.params = { name: escapeIfNotNull(name), logo: escapeIfNotNull(logo) };
 			return $http(requestPost);
 		},
 
-		deleteMasterSponsor: function(sponsorID) {
-			return $http.get(baseUrl + 'master/sponsor/delete/' + sponsorID);
+		deleteMasterSponsor: function(sponsorId) {
+			return $http.get(baseUrl + 'master/sponsor/delete/' + sponsorId);
 		},
 
 		getAllPerks: function() {
@@ -102,8 +103,8 @@ app.factory('MasterStubService', function ($http) {
 			return $http.get(baseUrl +  'master/perk/get/name/'+name);			
 		},
 
-		getPerkByID:  function(perkID) {
-			return $http.get(baseUrl +  'master/perk/get/id/'+perkID);			
+		getPerkById:  function(perkId) {
+			return $http.get(baseUrl +  'master/perk/get/id/'+perkId);			
 		},
 
 		createMasterPerkRuleSet: function(description) {
@@ -112,8 +113,8 @@ app.factory('MasterStubService', function ($http) {
 			return $http(requestPost);
 		},
 
-		updateMasterPerkRuleSet: function(description, perkRuleSetID) {
-			requestPost.url = baseUrl + 'master/perk/ruleset/update/'+perkRuleSetID;
+		updateMasterPerkRuleSet: function(description, perkRuleSetId) {
+			requestPost.url = baseUrl + 'master/perk/ruleset/update/'+perkRuleSetId;
 			requestPost.params = { description: escapeIfNotNull(description)};
 			return $http(requestPost);
 		},
@@ -150,20 +151,20 @@ app.factory('MasterStubService', function ($http) {
 			return $http(requestPost);
 		},
 
-		deletePerkRuleSetRule: function(IDPerkRule) {
-			return $http.get(baseUrl +  'master/perk/ruleset/rule/delete/'+IDPerkRule);	
+		deletePerkRuleSetRule: function(perkRuleId) {
+			return $http.get(baseUrl +  'master/perk/ruleset/rule/delete/' + perkRuleId);	
 		},
 
-		getPerkRuleSetRulesByPerkRuleSetID: function(IDPerkRuleSet) {
-			return $http.get(baseUrl +  'master/perk/ruleset/rule/get/id/'+IDPerkRuleSet);	
+		getPerkRuleSetRulesByPerkRuleSetId: function(perkRuleSetId) {
+			return $http.get(baseUrl +  'master/perk/ruleset/rule/get/id/' + perkRuleSetId);	
 		},
 
-		getMasterZoneByID: function(IDMasterZone) {
-			return $http.get(baseUrl +  'master/zone/get/id/'+IDMasterZone);	
+		getMasterZoneById: function(masterZoneId) {
+			return $http.get(baseUrl +  'master/zone/get/id/' + masterZoneId);	
 		},
 
-		getMasterZoneByZoneTypeID: function(IDMasterZone) {
-			return $http.get(baseUrl +  'master/zone/get/type/id/'+IDMasterZone);	
+		getMasterZoneByZoneTypeId: function(masterZoneId) {
+			return $http.get(baseUrl +  'master/zone/get/type/id/' + masterZoneId);	
 		},
 
 		createZoneType: function (name) {
@@ -172,32 +173,32 @@ app.factory('MasterStubService', function ($http) {
 			return $http(requestPost);
 		},
 
-		removeSponsorOfEvent: function (IDEvent, IDSponsor) {
-			return $http.get(baseUrl + 'event/' + IDEvent + '/sponsor/remove/' + IDSponsor);
+		removeSponsorOfEvent: function (eventId, sponsorId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/sponsor/remove/' + sponsorId);
 		},
 
-		attachSponsorToEvent: function (IDEvent, IDSponsor) {
-			return $http.get(baseUrl + 'event/' + IDEvent + '/sponsor/attach/' + IDSponsor);
+		attachSponsorToEvent: function (eventId, sponsorId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/sponsor/attach/' + sponsorId);
 		},
 
-		getTacticalActionRuleSetRulesByTacticalActionRuleSetID: function (IDTacticalActionRuleSet) {
-			return $http.get(baseUrl + 'master/tacticalaction/ruleset/rule/get/id/' + IDTacticalActionRuleSet);
+		getTacticalActionRuleSetRulesByTacticalActionRuleSetId: function (tacticalActionRuleSetId) {
+			return $http.get(baseUrl + 'master/tacticalaction/ruleset/rule/get/id/' + tacticalActionRuleSetId);
 		},
 
-		deleteTacticalActionRuleSetRule: function (IDTacticalActionRule) {
-			return $http.get(baseUrl + 'master/tacticalaction/ruleset/rule/delete/' + IDTacticalActionRule);
+		deleteTacticalActionRuleSetRule: function (tacticalActionRuleId) {
+			return $http.get(baseUrl + 'master/tacticalaction/ruleset/rule/delete/' + tacticalActionRuleId);
 		},
 
 		getAllMasterTacticalActionRuleSets: function () {
 			return $http.get(baseUrl + 'master/tacticalaction/ruleset/get/all');
 		},
 
-		deleteMasterTacticalActionRuleSet: function (IDTacticalActionRuleSet) {
-			return $http.get(baseUrl + 'master/tacticalaction/ruleset/delete/' + IDTacticalActionRuleSet);
+		deleteMasterTacticalActionRuleSet: function (tacticalActionRuleSetId) {
+			return $http.get(baseUrl + 'master/tacticalaction/ruleset/delete/' + tacticalActionRuleSetId);
 		},
 
-		getTacticalActionByID: function (IDTacticalAction) {
-			return $http.get(baseUrl + 'master/tacticalaction/get/id/' + IDTacticalAction);
+		getTacticalActionById: function (tacticalActionId) {
+			return $http.get(baseUrl + 'master/tacticalaction/get/id/' + tacticalActionId);
 		},
 
 		getTacticalActionsByName: function (name) {
@@ -214,17 +215,17 @@ app.factory('MasterStubService', function ($http) {
 			return $http(requestPost);
 		},
 
-		updateMasterTacticalActionRuleSet: function (IDTacticalActionRuleSet, description) {
-			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/update/' + IDTacticalActionRuleSet;
+		updateMasterTacticalActionRuleSet: function (tacticalActionRuleSetId, description) {
+			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/update/' + tacticalActionRuleSetId;
 			requestPost.params = { description: escapeIfNotNull(description) };
 			return $http(requestPost);
 		},
 
-		createTacticalActionRuleSetRule: function (master_tacticalaction_rule_id, tacticalaction_id, ta_initial_time_delay, ta_cooldown_time, ta_duration_time, ta_vision_range, ta_detection_range, ta_death_range, ta_cost) {
+		createTacticalActionRuleSetRule: function (masterTacticalActionRuleId, tacticalActionId, ta_initial_time_delay, ta_cooldown_time, ta_duration_time, ta_vision_range, ta_detection_range, ta_death_range, ta_cost) {
 			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/rule/create';
 			requestPost.params = {
-					master_tacticalaction_rule_id: escapeIfNotNull(master_tacticalaction_rule_id),
-					tacticalaction_id: escapeIfNotNull(tacticalaction_id),
+					master_tacticalaction_rule_id: escapeIfNotNull(masterTacticalActionRuleId),
+					tacticalaction_id: escapeIfNotNull(tacticalActionId),
 					ta_initial_time_delay: escapeIfNotNull(ta_initial_time_delay),
 					ta_cooldown_time: escapeIfNotNull(ta_cooldown_time),
 					ta_duration_time: escapeIfNotNull(ta_duration_time),
@@ -236,11 +237,11 @@ app.factory('MasterStubService', function ($http) {
 			return $http(requestPost);
 		},
 
-		updateTacticalActionRuleSetRule: function (IDTacticalActionRule, master_tacticalaction_rule_id, tacticalaction_id, ta_initial_time_delay, ta_cooldown_time, ta_duration_time, ta_vision_range, ta_detection_range, ta_death_range, ta_cost) {
-			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/rule/update/' + IDTacticalActionRule;
+		updateTacticalActionRuleSetRule: function (tacticalActionRuleId, masterTacticalActionRuleId, tacticalActionId, ta_initial_time_delay, ta_cooldown_time, ta_duration_time, ta_vision_range, ta_detection_range, ta_death_range, ta_cost) {
+			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/rule/update/' + tacticalActionRuleId;
 			requestPost.params = {
-					master_tacticalaction_rule_id: escapeIfNotNull(master_tacticalaction_rule_id),
-					tacticalaction_id: escapeIfNotNull(tacticalaction_id),
+					master_tacticalaction_rule_id: escapeIfNotNull(masterTacticalActionRuleId),
+					tacticalaction_id: escapeIfNotNull(tacticalActionId),
 					ta_initial_time_delay: escapeIfNotNull(ta_initial_time_delay),
 					ta_cooldown_time: escapeIfNotNull(ta_cooldown_time),
 					ta_duration_time: escapeIfNotNull(ta_duration_time),
@@ -252,14 +253,14 @@ app.factory('MasterStubService', function ($http) {
 			return $http(requestPost);
 		},
 
-		updateZoneType: function (ID, newName) {
-			requestPost.url = baseUrl + 'master/zone/type/update/' + ID;
+		updateZoneType: function (zoneTypeId, newName) {
+			requestPost.url = baseUrl + 'master/zone/type/update/' + zoneTypeId;
 			requestPost.params = { name: escapeIfNotNull(newName) };
 			return $http(requestPost);
 		},
 
-		deleteZoneType: function (ID) {
-			return $http.get(baseUrl + 'master/zone/type/delete/' + ID);
+		deleteZoneType: function (zoneTypeId) {
+			return $http.get(baseUrl + 'master/zone/type/delete/' + zoneTypeId);
 		},
 
 		getAllZoneTypes: function () {
@@ -278,24 +279,24 @@ app.factory('MasterStubService', function ($http) {
 			return $http.get(baseUrl + 'master/zone/type/get/name/' + name);
 		},
 
-		getZoneTypeByID : function (ID) {
-			return $http.get(baseUrl + 'master/zone/type/get/id/' + ID);
+		getZoneTypeById : function (id) {
+			return $http.get(baseUrl + 'master/zone/type/get/id/' + id);
 		},
 
-		createMasterZone : function (ID, description, capture_points) {
+		createMasterZone : function (id, description, capture_points) {
 			requestPost.url = baseUrl + 'master/zone/create';
-			requestPost.params = { zone_id: escapeIfNotNull(ID), description: escapeIfNotNull(description), capture_points: escapeIfNotNull(capture_points) };
+			requestPost.params = { zone_id: escapeIfNotNull(id), description: escapeIfNotNull(description), capture_points: escapeIfNotNull(capture_points) };
 			return $http(requestPost);
 		},
 
-		updateMasterZone : function (ID, description, capture_points) {
-			requestPost.url = baseUrl + 'master/zone/update/' + ID;
-			requestPost.params = { zone_id: escapeIfNotNull(ID), description: escapeIfNotNull(description), capture_points: escapeIfNotNull(capture_points) };
+		updateMasterZone : function (id, description, capture_points) {
+			requestPost.url = baseUrl + 'master/zone/update/' + id;
+			requestPost.params = { zone_id: escapeIfNotNull(id), description: escapeIfNotNull(description), capture_points: escapeIfNotNull(capture_points) };
 			return $http(requestPost);
 		},
 
-		deleteMasterZone : function (ID) {
-			return $http.get(baseUrl + 'master/zone/delete/' + ID);
+		deleteMasterZone : function (id) {
+			return $http.get(baseUrl + 'master/zone/delete/' + id);
 		},
 
 		getAllMasterZones : function () {
@@ -307,12 +308,12 @@ app.factory('MasterStubService', function ($http) {
 		},
 
 
-		getPerksByName:  function() {
-			return $http.get(baseUrl +  'master/perk/get/name/{name}');		
+		getPerksByName:  function(perkName) {
+			return $http.get(baseUrl +  'master/perk/get/name/' + perkName);		
 		},
 
-		getPerkByID:  function() {
-			return $http.get(baseUrl +  'master/perk/get/id/{IDPerk}');			
+		getPerkById:  function(perkId) {
+			return $http.get(baseUrl +  'master/perk/get/id/' + perkId);			
 
 		},
 
@@ -322,14 +323,14 @@ app.factory('MasterStubService', function ($http) {
 			return $http(requestPost);
 		},
 
-		updateMasterPerkRuleSet: function(description) {
-			requestPost.url = baseUrl + 'master/perk/ruleset/update/{IDPerkRuleSet}';
+		updateMasterPerkRuleSet: function(description, perkRuleSetId) {
+			requestPost.url = baseUrl + 'master/perk/ruleset/update/' + perkRuleSetId;
 			requestPost.params = { description: escapeIfNotNull(description)};
 			return $http(requestPost);
 		},
 
-		deleteMasterPerkRuleSet: function() {
-			return $http.get(baseUrl +  'master/perk/ruleset/delete/{IDPerkRuleSet}');	
+		deleteMasterPerkRuleSet: function(perkRuleSetId) {
+			return $http.get(baseUrl +  'master/perk/ruleset/delete/' + perkRuleSetId);	
 		},
 
 		getAllMasterPerkRuleSets: function() {
@@ -360,20 +361,20 @@ app.factory('MasterStubService', function ($http) {
 			return $http(requestPost);
 		},
 
-		deletePerkRuleSetRule: function() {
-			return $http.get(baseUrl +  'master/perk/ruleset/rule/delete/{IDPerkRule}');	
+		deletePerkRuleSetRule: function(perkRuleId) {
+			return $http.get(baseUrl +  'master/perk/ruleset/rule/delete/' + perkRuleId);	
 		},
 
-		getPerkRuleSetRulesByPerkRuleSetID: function() {
-			return $http.get(baseUrl +  'master/perk/ruleset/rule/get/id/{IDPerkRuleSet}');	
+		getPerkRuleSetRulesByPerkRuleSetId: function(perkRuleSetId) {
+			return $http.get(baseUrl +  'master/perk/ruleset/rule/get/id/' + perkRuleSetId);	
 		},
 
-		getMasterZoneByID: function() {
-			return $http.get(baseUrl +  'master/zone/get/id/{masterZoneId}');	
+		getMasterZoneById: function(masterZoneId) {
+			return $http.get(baseUrl +  'master/zone/get/id/' + masterZoneId);	
 		},
 
-		getMasterZoneByZoneTypeID: function() {
-			return $http.get(baseUrl +  'master/zone/get/type/id/{IDZoneType}');	
+		getMasterZoneByZoneTypeId: function(zoneTypeId) {
+			return $http.get(baseUrl +  'master/zone/get/type/id/' + zoneTypeId);	
 		},
 
 		createZoneType: function (name) {
@@ -408,7 +409,7 @@ app.factory('MasterStubService', function ($http) {
 			return $http.get(baseUrl + 'master/zone/type/get/name/' + name);
 		},
 
-		getZoneTypeByID : function (zoneTypeId) {
+		getZoneTypeById : function (zoneTypeId) {
 			return $http.get(baseUrl + 'master/zone/type/get/id/' + zoneTypeId);
 		},
 
@@ -450,13 +451,13 @@ app.factory('MasterStubService', function ($http) {
 
 		createZoneCoord: function(masterPersonalZoneId, lat_c, lat_d, lat_m, lat_s, lng_c, lng_d, lng_m, lng_s) {
 			requestPost.url = baseUrl + 'master/zone/coord/create';
-			requestPost.params = {IDMasterPersonalZone: escapeIfNotNull(masterPersonalZoneId), lat_c: escapeIfNotNull(lat_c), lat_d: escapeIfNotNull(lat_d), lat_m: escapeIfNotNull(lat_m), lat_s: escapeIfNotNull(lat_s), lng_c: escapeIfNotNull(lng_c), lng_d: escapeIfNotNull(lng_d), lng_m: escapeIfNotNull(lng_m), lng_s: escapeIfNotNull(lng_s)};
+			requestPost.params = {IdMasterPersonalZone: escapeIfNotNull(masterPersonalZoneId), lat_c: escapeIfNotNull(lat_c), lat_d: escapeIfNotNull(lat_d), lat_m: escapeIfNotNull(lat_m), lat_s: escapeIfNotNull(lat_s), lng_c: escapeIfNotNull(lng_c), lng_d: escapeIfNotNull(lng_d), lng_m: escapeIfNotNull(lng_m), lng_s: escapeIfNotNull(lng_s)};
 			return $http(requestPost);
 		},
 
 		updateZoneCoord: function(coordId, masterPersonalZoneId, lat_c, lat_d, lat_m, lat_s, lng_c, lng_d, lng_m, lng_s) {
 			requestPost.url = baseUrl + 'master/zone/coord/update/' + coordId;
-			requestPost.params = {IDMasterPersonalZone: escapeIfNotNull(masterPersonalZoneId), lat_c: escapeIfNotNull(lat_c), lat_d: escapeIfNotNull(lat_d), lat_m: escapeIfNotNull(lat_m), lat_s: escapeIfNotNull(lat_s), lng_c: escapeIfNotNull(lng_c), lng_d: escapeIfNotNull(lng_d), lng_m: escapeIfNotNull(lng_m), lng_s: escapeIfNotNull(lng_s)};
+			requestPost.params = {IdMasterPersonalZone: escapeIfNotNull(masterPersonalZoneId), lat_c: escapeIfNotNull(lat_c), lat_d: escapeIfNotNull(lat_d), lat_m: escapeIfNotNull(lat_m), lat_s: escapeIfNotNull(lat_s), lng_c: escapeIfNotNull(lng_c), lng_d: escapeIfNotNull(lng_d), lng_m: escapeIfNotNull(lng_m), lng_s: escapeIfNotNull(lng_s)};
 			return $http(requestPost);
 		},
 
@@ -464,11 +465,11 @@ app.factory('MasterStubService', function ($http) {
 			return $http.get(baseUrl + 'master/zone/coord/delete/' + coordId);
 		},
 
-		getZoneCoordByID: function(coordId) {
+		getZoneCoordById: function(coordId) {
 			return $http.get(baseUrl + 'master/zone/coord/get/id/' + coordId);
 		},
 
-		getZoneCoordByMasterZoneID: function(masterZoneId) {
+		getZoneCoordByMasterZoneId: function(masterZoneId) {
 			return $http.get(baseUrl + 'master/zone/coord/get/zone/id/' + masterZoneId);
 		},
 
@@ -476,7 +477,7 @@ app.factory('MasterStubService', function ($http) {
 			return $http.get(baseUrl + 'master/event/get/all');
 		},
 
-		getMasterEventByID: function(eventId) {
+		getMasterEventById: function(eventId) {
 			return $http.get(baseUrl + 'master/event/get/id/' + eventId);
 		},
 
@@ -530,24 +531,24 @@ app.factory('MasterStubService', function ($http) {
 			return $http.get(baseUrl + 'event/' + eventId + '/map/attach/' + masterZoneId);
 		},
 
-		removeMapOfEvent: function(IDEvent) {
-			return $http.get(baseUrl + 'event/' + IDEvent+ '/map/remove');
+		removeMapOfEvent: function(eventId) {
+			return $http.get(baseUrl + 'event/' + eventId+ '/map/remove');
 		},
 
-		createFaction: function(IDEvent, name, pin) {
-			requestPost.url = baseUrl + 'event/' + IDEvent + '/faction/create';
+		createFaction: function(eventId, name, pin) {
+			requestPost.url = baseUrl + 'event/' + eventId + '/faction/create';
 			requestPost.params = {name: escapeIfNotNull(name), pin: escapeIfNotNull(pin)};
 			return $http(requestPost);
 		},
 
-		updateFaction: function(IDEvent, oldPin, name, pin) {
-			requestPost.url = baseUrl + 'event/' + IDEvent + '/faction/update/' + oldPin;
+		updateFaction: function(eventId, oldPin, name, pin) {
+			requestPost.url = baseUrl + 'event/' + eventId + '/faction/update/' + oldPin;
 			requestPost.params = {name: escapeIfNotNull(name), pin: escapeIfNotNull(pin)};
 			return $http(requestPost);
 		},
 
-		deleteFaction: function(IDEvent, pin) {
-			return $http.get(baseUrl + 'event/' + IDEvent + '/faction/delete/' + pin);
+		deleteFaction: function(eventId, pin) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/delete/' + pin);
 		},
 
 		leaveFactionComsys: function(eventId, factionPIN) {
@@ -583,26 +584,26 @@ app.factory('MasterStubService', function ($http) {
 			return $http.get(baseUrl + 'event/' + eventId + '/stop');
 		},
 
-		deleteFaction: function(IDEvent, PINFaction) {
-			return $http.get(baseUrl + 'event/' + IDEvent + '/faction/delete/' + PINFaction);
+		deleteFaction: function(eventId, factionPIN) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/delete/' + factionPIN);
 		},
 
-		getAllFactions: function(IDEvent) {
-			return $http.get(baseUrl + 'event/' + IDEvent + '/faction/get/all');
+		getAllFactions: function(eventId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/get/all');
 		},
 
-		getFactionByID: function(IDEvent, IDFaction) {
-			return $http.get(baseUrl + 'event/' + IDEvent + '/faction/get/id/' + IDFaction);
+		getFactionById: function(eventId, factionId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/get/id/' + factionId);
 		},
 
-		joinFactionComsys: function(IDEvent, PINFaction) {
-			return $http.get(baseUrl + 'event/' + IDEvent + '/faction/' + PINFaction + '/comsys/join');
+		joinFactionComsys: function(eventId, factionPIN) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/comsys/join');
 		},
 
-		sendNotificationToEvent: function(IDEvent, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/');
+		sendNotificationToEvent: function(eventId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase(firebaseUrl + eventId + '/');
 			var postsRef = ref.child("event_notifications");
-			var newPostRef = postsRef.push({
+			postsRef.push({
 				available_responses_list: available_responses_list,
 				responses_list: responses_list,
 				sender: sender,
@@ -610,10 +611,10 @@ app.factory('MasterStubService', function ($http) {
 			});
 		},
 
-		sendNotificationToFaction: function(IDEvent, IDFaction, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/' + IDFaction + '/');
+		sendNotificationToFaction: function(eventId, factionId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase(firebaseUrl + eventId + '/' + factionId + '/');
 			var postsRef = ref.child("faction_notifications/");
-			var newPostRef = postsRef.push({
+			postsRef.push({
 				available_responses_list: available_responses_list,
 				responses_list: responses_list,
 				sender: sender,
@@ -621,8 +622,8 @@ app.factory('MasterStubService', function ($http) {
 			});
 		},
 
-		sendNotificationToComsys: function(IDEvent, IDFaction, IDComsys, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/comsys_users/' + IDComsys + '/');
+		sendNotificationToComsys: function(eventId, factionId, comsysId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/comsys_users/' + comsysId + '/');
 			var postsRef = ref.child("comsys_notifications/");
 			var newPostRef = postsRef.push({
 				available_responses_list: available_responses_list,
@@ -632,8 +633,8 @@ app.factory('MasterStubService', function ($http) {
 			});
 		},
 
-		changeMasterScore: function (IDEvent, IDFaction, score) {
-			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/');
+		changeMasterScore: function (eventId, factionId, score) {
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/');
 			ref.update({
 				score: score
 			});

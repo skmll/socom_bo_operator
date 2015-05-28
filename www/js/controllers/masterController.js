@@ -157,8 +157,8 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 		});
 	};
 
-	$scope.getPerkByID = function (perkID) {
-		MasterStubService.getPerkByID(perkID)
+	$scope.getPerkByID = function (perkId) {
+		MasterStubService.getPerkByID(perkId)
 			.success(function (data) {
 			console.log(data);
 			$scope.getPerkByIDResult = data.response;
@@ -238,8 +238,8 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 		});
 	};
 
-	$scope.deletePerkRuleSetRule = function () {
-		MasterStubService.deletePerkRuleSetRule()
+	$scope.deletePerkRuleSetRule = function (perkRuleId) {
+		MasterStubService.deletePerkRuleSetRule(perkRuleId)
 			.success(function (data) {
 			console.log(data);
 			$scope.deletePerkRuleSetRuleResult = data.response;
@@ -249,8 +249,8 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 		});
 	};
 
-	$scope.getPerkRuleSetRulesByPerkRuleSetID = function () {
-		MasterStubService.getPerkRuleSetRulesByPerkRuleSetID()
+	$scope.getPerkRuleSetRulesByPerkRuleSetID = function (perkRuleSetId) {
+		MasterStubService.getPerkRuleSetRulesByPerkRuleSetID(perkRuleSetId)
 			.success(function (data) {
 			console.log(data);
 			$scope.getPerkRuleSetRulesByPerkRuleSetIDResult = data.response;
@@ -260,8 +260,8 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 		});
 	};
 
-	$scope.getMasterZoneByID = function () {
-		MasterStubService.getMasterZoneByID()
+	$scope.getMasterZoneByID = function (masterZoneId) {
+		MasterStubService.getMasterZoneByID(masterZoneId)
 			.success(function (data) {
 			console.log(data);
 			$scope.getMasterZoneByIDResult = data.response;
@@ -271,8 +271,8 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 		});
 	};
 
-	$scope.getMasterZoneByZoneTypeID = function () {
-		MasterStubService.getMasterZoneByZoneTypeID()
+	$scope.getMasterZoneByZoneTypeID = function (zoneTypeId) {
+		MasterStubService.getMasterZoneByZoneTypeID(zoneTypeId)
 			.success(function (data) {
 			console.log(data);
 			$scope.getMasterZoneByZoneTypeIDResult = data.response;
