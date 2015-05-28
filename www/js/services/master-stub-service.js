@@ -13,11 +13,19 @@ app.factory('MasterStubService', function ($http) {
 
 	$http.defaults.withCredentials = true;
 
+	function escapeIfNotNull(variable){
+		if(variable != null){
+			return escape(variable);
+		}
+		return null;
+	} 
+
+
 	return {
 
 		login: function (username, password) {
 			requestPost.url = baseUrl + 'master/login';
-			requestPost.params = { username: escape(username), password: escape(password) };
+			requestPost.params = { username: escapeIfNotNull(username), password: escapeIfNotNull(password) };
 			return $http(requestPost);
 		},
 
@@ -34,10 +42,10 @@ app.factory('MasterStubService', function ($http) {
 		createMaster: function (email, password, nickname, logo,
 				phone, address, zipcode, country, association_description, association_link, association_link_promo  ){
 			requestPost.url = baseUrl + 'master/create';
-			requestPost.params = { email: escape(email), password: escape(password), nickname: escape(nickname),
-					logo: escape(logo), phone: escape(phone),address: escape(address),zipcode: escape(zipcode),country: escape(country),
-					association_description: escape(association_description),association_link: escape(association_link),
-					association_link_promo: escape(association_link_promo)};
+			requestPost.params = { email: escapeIfNotNull(email), password: escapeIfNotNull(password), nickname: escapeIfNotNull(nickname),
+					logo: escapeIfNotNull(logo), phone: escapeIfNotNull(phone),address: escapeIfNotNull(address),zipcode: escapeIfNotNull(zipcode),country: escapeIfNotNull(country),
+					association_description: escapeIfNotNull(association_description),association_link: escapeIfNotNull(association_link),
+					association_link_promo: escapeIfNotNull(association_link_promo)};
 			return $http(requestPost);
 		},
 
@@ -62,13 +70,13 @@ app.factory('MasterStubService', function ($http) {
 
 		changeMasterPassword: function (oldPassword, newPassword) {
 			requestPost.url = baseUrl + 'master/password/update';
-			requestPost.params = { old: escape(oldPassword), new: escape(newPassword) };
+			requestPost.params = { old: escapeIfNotNull(oldPassword), new: escapeIfNotNull(newPassword) };
 			return $http(requestPost);
 		},
 
 		updateMasterSponsor: function (sponsorID, name, logo) {
 			requestPost.url = baseUrl + 'master/sponsor/update/' + sponsorID;
-			requestPost.params = { name: escape(name), logo: escape(logo) };
+			requestPost.params = { name: escapeIfNotNull(name), logo: escapeIfNotNull(logo) };
 			return $http(requestPost);
 		},
 
@@ -86,7 +94,7 @@ app.factory('MasterStubService', function ($http) {
 
 		createMasterSponsor: function(name, logo) {
 			requestPost.url = baseUrl + 'master/sponsor/create';
-			requestPost.params = { name: escape(name), logo: escape(logo) };
+			requestPost.params = { name: escapeIfNotNull(name), logo: escapeIfNotNull(logo) };
 			return $http(requestPost);
 		},
 
@@ -100,13 +108,13 @@ app.factory('MasterStubService', function ($http) {
 
 		createMasterPerkRuleSet: function(description) {
 			requestPost.url = baseUrl + 'master/perk/ruleset/create';
-			requestPost.params = { description: escape(description)};
+			requestPost.params = { description: escapeIfNotNull(description)};
 			return $http(requestPost);
 		},
 
 		updateMasterPerkRuleSet: function(description, perkRuleSetID) {
 			requestPost.url = baseUrl + 'master/perk/ruleset/update/'+perkRuleSetID;
-			requestPost.params = { description: escape(description)};
+			requestPost.params = { description: escapeIfNotNull(description)};
 			return $http(requestPost);
 		},
 
@@ -121,11 +129,11 @@ app.factory('MasterStubService', function ($http) {
 		createPerkRuleSetRule:function(master_perk_rule_id, perk_id, p_initial_time_delay, 
 				p_cooldown_time, p_duration_time, p_vision_range, p_detection_range, p_max_units, p_cost) {
 			requestPost.url = baseUrl + 'master/perk/ruleset/rule/create';
-			requestPost.params = { desmaster_perk_rule_idription: escape(master_perk_rule_id), 
-					perk_id: escape(perk_id),p_initial_time_delay: escape(p_initial_time_delay),
-					p_cooldown_time: escape(p_cooldown_time), p_duration_time: escape(p_duration_time),
-					p_vision_range: escape(p_vision_range), p_detection_range: escape(p_detection_range), 
-					p_max_units: escape(p_max_units),p_cost: escape(p_cost)
+			requestPost.params = { desmaster_perk_rule_idription: escapeIfNotNull(master_perk_rule_id), 
+					perk_id: escapeIfNotNull(perk_id),p_initial_time_delay: escapeIfNotNull(p_initial_time_delay),
+					p_cooldown_time: escapeIfNotNull(p_cooldown_time), p_duration_time: escapeIfNotNull(p_duration_time),
+					p_vision_range: escapeIfNotNull(p_vision_range), p_detection_range: escapeIfNotNull(p_detection_range), 
+					p_max_units: escapeIfNotNull(p_max_units),p_cost: escapeIfNotNull(p_cost)
 			};
 			return $http(requestPost);
 		},
@@ -133,11 +141,11 @@ app.factory('MasterStubService', function ($http) {
 		updatePerkRuleSetRule:function(master_perk_rule_id, perk_id, p_initial_time_delay, 
 				p_cooldown_time, p_duration_time, p_vision_range, p_detection_range, p_max_units, p_cost) {
 			requestPost.url = baseUrl + 'master/perk/ruleset/rule/create';
-			requestPost.params = { desmaster_perk_rule_idription: escape(master_perk_rule_id), 
-					perk_id: escape(perk_id),p_initial_time_delay: escape(p_initial_time_delay),
-					p_cooldown_time: escape(p_cooldown_time), p_duration_time: escape(p_duration_time),
-					p_vision_range: escape(p_vision_range), p_detection_range: escape(p_detection_range), 
-					p_max_units: escape(p_max_units),p_cost: escape(p_cost)
+			requestPost.params = { desmaster_perk_rule_idription: escapeIfNotNull(master_perk_rule_id), 
+					perk_id: escapeIfNotNull(perk_id),p_initial_time_delay: escapeIfNotNull(p_initial_time_delay),
+					p_cooldown_time: escapeIfNotNull(p_cooldown_time), p_duration_time: escapeIfNotNull(p_duration_time),
+					p_vision_range: escapeIfNotNull(p_vision_range), p_detection_range: escapeIfNotNull(p_detection_range), 
+					p_max_units: escapeIfNotNull(p_max_units),p_cost: escapeIfNotNull(p_cost)
 			};
 			return $http(requestPost);
 		},
@@ -160,7 +168,7 @@ app.factory('MasterStubService', function ($http) {
 
 		createZoneType: function (name) {
 			requestPost.url = baseUrl + 'master/zone/type/create';
-			requestPost.params = { name: escape(name) };
+			requestPost.params = { name: escapeIfNotNull(name) };
 			return $http(requestPost);
 		},
 
@@ -202,28 +210,28 @@ app.factory('MasterStubService', function ($http) {
 
 		createMasterTacticalActionRuleSet: function(description) {
 			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/create';
-			requestPost.params = { description: escape(description) };
+			requestPost.params = { description: escapeIfNotNull(description) };
 			return $http(requestPost);
 		},
 
 		updateMasterTacticalActionRuleSet: function (IDTacticalActionRuleSet, description) {
 			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/update/' + IDTacticalActionRuleSet;
-			requestPost.params = { description: escape(description) };
+			requestPost.params = { description: escapeIfNotNull(description) };
 			return $http(requestPost);
 		},
 
 		createTacticalActionRuleSetRule: function (master_tacticalaction_rule_id, tacticalaction_id, ta_initial_time_delay, ta_cooldown_time, ta_duration_time, ta_vision_range, ta_detection_range, ta_death_range, ta_cost) {
 			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/rule/create';
 			requestPost.params = {
-					master_tacticalaction_rule_id: escape(master_tacticalaction_rule_id),
-					tacticalaction_id: escape(tacticalaction_id),
-					ta_initial_time_delay: escape(ta_initial_time_delay),
-					ta_cooldown_time: escape(ta_cooldown_time),
-					ta_duration_time: escape(ta_duration_time),
-					ta_vision_range: escape(ta_vision_range),
-					ta_detection_range: escape(ta_detection_range),
-					ta_death_range: escape(ta_death_range),
-					ta_cost: escape(ta_cost)					
+					master_tacticalaction_rule_id: escapeIfNotNull(master_tacticalaction_rule_id),
+					tacticalaction_id: escapeIfNotNull(tacticalaction_id),
+					ta_initial_time_delay: escapeIfNotNull(ta_initial_time_delay),
+					ta_cooldown_time: escapeIfNotNull(ta_cooldown_time),
+					ta_duration_time: escapeIfNotNull(ta_duration_time),
+					ta_vision_range: escapeIfNotNull(ta_vision_range),
+					ta_detection_range: escapeIfNotNull(ta_detection_range),
+					ta_death_range: escapeIfNotNull(ta_death_range),
+					ta_cost: escapeIfNotNull(ta_cost)					
 			};
 			return $http(requestPost);
 		},
@@ -231,22 +239,22 @@ app.factory('MasterStubService', function ($http) {
 		updateTacticalActionRuleSetRule: function (IDTacticalActionRule, master_tacticalaction_rule_id, tacticalaction_id, ta_initial_time_delay, ta_cooldown_time, ta_duration_time, ta_vision_range, ta_detection_range, ta_death_range, ta_cost) {
 			requestPost.url = baseUrl + 'master/tacticalaction/ruleset/rule/update/' + IDTacticalActionRule;
 			requestPost.params = {
-					master_tacticalaction_rule_id: escape(master_tacticalaction_rule_id),
-					tacticalaction_id: escape(tacticalaction_id),
-					ta_initial_time_delay: escape(ta_initial_time_delay),
-					ta_cooldown_time: escape(ta_cooldown_time),
-					ta_duration_time: escape(ta_duration_time),
-					ta_vision_range: escape(ta_vision_range),
-					ta_detection_range: escape(ta_detection_range),
-					ta_death_range: escape(ta_death_range),
-					ta_cost: escape(ta_cost)					
+					master_tacticalaction_rule_id: escapeIfNotNull(master_tacticalaction_rule_id),
+					tacticalaction_id: escapeIfNotNull(tacticalaction_id),
+					ta_initial_time_delay: escapeIfNotNull(ta_initial_time_delay),
+					ta_cooldown_time: escapeIfNotNull(ta_cooldown_time),
+					ta_duration_time: escapeIfNotNull(ta_duration_time),
+					ta_vision_range: escapeIfNotNull(ta_vision_range),
+					ta_detection_range: escapeIfNotNull(ta_detection_range),
+					ta_death_range: escapeIfNotNull(ta_death_range),
+					ta_cost: escapeIfNotNull(ta_cost)					
 			};
 			return $http(requestPost);
 		},
 
 		updateZoneType: function (ID, newName) {
 			requestPost.url = baseUrl + 'master/zone/type/update/' + ID;
-			requestPost.params = { name: escape(newName) };
+			requestPost.params = { name: escapeIfNotNull(newName) };
 			return $http(requestPost);
 		},
 
@@ -276,13 +284,13 @@ app.factory('MasterStubService', function ($http) {
 
 		createMasterZone : function (ID, description, capture_points) {
 			requestPost.url = baseUrl + 'master/zone/create';
-			requestPost.params = { zone_id: escape(ID), description: escape(description), capture_points: escape(capture_points) };
+			requestPost.params = { zone_id: escapeIfNotNull(ID), description: escapeIfNotNull(description), capture_points: escapeIfNotNull(capture_points) };
 			return $http(requestPost);
 		},
 
 		updateMasterZone : function (ID, description, capture_points) {
 			requestPost.url = baseUrl + 'master/zone/update/' + ID;
-			requestPost.params = { zone_id: escape(ID), description: escape(description), capture_points: escape(capture_points) };
+			requestPost.params = { zone_id: escapeIfNotNull(ID), description: escapeIfNotNull(description), capture_points: escapeIfNotNull(capture_points) };
 			return $http(requestPost);
 		},
 
@@ -310,13 +318,13 @@ app.factory('MasterStubService', function ($http) {
 
 		createMasterPerkRuleSet: function(description) {
 			requestPost.url = baseUrl + 'master/perk/ruleset/create';
-			requestPost.params = { description: escape(description)};
+			requestPost.params = { description: escapeIfNotNull(description)};
 			return $http(requestPost);
 		},
 
 		updateMasterPerkRuleSet: function(description) {
 			requestPost.url = baseUrl + 'master/perk/ruleset/update/{IDPerkRuleSet}';
-			requestPost.params = { description: escape(description)};
+			requestPost.params = { description: escapeIfNotNull(description)};
 			return $http(requestPost);
 		},
 
@@ -331,11 +339,11 @@ app.factory('MasterStubService', function ($http) {
 		createPerkRuleSetRule:function(master_perk_rule_id, perk_id, p_initial_time_delay, 
 				p_cooldown_time, p_duration_time, p_vision_range, p_detection_range, p_max_units, p_cost) {
 			requestPost.url = baseUrl + 'master/perk/ruleset/rule/create';
-			requestPost.params = { desmaster_perk_rule_idription: escape(master_perk_rule_id), 
-					perk_id: escape(perk_id),p_initial_time_delay: escape(p_initial_time_delay),
-					p_cooldown_time: escape(p_cooldown_time), p_duration_time: escape(p_duration_time),
-					p_vision_range: escape(p_vision_range), p_detection_range: escape(p_detection_range), 
-					p_max_units: escape(p_max_units),p_cost: escape(p_cost)
+			requestPost.params = { desmaster_perk_rule_idription: escapeIfNotNull(master_perk_rule_id), 
+					perk_id: escapeIfNotNull(perk_id),p_initial_time_delay: escapeIfNotNull(p_initial_time_delay),
+					p_cooldown_time: escapeIfNotNull(p_cooldown_time), p_duration_time: escapeIfNotNull(p_duration_time),
+					p_vision_range: escapeIfNotNull(p_vision_range), p_detection_range: escapeIfNotNull(p_detection_range), 
+					p_max_units: escapeIfNotNull(p_max_units),p_cost: escapeIfNotNull(p_cost)
 			};
 			return $http(requestPost);
 		},
@@ -343,11 +351,11 @@ app.factory('MasterStubService', function ($http) {
 		updatePerkRuleSetRule:function(master_perk_rule_id, perk_id, p_initial_time_delay, 
 				p_cooldown_time, p_duration_time, p_vision_range, p_detection_range, p_max_units, p_cost) {
 			requestPost.url = baseUrl + 'master/perk/ruleset/rule/create';
-			requestPost.params = { desmaster_perk_rule_idription: escape(master_perk_rule_id), 
-					perk_id: escape(perk_id),p_initial_time_delay: escape(p_initial_time_delay),
-					p_cooldown_time: escape(p_cooldown_time), p_duration_time: escape(p_duration_time),
-					p_vision_range: escape(p_vision_range), p_detection_range: escape(p_detection_range), 
-					p_max_units: escape(p_max_units),p_cost: escape(p_cost)
+			requestPost.params = { desmaster_perk_rule_idription: escapeIfNotNull(master_perk_rule_id), 
+					perk_id: escapeIfNotNull(perk_id),p_initial_time_delay: escapeIfNotNull(p_initial_time_delay),
+					p_cooldown_time: escapeIfNotNull(p_cooldown_time), p_duration_time: escapeIfNotNull(p_duration_time),
+					p_vision_range: escapeIfNotNull(p_vision_range), p_detection_range: escapeIfNotNull(p_detection_range), 
+					p_max_units: escapeIfNotNull(p_max_units),p_cost: escapeIfNotNull(p_cost)
 			};
 			return $http(requestPost);
 		},
@@ -370,13 +378,13 @@ app.factory('MasterStubService', function ($http) {
 
 		createZoneType: function (name) {
 			requestPost.url = baseUrl + 'master/zone/type/create';
-			requestPost.params = { name: escape(name) };
+			requestPost.params = { name: escapeIfNotNull(name) };
 			return $http(requestPost);
 		},
 
 		updateZoneType: function (zoneTypeId, newName) {
 			requestPost.url = baseUrl + 'master/zone/type/update/' + zoneTypeId;
-			requestPost.params = { name: escape(newName) };
+			requestPost.params = { name: escapeIfNotNull(newName) };
 			return $http(requestPost);
 		},
 
@@ -406,13 +414,13 @@ app.factory('MasterStubService', function ($http) {
 
 		createMasterZone : function (zoneTypeId, description, capturePoints) {
 			requestPost.url = baseUrl + 'master/zone/create';
-			requestPost.params = { zone_id: escape(zoneTypeId), description: escape(description), capture_points: escape(capturePoints) };
+			requestPost.params = { zone_id: escapeIfNotNull(zoneTypeId), description: escapeIfNotNull(description), capture_points: escapeIfNotNull(capturePoints) };
 			return $http(requestPost);
 		},
 
 		updateMasterZone : function (masterZoneId, zoneTypeId, description, capturePoints) {
 			requestPost.url = baseUrl + 'master/zone/update/' + masterZoneId;
-			requestPost.params = { zone_id: escape(zoneTypeId), description: escape(description), capture_points: escape(capturePoints) };
+			requestPost.params = { zone_id: escapeIfNotNull(zoneTypeId), description: escapeIfNotNull(description), capture_points: escapeIfNotNull(capturePoints) };
 			return $http(requestPost);
 		},
 
@@ -442,13 +450,13 @@ app.factory('MasterStubService', function ($http) {
 
 		createZoneCoord: function(masterPersonalZoneId, lat_c, lat_d, lat_m, lat_s, lng_c, lng_d, lng_m, lng_s) {
 			requestPost.url = baseUrl + 'master/zone/coord/create';
-			requestPost.params = {IDMasterPersonalZone: escape(masterPersonalZoneId), lat_c: escape(lat_c), lat_d: escape(lat_d), lat_m: escape(lat_m), lat_s: escape(lat_s), lng_c: escape(lng_c), lng_d: escape(lng_d), lng_m: escape(lng_m), lng_s: escape(lng_s)};
+			requestPost.params = {IDMasterPersonalZone: escapeIfNotNull(masterPersonalZoneId), lat_c: escapeIfNotNull(lat_c), lat_d: escapeIfNotNull(lat_d), lat_m: escapeIfNotNull(lat_m), lat_s: escapeIfNotNull(lat_s), lng_c: escapeIfNotNull(lng_c), lng_d: escapeIfNotNull(lng_d), lng_m: escapeIfNotNull(lng_m), lng_s: escapeIfNotNull(lng_s)};
 			return $http(requestPost);
 		},
 
 		updateZoneCoord: function(coordId, masterPersonalZoneId, lat_c, lat_d, lat_m, lat_s, lng_c, lng_d, lng_m, lng_s) {
 			requestPost.url = baseUrl + 'master/zone/coord/update/' + coordId;
-			requestPost.params = {IDMasterPersonalZone: escape(masterPersonalZoneId), lat_c: escape(lat_c), lat_d: escape(lat_d), lat_m: escape(lat_m), lat_s: escape(lat_s), lng_c: escape(lng_c), lng_d: escape(lng_d), lng_m: escape(lng_m), lng_s: escape(lng_s)};
+			requestPost.params = {IDMasterPersonalZone: escapeIfNotNull(masterPersonalZoneId), lat_c: escapeIfNotNull(lat_c), lat_d: escapeIfNotNull(lat_d), lat_m: escapeIfNotNull(lat_m), lat_s: escapeIfNotNull(lat_s), lng_c: escapeIfNotNull(lng_c), lng_d: escapeIfNotNull(lng_d), lng_m: escapeIfNotNull(lng_m), lng_s: escapeIfNotNull(lng_s)};
 			return $http(requestPost);
 		},
 
@@ -479,16 +487,16 @@ app.factory('MasterStubService', function ($http) {
 
 			requestPost.url = baseUrl + 'event/create';
 
-			requestPost.params = { name: escape(name), logo: escape(logo), description_briefing: escape(description_briefing),
-					address: escape(address), rules: escape(rules), prohibitions: escape(prohibitions), 
-					proceedment: escape(proceedment), additional_informations: escape(additional_informations), 
-					registration_date_start: escape(registration_date_start), registration_date_end: escape(registration_date_end), 
-					event_date_start: escape(event_date_start), event_date_end: escape(event_date_end), 
-					operator_inicial_perk_points: escape(operator_inicial_perk_points), 
-					max_comsys_per_faction: escape(max_comsys_per_faction), max_operators_per_faction: escape(max_operators_per_faction), 
-					respawn_delay: escape(respawn_delay), gps_refresh_rate_min: escape(gps_refresh_rate_min), 
-					gps_refresh_rate_max: escape(gps_refresh_rate_max), see_enemies_bases: escape(see_enemies_bases), 
-					see_enemies_reswap: escape(see_enemies_respawn), points_per_kill: escape(points_per_kill) };
+			requestPost.params = { name: escapeIfNotNull(name), logo: escapeIfNotNull(logo), description_briefing: escapeIfNotNull(description_briefing),
+					address: escapeIfNotNull(address), rules: escapeIfNotNull(rules), prohibitions: escapeIfNotNull(prohibitions), 
+					proceedment: escapeIfNotNull(proceedment), additional_informations: escapeIfNotNull(additional_informations), 
+					registration_date_start: escapeIfNotNull(registration_date_start), registration_date_end: escapeIfNotNull(registration_date_end), 
+					event_date_start: escapeIfNotNull(event_date_start), event_date_end: escapeIfNotNull(event_date_end), 
+					operator_inicial_perk_points: escapeIfNotNull(operator_inicial_perk_points), 
+					max_comsys_per_faction: escapeIfNotNull(max_comsys_per_faction), max_operators_per_faction: escapeIfNotNull(max_operators_per_faction), 
+					respawn_delay: escapeIfNotNull(respawn_delay), gps_refresh_rate_min: escapeIfNotNull(gps_refresh_rate_min), 
+					gps_refresh_rate_max: escapeIfNotNull(gps_refresh_rate_max), see_enemies_bases: escapeIfNotNull(see_enemies_bases), 
+					see_enemies_reswap: escapeIfNotNull(see_enemies_respawn), points_per_kill: escapeIfNotNull(points_per_kill) };
 
 			return $http(requestPost);
 		},
@@ -500,16 +508,16 @@ app.factory('MasterStubService', function ($http) {
 
 			requestPost.url = baseUrl + 'event/update/' + eventId;
 
-			requestPost.params = { name: escape(name), logo: escape(logo), description_briefing: escape(description_briefing),
-					address: escape(address), rules: escape(rules), prohibitions: escape(prohibitions), 
-					proceedment: escape(proceedment), additional_informations: escape(additional_informations), 
-					registration_date_start: escape(registration_date_start), registration_date_end: escape(registration_date_end), 
-					event_date_start: escape(event_date_start), event_date_end: escape(event_date_end), 
-					operator_inicial_perk_points: escape(operator_inicial_perk_points), 
-					max_comsys_per_faction: escape(max_comsys_per_faction), max_operators_per_faction: escape(max_operators_per_faction), 
-					respawn_delay: escape(respawn_delay), gps_refresh_rate_min: escape(gps_refresh_rate_min), 
-					gps_refresh_rate_max: escape(gps_refresh_rate_max), see_enemies_bases: escape(see_enemies_bases), 
-					see_enemies_reswap: escape(see_enemies_respawn), points_per_kill: escape(points_per_kill) };
+			requestPost.params = { name: escapeIfNotNull(name), logo: escapeIfNotNull(logo), description_briefing: escapeIfNotNull(description_briefing),
+					address: escapeIfNotNull(address), rules: escapeIfNotNull(rules), prohibitions: escapeIfNotNull(prohibitions), 
+					proceedment: escapeIfNotNull(proceedment), additional_informations: escapeIfNotNull(additional_informations), 
+					registration_date_start: escapeIfNotNull(registration_date_start), registration_date_end: escapeIfNotNull(registration_date_end), 
+					event_date_start: escapeIfNotNull(event_date_start), event_date_end: escapeIfNotNull(event_date_end), 
+					operator_inicial_perk_points: escapeIfNotNull(operator_inicial_perk_points), 
+					max_comsys_per_faction: escapeIfNotNull(max_comsys_per_faction), max_operators_per_faction: escapeIfNotNull(max_operators_per_faction), 
+					respawn_delay: escapeIfNotNull(respawn_delay), gps_refresh_rate_min: escapeIfNotNull(gps_refresh_rate_min), 
+					gps_refresh_rate_max: escapeIfNotNull(gps_refresh_rate_max), see_enemies_bases: escapeIfNotNull(see_enemies_bases), 
+					see_enemies_reswap: escapeIfNotNull(see_enemies_respawn), points_per_kill: escapeIfNotNull(points_per_kill) };
 
 			return $http(requestPost);
 		},
@@ -528,13 +536,13 @@ app.factory('MasterStubService', function ($http) {
 
 		createFaction: function(IDEvent, name, pin) {
 			requestPost.url = baseUrl + 'event/' + IDEvent + '/faction/create';
-			requestPost.params = {name: escape(name), pin: escape(pin)};
+			requestPost.params = {name: escapeIfNotNull(name), pin: escapeIfNotNull(pin)};
 			return $http(requestPost);
 		},
 
 		updateFaction: function(IDEvent, oldPin, name, pin) {
 			requestPost.url = baseUrl + 'event/' + IDEvent + '/faction/update/' + oldPin;
-			requestPost.params = {name: escape(name), pin: escape(pin)};
+			requestPost.params = {name: escapeIfNotNull(name), pin: escapeIfNotNull(pin)};
 			return $http(requestPost);
 		},
 

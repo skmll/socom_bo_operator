@@ -4,14 +4,21 @@ app.factory('ComsysStubService', function ($http) {
 	var firebaseUrl = 'https://socom-bo-estg-2015.firebaseio.com/events_in_progress/';
 
 	var requestPost =
-		{
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
-			},
-		};
+	{
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded'
+		},
+	};
 
 	$http.defaults.withCredentials = true;
+
+	function escapeIfNotNull(variable){
+		if(variable != null){
+			return escape(variable);
+		}
+		return null;
+	} 
 
 	return {
 
@@ -25,19 +32,19 @@ app.factory('ComsysStubService', function ($http) {
 
 		createComsys: function (username, password, nickname) {
 			requestPost.url = baseUrl + 'comsys/create';
-			requestPost.params = { username: escape(username), password: escape(password), nickname: escape(nickname) };
+			requestPost.params = { username: escapeIfNotNull(username), password: escapeIfNotNull(password), nickname: escapeIfNotNull(nickname) };
 			return $http(requestPost);
 		},
 
 		updateComsysPersonalConfig: function (nickname, display_grid, coord_format) {
 			requestPost.url = baseUrl + 'comsys/config/personal/update';
-			requestPost.params = { nickname: escape(nickname), display_grid: escape(display_grid), coord_format: escape(coord_format) };
+			requestPost.params = { nickname: escapeIfNotNull(nickname), display_grid: escapeIfNotNull(display_grid), coord_format: escapeIfNotNull(coord_format) };
 			return $http(requestPost);
 		},
 
 		loginComsys: function (username, password) {
 			requestPost.url = baseUrl + 'comsys/login';
-			requestPost.params = { username: escape(username), password: escape(password) };
+			requestPost.params = { username: escapeIfNotNull(username), password: escapeIfNotNull(password) };
 			return $http(requestPost);
 		},
 
@@ -51,7 +58,7 @@ app.factory('ComsysStubService', function ($http) {
 
 		changeComsysPassword: function (oldPassword, newPassword) {
 			requestPost.url = baseUrl + 'comsys/password/update';
-			requestPost.params = { old: escape(oldPassword), new: escape(newPassword) };
+			requestPost.params = { old: escapeIfNotNull(oldPassword), new: escapeIfNotNull(newPassword) };
 			return $http(requestPost);
 		},
 
@@ -67,7 +74,7 @@ app.factory('ComsysStubService', function ($http) {
 			});
 		},
 
-				sendNotificationToSquad: function(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
+		sendNotificationToSquad: function(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
 			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/squads/' + IDSquad + '/');
 			var postsRef = ref.child("squad_notifications/");
 			var newPostRef = postsRef.push({
@@ -92,7 +99,7 @@ app.factory('ComsysStubService', function ($http) {
 		},
 
 
-						addEnemyPing: function(IDEvent, IDFaction, available_responses_list, responses_list, sender, text) {
+		addEnemyPing: function(IDEvent, IDFaction, available_responses_list, responses_list, sender, text) {
 			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/');
 			var postsRef = ref.child("special_actions/");
 			var newPostRef = postsRef.push({

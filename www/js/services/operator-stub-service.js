@@ -14,11 +14,19 @@ app.factory('OperatorStubService', function ($http) {
 
 	$http.defaults.withCredentials = true;
 
+	function escapeIfNotNull(variable){
+		if(variable != null){
+			return escape(variable);
+		}
+		return null;
+	} 
+
+
 	return {
 		
 		createOperator: function(username, password, nickname, country, rank_ornumber, specialization_id) {
 			requestPost.url = baseUrl + 'operator/create';
-			requestPost.params = {username: escape(username), password: escape(password), nickname: escape(nickname), country: escape(country), rank_ornumber: escape(rank_ornumber), specialization_id: escape(specialization_id) }; 
+			requestPost.params = {username: escapeIfNotNull(username), password: escapeIfNotNull(password), nickname: escapeIfNotNull(nickname), country: escapeIfNotNull(country), rank_ornumber: escapeIfNotNull(rank_ornumber), specialization_id: escapeIfNotNull(specialization_id) }; 
 			return $http(requestPost);
 		},
 
@@ -29,7 +37,7 @@ app.factory('OperatorStubService', function ($http) {
 
 		loginOperator: function (username, password) {
 			requestPost.url = baseUrl + 'operator/login';
-			requestPost.params = { username: escape(username), password: escape(password) };
+			requestPost.params = { username: escapeIfNotNull(username), password: escapeIfNotNull(password) };
 			return $http(requestPost);
 		},
 
@@ -40,8 +48,8 @@ app.factory('OperatorStubService', function ($http) {
 		updateOperatorPersonalConfig: function (display_grid, coord_format,nickname, country,
 				rank_ornumber, specialization_id) {
 			requestPost.url = baseUrl + 'operator/config/personal/update';
-			requestPost.params = { display_grid: escape(display_grid), coord_format: escape(coord_format),
-					nickname: escape(nickname),rank_ornumber: escape(rank_ornumber),specialization_id: escape(specialization_id) };
+			requestPost.params = { display_grid: escapeIfNotNull(display_grid), coord_format: escapeIfNotNull(coord_format),
+					nickname: escapeIfNotNull(nickname),rank_ornumber: escapeIfNotNull(rank_ornumber),specialization_id: escapeIfNotNull(specialization_id) };
 			return $http(requestPost);
 		},
 
@@ -51,7 +59,7 @@ app.factory('OperatorStubService', function ($http) {
 
 		changeOperatorPassword: function (oldPassword, newPassword) {
 			requestPost.url = baseUrl + 'operator/password/update';
-			requestPost.params = { old: escape(oldPassword), new: escape(newPassword) };
+			requestPost.params = { old: escapeIfNotNull(oldPassword), new: escapeIfNotNull(newPassword) };
 			return $http(requestPost);
 		},
 
