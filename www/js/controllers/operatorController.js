@@ -156,4 +156,35 @@ app.controller('OperatorController', function($scope, OperatorStubService) {
 		});
 	};
 
+	$scope.sendNotificationToOperator = function () {
+		var eventId = 10;
+		var factionId = 1;
+		var operatorId = 1;
+		var available_responses_list = ["Yes", "No", "Ok you are a pro!"];
+		var responses_list = ["Yes", "Yes", "Yes", "No"];
+		var sender = "Rafael";
+		var text = "I've already killed them all.. easy stuff";
+		OperatorStubService.sendNotificationToOperator(eventId, factionId, operatorId, available_responses_list, responses_list, sender, text);
+	};
+
+	$scope.addPing = function () {
+		var eventId = 10;
+		var factionId = 1;
+		var squadId = 1;
+		var action = 'enemy';
+		var gps_lat = 'N;40;45;36';
+		var gps_lng = 'W;73;59;2.4';
+		OperatorStubService.addPing(eventId, factionId, squadId, action, gps_lat, gps_lng);
+	};
+
+	$scope.updateLocation = function () {
+		var eventId = 10;
+		var factionId = 1;
+		var operatorId = 8977;
+		var battery = 100;
+		var gps_lat = 'N;40;45;36';
+		var gps_lng = 'W;73;59;2.4';
+		OperatorStubService.updateLocation(eventId, factionId, operatorId, gps_lng, gps_lat, battery);
+	};
+
 });

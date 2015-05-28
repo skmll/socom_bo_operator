@@ -1,6 +1,9 @@
 app.factory('OperatorStubService', function ($http) {
 
-	var baseUrl = 'http://192.168.234.37/SOCOM_BO/public/v1/';	
+	var baseUrl = 'http://192.168.234.37/SOCOM_BO/public/v1/';
+
+	var firebaseUrl = 'https://socom-bo-estg-2015.firebaseio.com/events_in_progress/';
+
 	var requestPost = 
 	{
 			method: 'POST',
@@ -78,6 +81,38 @@ app.factory('OperatorStubService', function ($http) {
 
 		leaveFactionSquad: function (eventId, factionPIN, squadId) {
 			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/leave/' + squadId);
+		},
+
+		sendNotificationToOperator: function(eventId, factionId, operatorId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators/' + operatorId + '/');
+			var postsRef = ref.child("operator_notifications/");
+			var newPostRef = postsRef.push({
+				available_responses_list: available_responses_list,
+				responses_list: responses_list,
+				sender: sender,
+				text: text
+			});
+		},
+
+		addPing: function(eventId, factionId, squadId, action, gps_lat, gps_lng) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' + squadId + '/');
+			var postsRef = ref.child("pings/");
+			var newPostRef = postsRef.push({
+				action: action,
+				gps_lat: gps_lat,
+				gps_lng: gps_lng,
+				timestamp: 'TODO: TIMESTAMP'
+			});
+		},
+
+		updateLocation: function(eventId, factionId, operatorId, gps_lng, gps_lat, battery) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators/' + operatorId + '/');
+			ref.update({
+				battery: battery,
+				gps_lat: gps_lat,
+				gps_lng: gps_lng,
+				timestamp: 'TODO: TIMESTAMP'
+			});
 		}
 		
 	};
