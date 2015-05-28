@@ -50,7 +50,42 @@ app.factory('ComsysStubService', function ($http) {
 			requestPost.url = baseUrl + 'comsys/password/update';
 			requestPost.params = { old: escape(oldPassword), new: escape(newPassword) };
 			return $http(requestPost);
+		},
+		
+		sendNotificationToOperator: function(IDEvent, IDFaction, IDOperator, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/operators/' + IDOperator + '/');
+			var postsRef = ref.child("operator_notifications/");
+			var newPostRef = postsRef.push({
+				available_responses_list: available_responses_list,
+				responses_list: responses_list,
+				sender: sender,
+				text: text
+			});
+		},
+
+				sendNotificationToSquad: function(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/squads/' + IDSquad + '/');
+			var postsRef = ref.child("squad_notifications/");
+			var newPostRef = postsRef.push({
+				available_responses_list: available_responses_list,
+				responses_list: responses_list,
+				sender: sender,
+				text: text
+			});
+		},
+
+						addEnemyPing: function(IDEvent, IDFaction, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/');
+			var postsRef = ref.child("special_actions/");
+			var newPostRef = postsRef.push({
+				available_responses_list: available_responses_list,
+				responses_list: responses_list,
+				sender: sender,
+				text: text
+			});
 		}
+
+		
 		
 	};
 });
