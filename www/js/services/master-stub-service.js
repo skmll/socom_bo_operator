@@ -11,6 +11,8 @@ app.factory('MasterStubService', function ($http) {
 			},
 	};
 
+	$http.defaults.withCredentials = true;
+
 	return {
 
 		login: function (username, password) {
@@ -87,8 +89,6 @@ app.factory('MasterStubService', function ($http) {
 			requestPost.params = { name: escape(name), logo: escape(logo) };
 			return $http(requestPost);
 		},
-
-
 
 		getPerksByName:  function(name) {
 			return $http.get(baseUrl +  'master/perk/get/name/'+name);			
@@ -300,10 +300,8 @@ app.factory('MasterStubService', function ($http) {
 
 
 		getPerksByName:  function() {
-			return $http.get(baseUrl +  'master/perk/get/name/{name}');			
-
+			return $http.get(baseUrl +  'master/perk/get/name/{name}');		
 		},
-
 
 		getPerkByID:  function() {
 			return $http.get(baseUrl +  'master/perk/get/id/{IDPerk}');			
@@ -520,7 +518,6 @@ app.factory('MasterStubService', function ($http) {
 			return $http.get(baseUrl + 'event/delete/' + eventId);
 		},
 
-
 		attachMapToEvent: function(eventId, masterZoneId) {
 			return $http.get(baseUrl + 'event/' + eventId + '/map/attach/' + masterZoneId);
 		},
@@ -557,8 +554,7 @@ app.factory('MasterStubService', function ($http) {
 		attachCommonZoneToEvent: function(eventId, masterZoneId) {
 			return $http.get(baseUrl + 'event/' + eventId + '/zone/common/attach/' + masterZoneId);
 		},
-
-
+		
 		attachFactionZoneToEvent: function(eventId, factionPIN, masterZoneId) {
 			return $http.get(baseUrl + 'event/' + eventId + '/zone/faction/' + factionPIN + "/attach/" + masterZoneId);
 		},

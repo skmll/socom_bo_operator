@@ -1,13 +1,17 @@
 app.factory('OperatorStubService', function ($http) {
 
-	var baseUrl = 'http://192.168.234.37/SOCOM_BO/public/v1/';	
+	var baseUrl = 'http://192.168.234.37/SOCOM_BO/public/v1/';
+	var firebaseUrl = 'https://socom-bo-estg-2015.firebaseio.com/events_in_progress/';
+	
 	var requestPost = 
 	{
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
-	}
+	};
+
+	$http.defaults.withCredentials = true;
 
 	return {
 		
@@ -76,6 +80,17 @@ app.factory('OperatorStubService', function ($http) {
 
 		leaveFactionSquad: function (eventId, factionPIN, squadId) {
 			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/leave/' + squadId);
+		},
+		
+		// Firebase Services
+		sendNotificationToSquad: function(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase(firebaseUrl + IDEvent + '/factions/' + IDFaction + '/squads/' + IDSquad + '/squad_notifications/');
+			ref.push({
+				available_responses_list: available_responses_list,
+				responses_list: responses_list,
+				sender: sender,
+				text: text
+			});
 		}
 		
 	};
