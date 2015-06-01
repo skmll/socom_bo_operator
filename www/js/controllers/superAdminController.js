@@ -2,7 +2,7 @@ app.controller('SuperAdminController', function ($scope, SuperAdminStubService) 
 
 	$scope.loginSuperadmin = function (username, password) {
 		SuperAdminStubService.loginSuperadmin(username, password)
-			.success(function (data, status, headers, config) {
+			.success(function (data) {
 			console.log(data);
 			$scope.loginSuperadminResult = data.response;
 		})
@@ -11,14 +11,25 @@ app.controller('SuperAdminController', function ($scope, SuperAdminStubService) 
 		});
 	};
 
-	$scope.logout = function () {
-		SuperAdminStubService.logout()
+	$scope.loginCheckSuperadmin = function () {
+		SuperAdminStubService.loginCheckSuperadmin()
 			.success(function (data) {
 			console.log(data);
-			$scope.logoutResult = data.response;
+			$scope.loginCheckSuperadminResult = data.response;
 		})
 			.error(function (error) {
-			$scope.logoutResult = 'Unable to load data: ' + error;
+			$scope.loginCheckSuperadminResult = 'Unable to load data: ' + error;
+		});
+	};
+
+	$scope.logoutSuperadmin = function () {
+		SuperAdminStubService.logoutSuperadmin()
+			.success(function (data) {
+			console.log(data);
+			$scope.logoutSuperadminResult = data.response;
+		})
+			.error(function (error) {
+			$scope.logoutSuperadminResult = 'Unable to load data: ' + error;
 		});
 	};
 
@@ -33,17 +44,6 @@ app.controller('SuperAdminController', function ($scope, SuperAdminStubService) 
 		});
 	};
 
-	$scope.loginCheckSuperadmin = function () {
-		SuperAdminStubService.loginCheckSuperadmin()
-			.success(function (data) {
-			console.log(data);
-			$scope.loginCheckResult = data.response;
-		})
-			.error(function (error) {
-			$scope.loginCheckResult = 'Unable to load data: ' + error;
-		});
-	};
-
 	$scope.acceptMasterRegistration = function (masterId) {
 		SuperAdminStubService.acceptMasterRegistration(masterId)
 			.success(function (data) {
@@ -55,8 +55,8 @@ app.controller('SuperAdminController', function ($scope, SuperAdminStubService) 
 		});
 	};
 
-	$scope.refuseMasterRegistration = function (masterAccountId) {
-		SuperAdminStubService.refuseMasterRegistration(masterAccountId)
+	$scope.refuseMasterRegistration = function (masterId) {
+		SuperAdminStubService.refuseMasterRegistration(masterId)
 			.success(function (data) {
 			console.log(data);
 			$scope.refuseMasterRegistrationResult = data.response;
@@ -66,8 +66,8 @@ app.controller('SuperAdminController', function ($scope, SuperAdminStubService) 
 		});
 	};
 
-	$scope.banMaster = function (masterAccountId) {
-		SuperAdminStubService.banMaster(masterAccountId)
+	$scope.banMaster = function (masterId) {
+		SuperAdminStubService.banMaster(masterId)
 			.success(function (data) {
 			console.log(data);
 			$scope.banMasterResult = data.response;
