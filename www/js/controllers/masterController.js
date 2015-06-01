@@ -981,13 +981,6 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 	MasterStubService.createCarePackage(IDEvent,  hidden, gps_lat, gps_long);
 	};
 	
-
-	
-
-
-//var d = new Date();
-//$scope.date = d.getDate();	
-	
-	             $scope.date = new Date().getTime();
+	             $scope.date = MasterStubService.createTimestamp(); 
 
 });

@@ -563,7 +563,7 @@ app.factory('MasterStubService', function ($http) {
 		attachCommonZoneToEvent: function(eventId, masterZoneId) {
 			return $http.get(baseUrl + 'event/' + eventId + '/zone/common/attach/' + masterZoneId);
 		},
-		
+
 		attachFactionZoneToEvent: function(eventId, factionPIN, masterZoneId) {
 			return $http.get(baseUrl + 'event/' + eventId + '/zone/faction/' + factionPIN + "/attach/" + masterZoneId);
 		},
@@ -639,10 +639,10 @@ app.factory('MasterStubService', function ($http) {
 				score: score
 			});
 		},
-		
-			
-	sendNotificationToSquad : function (IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
-		var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/squads/' + IDSquad + '/');
+
+
+		sendNotificationToSquad : function (IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/squads/' + IDSquad + '/');
 			var postsRef = ref.child("squad_notifications/");
 			var newPostRef = postsRef.push({
 				available_responses_list: available_responses_list,
@@ -651,10 +651,10 @@ app.factory('MasterStubService', function ($http) {
 				text: text
 			});				
 
-	},
-	
+		},
+
 		sendNotificationToOperator : function (IDEvent, IDFaction, IDOperator, available_responses_list, responses_list, sender, text) {
-		var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/operators/' + IDOperator + '/');
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/operators/' + IDOperator + '/');
 			var postsRef = ref.child("operator_notifications/");
 			var newPostRef = postsRef.push({
 				available_responses_list: available_responses_list,
@@ -663,10 +663,10 @@ app.factory('MasterStubService', function ($http) {
 				text: text
 			});				
 
-	},
-	
+		},
+
 		createCarePackage : function (IDEvent,  hidden, gps_lat, gps_long) {
-		var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/');
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/');
 			var postsRef = ref.child("care_packages/");
 			var newPostRef = postsRef.push({
 				IDEvent: IDEvent,
@@ -674,11 +674,12 @@ app.factory('MasterStubService', function ($http) {
 				gps_lat: gps_lat,
 				gps_long: gps_long
 			});				
+		},
 
-	}
-	
-		
-	
+		createTimestamp: function() {
+			return new Date().getTime();
+		}
+
 	};
 
 });
