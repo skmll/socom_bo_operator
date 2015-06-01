@@ -78,7 +78,16 @@ app.factory('OperatorStubService', function ($http) {
 
 		leaveFactionSquad: function (eventId, factionPIN, squadId) {
 			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/leave/' + squadId);
+		},
+		
+		changeStatus: function(IDEvent,IDFaction, IDOperator, status){
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/operators/'+IDOperator+'/'+status);
+			ref.update({
+				status: status
+			});
 		}
+	
+	
 		
 	};
 });
