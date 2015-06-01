@@ -1,13 +1,14 @@
 app.factory('CommonStubService', function ($http) {
 
 	var baseUrl = 'http://192.168.234.37/SOCOM_BO/public/v1/';
+	var firebaseUrl = 'https://socom-bo-estg-2015.firebaseio.com/events_in_progress/';
 
 	$http.defaults.withCredentials = true;
 
 	return {
 
 		/***** Laravel Services *****/
-		
+
 		getAllEvents: function () {
 			return $http.get(baseUrl + 'event/get/all');
 		},
@@ -94,6 +95,29 @@ app.factory('CommonStubService', function ($http) {
 
 		getAllFactionsScore: function (eventId) {
 			return $http.get(baseUrl + 'event/' + eventId + '/faction/get/scores');
+		},
+		
+		/***** Firebase Services *****/
+
+		addResponseToEventResponseList: function (eventId, notificationId, response) {
+			var ref = new Firebase(firebaseUrl + eventId + '/event_notifications/' + notificationId);
+			ref.push({
+				response: response
+			});
+		},
+
+		addResponseToFactionResponseList: function (eventId, factionId, notificationId, response) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/faction_notifications/' + notificationId);
+			ref.push({
+				response: response
+			});
+		},
+
+		addResponseToOperatorResponseList: function (eventId, factionId, operatorId, notificationId, response) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators/' + operatorId + '/operator_notifications/' + notificationId);
+			ref.push({
+				response: response
+			});
 		}
 
 	};

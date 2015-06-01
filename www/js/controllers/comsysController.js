@@ -78,52 +78,24 @@ app.controller('ComsysController', function ($scope, ComsysStubService) {
 		});
 	};
 
+	$scope.sendNotificationToOperator = function (IDEvent, IDFaction, IDOperator, available_responses_list, responses_list, sender, text) {
+		ComsysStubService.sendNotificationToOperator(IDEvent, IDFaction, IDOperator, available_responses_list, responses_list, sender, text);
+	};
 
-	$scope.sendNotificationToOperator = function(IDEvent, IDFaction, IDOperator, available_responses_list, responses_list, sender, text) {
-	ComsysStubService.sendNotificationToOperator(IDEvent, IDFaction, IDOperator, available_responses_list, responses_list, sender, text);
-	} ;
-	
-	$scope.sendNotificationToSquad = function(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
-	ComsysStubService.sendNotificationToSquad(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text);
-	} ;
+	$scope.sendNotificationToSquad = function (IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
+		ComsysStubService.sendNotificationToSquad(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text);
+	};
 
-$scope.addEnemyPing = function(IDEvent, IDFaction, available_responses_list, responses_list, sender, text) {
-		var IDEvent = 10;
-		var IDFaction = 1;
-		var IDSquad = 1;
-		var available_responses_list = ["Yes", "No"];
-var 				responses_list = ["Yes", "Yes", "Yes", "No"];
-		var sender = "Cobra";
-		var text = "Anybody alive?";
-		
-	ComsysStubService.addEnemyPing(IDEvent, IDFaction, available_responses_list, responses_list, sender, text);
-	} ;
-		
+	$scope.addEnemyPing = function (IDEvent, IDFaction, available_responses_list, responses_list, sender, text) {
+		ComsysStubService.addEnemyPing(IDEvent, IDFaction, available_responses_list, responses_list, sender, text);
+	};
 
 	$scope.sendNotificationToComsys = function (IDEvent, IDFaction, IDComsys, available_responses_list, responses_list, sender, text) {
-		/*
-		IDEvent = 1;
-		IDFaction = 1;
-		IDComsys = 1;
-		available_responses_list = ["Devil", "Satan"];
-		responses_list = ["Devil", "Devil", "Devil", "Satan"];
-		sender = "Lucifer";
-		text = "Is your soul for sale?";
-		*/
 		ComsysStubService.sendNotificationToComsys(IDEvent, IDFaction, IDComsys, available_responses_list, responses_list, sender, text);
 	};
 
 	$scope.sendNotificationToFaction = function (IDEvent, IDFaction, available_responses_list, responses_list, sender, text) {
-		/*
-		IDEvent = 1;
-		IDFaction = 1;
-		available_responses_list = ["Devil", "Satan"];
-		responses_list = ["Devil", "Devil", "Devil", "Satan"];
-		sender = "Lucifer";
-		text = "Is your soul for sale?";
-		*/
 		ComsysStubService.sendNotificationToFaction(IDEvent, IDFaction, available_responses_list, responses_list, sender, text);
 	};
-
 
 });

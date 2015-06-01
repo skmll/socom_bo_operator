@@ -2,17 +2,17 @@ app.controller('OperatorController', function ($scope, OperatorStubService) {
 
 	$scope.createOperator = function (username, password, nickname, country, rank_ornumber, specialization_id) {
 		OperatorStubService.createOperator(username, password, nickname, country, rank_ornumber, specialization_id)
-			.success(function(data) {
+			.success(function (data) {
 			console.log(data);
 			$scope.createOperatorResult = data.response;
 		})
-			.error(function(error) {
+			.error(function (error) {
 			console.log(error);
 			$scope.createOperatorResult = 'Error: ' + error.message;
 		});
 	};
 
-	$scope.getOperatorPersonalConfig = function(){
+	$scope.getOperatorPersonalConfig = function () {
 		OperatorStubService.getOperatorPersonalConfig()
 			.success(function (data) {
 			console.log(data);
@@ -24,7 +24,7 @@ app.controller('OperatorController', function ($scope, OperatorStubService) {
 		});
 	};
 
-	$scope.loginOperator = function(username, password) {
+	$scope.loginOperator = function (username, password) {
 		OperatorStubService.loginOperator(username, password)
 			.success(function (data) {
 			console.log(data);
@@ -155,57 +155,24 @@ app.controller('OperatorController', function ($scope, OperatorStubService) {
 			$scope.leaveFactionSquadResult = 'Unable to load data: ' + error;
 		});
 	},
-	
-	$scope.changeStatus = function(IDEvent,IDFaction, IDOperator, status){
-		var IDEvent = 15;
-		var IDFaction = 1
-		var IDOperator = 1
-		var status = 'down'
-		OperatorStubService.changeStatus(IDEvent,IDFaction, IDOperator, status);
+
+	$scope.changeStatus = function (IDEvent, IDFaction, IDOperator, status) {
+		OperatorStubService.changeStatus(IDEvent, IDFaction, IDOperator, status);
 	};
 
-
 	$scope.sendNotificationToOperator = function () {
-		var eventId = 10;
-		var factionId = 1;
-		var operatorId = 1;
-		var available_responses_list = ["Yes", "No", "Ok you are a pro!"];
-		var responses_list = ["Yes", "Yes", "Yes", "No"];
-		var sender = "Rafael";
-		var text = "I've already killed them all.. easy stuff";
 		OperatorStubService.sendNotificationToOperator(eventId, factionId, operatorId, available_responses_list, responses_list, sender, text);
 	};
 
 	$scope.addPing = function () {
-		var eventId = 10;
-		var factionId = 1;
-		var squadId = 1;
-		var action = 'enemy';
-		var gps_lat = 'N;40;45;36';
-		var gps_lng = 'W;73;59;2.4';
 		OperatorStubService.addPing(eventId, factionId, squadId, action, gps_lat, gps_lng);
 	};
 
 	$scope.updateLocation = function () {
-		var eventId = 10;
-		var factionId = 1;
-		var operatorId = 8977;
-		var battery = 100;
-		var gps_lat = 'N;40;45;36';
-		var gps_lng = 'W;73;59;2.4';
 		OperatorStubService.updateLocation(eventId, factionId, operatorId, gps_lng, gps_lat, battery);
 	};
-		
+
 	$scope.sendNotificationToSquad = function (IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
-		/*
-		IDEvent = 1;
-		IDFaction = 1;
-		IDSquad = 1;
-		available_responses_list = ["Devil", "Satan"];
-		responses_list = ["Devil", "Devil", "Devil", "Satan"];
-		sender = "Lucifer";
-		text = "Is your soul for sale?";
-		*/
 		OperatorStubService.sendNotificationToSquad(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text);
 	};
 

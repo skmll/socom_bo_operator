@@ -19,8 +19,7 @@ app.factory('MasterStubService', function ($http) {
 			return escape(variable);
 		}
 		return null;
-	} 
-
+	}
 
 	return {
 
@@ -640,18 +639,16 @@ app.factory('MasterStubService', function ($http) {
 			});
 		},
 		
-			
-	sendNotificationToSquad : function (IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
-		var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/squads/' + IDSquad + '/');
+		sendNotificationToSquad : function (IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/squads/' + IDSquad + '/');
 			var postsRef = ref.child("squad_notifications/");
 			var newPostRef = postsRef.push({
 				available_responses_list: available_responses_list,
 				responses_list: responses_list,
 				sender: sender,
 				text: text
-			});				
-
-	},
+			});
+		},
 	
 		sendNotificationToOperator : function (IDEvent, IDFaction, IDOperator, available_responses_list, responses_list, sender, text) {
 		var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/operators/' + IDOperator + '/');
@@ -661,24 +658,19 @@ app.factory('MasterStubService', function ($http) {
 				responses_list: responses_list,
 				sender: sender,
 				text: text
-			});				
-
-	},
+			});		
+		},
 	
 		createCarePackage : function (IDEvent,  hidden, gps_lat, gps_long) {
-		var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/');
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/');
 			var postsRef = ref.child("care_packages/");
 			var newPostRef = postsRef.push({
 				IDEvent: IDEvent,
 				hidden: hidden,
 				gps_lat: gps_lat,
 				gps_long: gps_long
-			});				
-
-	}
-	
-		
-	
+			});		
+		}
 	};
 
 });
