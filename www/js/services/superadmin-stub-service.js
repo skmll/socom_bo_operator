@@ -9,12 +9,22 @@ app.factory('SuperAdminStubService', function ($http) {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			}
 	};
-	
+
+	$http.defaults.withCredentials = true;
+
+	function escapeIfNotNull(variable){
+		if(variable != null){
+			return escape(variable);
+		}
+		return null;
+	} 
+
+
 	return {
 		
 		loginSuperadmin: function (username, password) {
 			requestPost.url = baseUrl + 'superadmin/login';
-			requestPost.params = { username: escape(username), password: escape(password) };
+			requestPost.params = { username: escapeIfNotNull(username), password: escapeIfNotNull(password) };
 			return $http(requestPost);
 		},
 
@@ -40,7 +50,7 @@ app.factory('SuperAdminStubService', function ($http) {
 
 		changeMasterPassword: function(oldPassword, newPassword){
 			requestPost.url = baseUrl + 'master/password/update';
-			requestPost.params = { old: escape(oldPassword), new: escape(newPassword) };
+			requestPost.params = { old: escapeIfNotNull(oldPassword), new: escapeIfNotNull(newPassword) };
 			return $http(requestPost);
 		},
 
@@ -49,5 +59,4 @@ app.factory('SuperAdminStubService', function ($http) {
 		}
 
 	};
-	
 });
