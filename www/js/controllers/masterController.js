@@ -953,4 +953,9 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 		MasterStubService.changeMasterScore(IDEvent, IDFaction, score);
 	};
 
+//var d = new Date();
+//$scope.date = d.getDate();	
+	
+	             $scope.date = new Date().getTime();
+
 });
