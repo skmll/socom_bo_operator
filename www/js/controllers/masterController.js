@@ -941,7 +941,6 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 	$scope.changeMasterScore = function (IDEvent, IDFaction, score) {
 		MasterStubService.changeMasterScore(IDEvent, IDFaction, score);
 	};
-<<<<<<< HEAD
 
 	$scope.sendNotificationToSquad = function (IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
 		MasterStubService.sendNotificationToSquad(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text);
@@ -950,13 +949,11 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 	$scope.sendNotificationToOperator = function (IDEvent, IDFaction, IDOperator, available_responses_list, responses_list, sender, text) {
 		MasterStubService.sendNotificationToOperator(IDEvent, IDFaction, IDOperator, available_responses_list, responses_list, sender, text);
 	};
-=======
-	
-	             $scope.date = MasterStubService.createTimestamp(); 
->>>>>>> 55b714a26646d8c96f326d09447a70fb27546a77
+
+	$scope.date = MasterStubService.createTimestamp();
 
 	$scope.createCarePackage = function (IDEvent, hidden, gps_lat, gps_long) {
 		MasterStubService.createCarePackage(IDEvent, hidden, gps_lat, gps_long);
 	};
-	
+
 });
