@@ -67,7 +67,7 @@ app.factory('ComsysStubService', function ($http) {
 		},
 
 		/***** Firebase Services *****/
-	
+
 		sendNotificationToOperator: function (eventId, factionId, operatorId, available_responses_list, responses_list, sender, text) {
 			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/operators/' + operatorId + '/operator_notifications/');
 			ref.push({
@@ -87,7 +87,7 @@ app.factory('ComsysStubService', function ($http) {
 				text: text
 			});
 		},
-		
+
 		sendNotificationToComsys: function (eventId, factionId, comsysId, available_responses_list, responses_list, sender, text) {
 			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/' + comsysId + '/comsys_notifications/');
 			ref.push({
@@ -117,6 +117,6 @@ app.factory('ComsysStubService', function ($http) {
 				text: text
 			});
 		}
-		
+
 	};
 });
