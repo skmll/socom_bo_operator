@@ -155,6 +155,17 @@ app.controller('OperatorController', function ($scope, OperatorStubService) {
 			$scope.leaveFactionSquadResult = 'Unable to load data: ' + error;
 		});
 	},
+	
+	$scope.getEventsOfOperator = function () {
+		OperatorStubService.getEventsOfOperator()
+			.success(function (data) {
+			console.log(data);
+			$scope.getEventsOfOperatorResult = data.response;
+		})
+			.error(function (error) {
+			$scope.getEventsOfOperatorResult = 'Unable to load data: ' + error;
+		});
+	},
 
 	$scope.changeStatus = function (IDEvent, IDFaction, IDOperator, status) {
 		OperatorStubService.changeStatus(IDEvent, IDFaction, IDOperator, status);

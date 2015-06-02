@@ -90,12 +90,18 @@ app.factory('OperatorStubService', function ($http) {
 		leaveFactionSquad: function (eventId, factionPIN, squadId) {
 			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/leave/' + squadId);
 		},
+		
+		getEventsOfOperator: function () {
+			return $http.get(baseUrl + 'operator/event/get/all');
+		},
+		
 		changeStatus: function(IDEvent,IDFaction, IDOperator, status){
 			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/operators/'+IDOperator+'/'+status);
 			ref.update({
 				status: status
 				});
 				},
+				
 		// Firebase Services
 		sendNotificationToOperator: function(eventId, factionId, operatorId, available_responses_list, responses_list, sender, text) {
 			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators/' + operatorId + '/');

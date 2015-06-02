@@ -78,6 +78,17 @@ app.controller('ComsysController', function ($scope, ComsysStubService) {
 		});
 	};
 
+	$scope.getEventsOfComsys = function () {
+		ComsysStubService.getEventsOfComsys()
+			.success(function (data) {
+			console.log(data);
+			$scope.getEventsOfComsysResult = data.response;
+		})
+			.error(function (error) {
+			$scope.getEventsOfComsysResult = 'Unable to load data: ' + error;
+		});
+	},
+
 	$scope.sendNotificationToOperator = function (IDEvent, IDFaction, IDOperator, available_responses_list, responses_list, sender, text) {
 		ComsysStubService.sendNotificationToOperator(IDEvent, IDFaction, IDOperator, available_responses_list, responses_list, sender, text);
 	};

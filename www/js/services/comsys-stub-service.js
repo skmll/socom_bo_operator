@@ -66,6 +66,10 @@ app.factory('ComsysStubService', function ($http) {
 			return $http(requestPost);
 		},
 
+		getEventsOfComsys: function () {
+			return $http.get(baseUrl + 'comsys/event/get/all');
+		},
+
 		/***** Firebase Services *****/
 
 		sendNotificationToOperator: function (eventId, factionId, operatorId, available_responses_list, responses_list, sender, text) {
