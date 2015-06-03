@@ -49,7 +49,7 @@ app.factory('OperatorStubService', function ($http) {
 				rank_ornumber, specialization_id) {
 			requestPost.url = baseUrl + 'operator/config/personal/update';
 			requestPost.params = { display_grid: escapeIfNotNull(display_grid), coord_format: escapeIfNotNull(coord_format),
-					nickname: escapeIfNotNull(nickname),rank_ornumber: escapeIfNotNull(rank_ornumber),specialization_id: escapeIfNotNull(specialization_id) };
+					nickname: escapeIfNotNull(nickname), country: escapeIfNotNull(country), rank_ornumber: escapeIfNotNull(rank_ornumber),specialization_id: escapeIfNotNull(specialization_id) };
 			return $http(requestPost);
 		},
 
