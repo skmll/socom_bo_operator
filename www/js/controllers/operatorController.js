@@ -187,4 +187,15 @@ app.controller('OperatorController', function ($scope, OperatorStubService) {
 		OperatorStubService.sendNotificationToSquad(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text);
 	};
 
+	$scope.getOperatorAllowedNotifReceiver = function(){
+		var eventId = 10;
+		var factionId = 1;
+		var operatorId = 8976;
+		var resultArray;
+		OperatorStubService.getOperatorAllowedNotifReceiver(eventId, factionId, operatorId, function(array){
+			resultArray = array;
+			console.log(resultArray);
+		});
+	};
+
 });

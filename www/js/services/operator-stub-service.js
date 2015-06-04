@@ -124,6 +124,16 @@ app.factory('OperatorStubService', function ($http) {
 			});
 		},
 
+		sendNotificationToComsys: function(IDEvent, IDFaction, IDComsys, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase(firebaseUrl + IDEvent + '/factions/' + IDFaction + '/comsys_users/' + IDComsys + '/comsys_notifications/');
+			ref.push({
+				available_responses_list: available_responses_list,
+				responses_list: responses_list,
+				sender: sender,
+				text: text
+			});
+		},
+
 		addPing: function(eventId, factionId, squadId, action, gps_lat, gps_lng) {
 			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' + squadId + '/');
 			var postsRef = ref.child("pings/");
@@ -133,6 +143,57 @@ app.factory('OperatorStubService', function ($http) {
 				gps_lng: gps_lng,
 				timestamp: 'TODO: TIMESTAMP'
 			});
+		},
+
+		getOperatorAllowedNotifReceiver: function(eventId, factionId, operatorId, callback) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators/');
+			var squadRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/');
+			var comsysRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/');
+			var operators;
+			var squads;
+			var allowedNotifReceivers = [];
+			var squadId;
+			var comsys;
+
+			ref.on("value", function(snapshot) {
+				operators = snapshot.val();
+				squadId = operators[operatorId].squad_id;
+				for (var id in operators) {
+					if(id != operatorId && (operators[id].squad_id == operators[operatorId].squad_id)){
+						allowedNotifReceivers.push({id: id, name: operators[id].nickname, type: 'operator'});
+					}
+				};
+
+				squadRef.on("value", function(snapshot) {
+				squads = snapshot.val();
+
+					for (var id in squads) {
+						if(id == squadId){
+							allowedNotifReceivers.push({id: id, name: squads[id].tag, type: 'squad'});
+						}
+					};
+
+					comsysRef.on("value", function(snapshot) {
+					comsys = snapshot.val();
+
+						for (var id in comsys) {
+							allowedNotifReceivers.push({id: id, name: comsys[id].nickname, type: 'comsys'});
+						};
+						callback(allowedNotifReceivers);
+						comsysRef.off();
+				    }, function (errorObject) {
+				      console.log("The read failed: " + errorObject.code);
+				    });
+
+					squadRef.off();
+			    }, function (errorObject) {
+			      console.log("The read failed: " + errorObject.code);
+			    });
+
+				ref.off();
+		    }, function (errorObject) {
+		      console.log("The read failed: " + errorObject.code);
+		    });
 		},
 
 		updateLocation: function(eventId, factionId, operatorId, gps_lng, gps_lat, battery) {
