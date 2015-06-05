@@ -179,7 +179,7 @@ app.controller('OperatorController', function ($scope, OperatorStubService) {
 		OperatorStubService.addPing(eventId, factionId, squadId, action, gps_lat, gps_lng);
 	};
 
-	$scope.updateLocation = function () {
+	$scope.updateLocation = function (eventId, factionId, operatorId, gps_lng, gps_lat, battery) {
 		OperatorStubService.updateLocation(eventId, factionId, operatorId, gps_lng, gps_lat, battery);
 	};
 

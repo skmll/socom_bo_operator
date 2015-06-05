@@ -95,8 +95,8 @@ app.factory('OperatorStubService', function ($http) {
 			return $http.get(baseUrl + 'operator/event/get/all');
 		},
 		
-		changeStatus: function(IDEvent,IDFaction, IDOperator, status){
-			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/operators/'+IDOperator+'/'+status);
+		changeStatus: function(eventId, factionId, operatorId, status){
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/operators/'+operatorId+'/'+status);
 			ref.update({
 				status: status
 				});
@@ -114,8 +114,8 @@ app.factory('OperatorStubService', function ($http) {
 			});
 		},
 		
-		sendNotificationToSquad: function(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase(firebaseUrl + IDEvent + '/factions/' + IDFaction + '/squads/' + IDSquad + '/squad_notifications/');
+		sendNotificationToSquad: function(eventId, factionId, squadId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' + squadId + '/squad_notifications/');
 			ref.push({
 				available_responses_list: available_responses_list,
 				responses_list: responses_list,
@@ -124,8 +124,8 @@ app.factory('OperatorStubService', function ($http) {
 			});
 		},
 
-		sendNotificationToComsys: function(IDEvent, IDFaction, IDComsys, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase(firebaseUrl + IDEvent + '/factions/' + IDFaction + '/comsys_users/' + IDComsys + '/comsys_notifications/');
+		sendNotificationToComsys: function(eventId, factionId, comsysId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/' + comsysId + '/comsys_notifications/');
 			ref.push({
 				available_responses_list: available_responses_list,
 				responses_list: responses_list,
@@ -141,7 +141,7 @@ app.factory('OperatorStubService', function ($http) {
 				action: action,
 				gps_lat: gps_lat,
 				gps_lng: gps_lng,
-				timestamp: 'TODO: TIMESTAMP'
+				timestamp: Firebase.ServerValue.TIMESTAMP
 			});
 		},
 
@@ -197,12 +197,12 @@ app.factory('OperatorStubService', function ($http) {
 		},
 
 		updateLocation: function(eventId, factionId, operatorId, gps_lng, gps_lat, battery) {
-			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators/' + operatorId + '/');
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators/' + operatorId);
 			ref.update({
 				battery: battery,
 				gps_lat: gps_lat,
 				gps_lng: gps_lng,
-				timestamp: 'TODO: TIMESTAMP'
+				timestamp: Firebase.ServerValue.TIMESTAMP
 			});
 		}
 		

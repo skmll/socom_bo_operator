@@ -89,24 +89,28 @@ app.controller('ComsysController', function ($scope, ComsysStubService) {
 		});
 	},
 
-	$scope.sendNotificationToOperator = function (IDEvent, IDFaction, IDOperator, available_responses_list, responses_list, sender, text) {
-		ComsysStubService.sendNotificationToOperator(IDEvent, IDFaction, IDOperator, available_responses_list, responses_list, sender, text);
+	$scope.sendNotificationToOperator = function (eventId, factionId, operatorId, available_responses_list, responses_list, sender, text) {
+		ComsysStubService.sendNotificationToOperator(eventId, factionId, operatorId, available_responses_list, responses_list, sender, text);
 	};
 
-	$scope.sendNotificationToSquad = function (IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
-		ComsysStubService.sendNotificationToSquad(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text);
+	$scope.sendNotificationToSquad = function (eventId, factionId, squadId, available_responses_list, responses_list, sender, text) {
+		ComsysStubService.sendNotificationToSquad(eventId, factionId, squadId, available_responses_list, responses_list, sender, text);
 	};
 
-	$scope.addEnemyPing = function (IDEvent, IDFaction, available_responses_list, responses_list, sender, text) {
-		ComsysStubService.addEnemyPing(IDEvent, IDFaction, available_responses_list, responses_list, sender, text);
+	$scope.addEnemyPing = function (eventId, factionId, available_responses_list, responses_list, sender, text) {
+		ComsysStubService.addEnemyPing(eventId, factionId, available_responses_list, responses_list, sender, text);
 	};
 
-	$scope.sendNotificationToComsys = function (IDEvent, IDFaction, IDComsys, available_responses_list, responses_list, sender, text) {
-		ComsysStubService.sendNotificationToComsys(IDEvent, IDFaction, IDComsys, available_responses_list, responses_list, sender, text);
+	$scope.sendNotificationToComsys = function (eventId, factionId, comsysId, available_responses_list, responses_list, sender, text) {
+		ComsysStubService.sendNotificationToComsys(eventId, factionId, comsysId, available_responses_list, responses_list, sender, text);
 	};
 
-	$scope.sendNotificationToFaction = function (IDEvent, IDFaction, available_responses_list, responses_list, sender, text) {
-		ComsysStubService.sendNotificationToFaction(IDEvent, IDFaction, available_responses_list, responses_list, sender, text);
+	$scope.sendNotificationToFaction = function (eventId, factionId, available_responses_list, responses_list, sender, text) {
+		ComsysStubService.sendNotificationToFaction(eventId, factionId, available_responses_list, responses_list, sender, text);
+	};
+
+	$scope.sendTimestamp = function(eventId, factionId, comsysId){
+		ComsysStubService.sendTimestamp(eventId, factionId, comsysId);
 	};
 
 });

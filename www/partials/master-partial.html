@@ -4,6 +4,9 @@
   </ion-header-bar>
   <ion-content>
     <div>
+      <p>Timestamp: {{ date }}</p>
+    </div>
+    <div>
       <button class="button button-light" ng-click="login('master01@socom.com', 'master01')">Login</button>
       <span ng-bind="loginResult"></span>
     </div>
@@ -324,26 +327,25 @@
       <span ng-bind="joinFactionComsysResult"></span>
     </div>
     <div>
-      <button ng-click="sendNotificationToEvent()">sendNotificationToEvent</button>
+      <button class="button button-energized" ng-click="sendNotificationToEvent()">sendNotificationToEvent</button>
     </div>
     <div>
-      <button ng-click="sendNotificationToFaction()">sendNotificationToFaction</button>
+      <button class="button button-energized" ng-click="sendNotificationToFaction()">sendNotificationToFaction</button>
     </div>
     <div>
-      <button ng-click="sendNotificationToComsys()">sendNotificationToComsys</button>
+      <button class="button button-energized" ng-click="sendNotificationToComsys()">sendNotificationToComsys</button>
     </div>
     <div>
-      <button ng-click="changeMasterScore()">changeMasterScore</button>
+      <button class="button button-energized" ng-click="changeMasterScore()">changeMasterScore</button>
     </div>
     <div>
-      <button ng-click="sendNotificationToSquad()">sendNotificationToSquad</button>
+      <button class="button button-energized" ng-click="sendNotificationToSquad()">sendNotificationToSquad</button>
     </div>
     <div>
-      <button ng-click="sendNotificationToOperator()">sendNotificationToOperator</button>
+      <button class="button button-energized" ng-click="sendNotificationToOperator()">sendNotificationToOperator</button>
     </div>
     <div>
-      <button ng-click="createCarePackage()">createCarePackage</button>
+      <button class="button button-energized" ng-click="createCarePackage()">createCarePackage</button>
     </div>
-    <div>createTimestamp: {{ date }}</div>
   </ion-content>
 </ion-pane>
