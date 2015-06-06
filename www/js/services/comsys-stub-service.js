@@ -112,6 +112,13 @@ app.factory('ComsysStubService', function ($http) {
 			});
 		},
 
+		sendTimestamp: function (eventId, factionId, comsysId) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/' + comsysId);
+			ref.update({
+				timestamp: Firebase.ServerValue.TIMESTAMP
+			});
+		},
+
 		sendNotificationToFaction: function (eventId, factionId, available_responses_list, responses_list, sender, text) {
 			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/faction_notifications/');
 			ref.push({

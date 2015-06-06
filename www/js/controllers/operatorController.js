@@ -167,8 +167,8 @@ app.controller('OperatorController', function ($scope, OperatorStubService) {
 		});
 	},
 
-	$scope.changeStatus = function (IDEvent, IDFaction, IDOperator, status) {
-		OperatorStubService.changeStatus(IDEvent, IDFaction, IDOperator, status);
+	$scope.changeStatus = function (eventId, factionId, operatorId, status) {
+		OperatorStubService.changeStatus(eventId, factionId, operatorId, status);
 	};
 
 	$scope.sendNotificationToOperator = function () {
@@ -179,12 +179,23 @@ app.controller('OperatorController', function ($scope, OperatorStubService) {
 		OperatorStubService.addPing(eventId, factionId, squadId, action, gps_lat, gps_lng);
 	};
 
-	$scope.updateLocation = function () {
+	$scope.updateLocation = function (eventId, factionId, operatorId, gps_lng, gps_lat, battery) {
 		OperatorStubService.updateLocation(eventId, factionId, operatorId, gps_lng, gps_lat, battery);
 	};
 
-	$scope.sendNotificationToSquad = function (IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
-		OperatorStubService.sendNotificationToSquad(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text);
+	$scope.sendNotificationToSquad = function (eventId, factionId, squadId, available_responses_list, responses_list, sender, text) {
+		OperatorStubService.sendNotificationToSquad(eventId, factionId, squadId, available_responses_list, responses_list, sender, text);
+	};
+
+	$scope.getOperatorAllowedNotifReceiver = function(){
+		var eventId = 10;
+		var factionId = 1;
+		var operatorId = 8976;
+		var resultArray;
+		OperatorStubService.getOperatorAllowedNotifReceiver(eventId, factionId, operatorId, function(array){
+			resultArray = array;
+			console.log(resultArray);
+		});
 	};
 
 });

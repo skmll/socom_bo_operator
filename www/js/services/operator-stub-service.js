@@ -49,7 +49,7 @@ app.factory('OperatorStubService', function ($http) {
 				rank_ornumber, specialization_id) {
 			requestPost.url = baseUrl + 'operator/config/personal/update';
 			requestPost.params = { display_grid: escapeIfNotNull(display_grid), coord_format: escapeIfNotNull(coord_format),
-					nickname: escapeIfNotNull(nickname),rank_ornumber: escapeIfNotNull(rank_ornumber),specialization_id: escapeIfNotNull(specialization_id) };
+					nickname: escapeIfNotNull(nickname), country: escapeIfNotNull(country), rank_ornumber: escapeIfNotNull(rank_ornumber),specialization_id: escapeIfNotNull(specialization_id) };
 			return $http(requestPost);
 		},
 
@@ -95,8 +95,8 @@ app.factory('OperatorStubService', function ($http) {
 			return $http.get(baseUrl + 'operator/event/get/all');
 		},
 		
-		changeStatus: function(IDEvent,IDFaction, IDOperator, status){
-			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/operators/'+IDOperator+'/'+status);
+		changeStatus: function(eventId, factionId, operatorId, status){
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/operators/'+operatorId+'/'+status);
 			ref.update({
 				status: status
 				});
@@ -114,8 +114,18 @@ app.factory('OperatorStubService', function ($http) {
 			});
 		},
 		
-		sendNotificationToSquad: function(IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase(firebaseUrl + IDEvent + '/factions/' + IDFaction + '/squads/' + IDSquad + '/squad_notifications/');
+		sendNotificationToSquad: function(eventId, factionId, squadId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' + squadId + '/squad_notifications/');
+			ref.push({
+				available_responses_list: available_responses_list,
+				responses_list: responses_list,
+				sender: sender,
+				text: text
+			});
+		},
+
+		sendNotificationToComsys: function(eventId, factionId, comsysId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/' + comsysId + '/comsys_notifications/');
 			ref.push({
 				available_responses_list: available_responses_list,
 				responses_list: responses_list,
@@ -131,17 +141,68 @@ app.factory('OperatorStubService', function ($http) {
 				action: action,
 				gps_lat: gps_lat,
 				gps_lng: gps_lng,
-				timestamp: 'TODO: TIMESTAMP'
+				timestamp: Firebase.ServerValue.TIMESTAMP
 			});
 		},
 
+		getOperatorAllowedNotifReceiver: function(eventId, factionId, operatorId, callback) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators/');
+			var squadRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/');
+			var comsysRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/');
+			var operators;
+			var squads;
+			var allowedNotifReceivers = [];
+			var squadId;
+			var comsys;
+
+			ref.on("value", function(snapshot) {
+				operators = snapshot.val();
+				squadId = operators[operatorId].squad_id;
+				for (var id in operators) {
+					if(id != operatorId && (operators[id].squad_id == operators[operatorId].squad_id)){
+						allowedNotifReceivers.push({id: id, name: operators[id].nickname, type: 'operator'});
+					}
+				};
+
+				squadRef.on("value", function(snapshot) {
+				squads = snapshot.val();
+
+					for (var id in squads) {
+						if(id == squadId){
+							allowedNotifReceivers.push({id: id, name: squads[id].tag, type: 'squad'});
+						}
+					};
+
+					comsysRef.on("value", function(snapshot) {
+					comsys = snapshot.val();
+
+						for (var id in comsys) {
+							allowedNotifReceivers.push({id: id, name: comsys[id].nickname, type: 'comsys'});
+						};
+						callback(allowedNotifReceivers);
+						comsysRef.off();
+				    }, function (errorObject) {
+				      console.log("The read failed: " + errorObject.code);
+				    });
+
+					squadRef.off();
+			    }, function (errorObject) {
+			      console.log("The read failed: " + errorObject.code);
+			    });
+
+				ref.off();
+		    }, function (errorObject) {
+		      console.log("The read failed: " + errorObject.code);
+		    });
+		},
+
 		updateLocation: function(eventId, factionId, operatorId, gps_lng, gps_lat, battery) {
-			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators/' + operatorId + '/');
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators/' + operatorId);
 			ref.update({
 				battery: battery,
 				gps_lat: gps_lat,
 				gps_lng: gps_lng,
-				timestamp: 'TODO: TIMESTAMP'
+				timestamp: Firebase.ServerValue.TIMESTAMP
 			});
 		}
 		

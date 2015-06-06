@@ -950,7 +950,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 		MasterStubService.sendNotificationToOperator(IDEvent, IDFaction, IDOperator, available_responses_list, responses_list, sender, text);
 	};
 
-	$scope.date = MasterStubService.createTimestamp();
+	$scope.date = new Date().getTime();
 
 	$scope.createCarePackage = function (IDEvent, hidden, gps_lat, gps_long) {
 		MasterStubService.createCarePackage(IDEvent, hidden, gps_lat, gps_long);

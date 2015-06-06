@@ -669,10 +669,6 @@ app.factory('MasterStubService', function ($http) {
 				gps_lat: gps_lat,
 				gps_long: gps_long
 			});		
-		},
-
-		createTimestamp: function() {
-			return new Date().getTime();
 		}
 		
 	};
