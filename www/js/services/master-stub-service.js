@@ -450,13 +450,13 @@ app.factory('MasterStubService', function ($http) {
 
 		createZoneCoord: function(masterPersonalZoneId, lat_c, lat_d, lat_m, lat_s, lng_c, lng_d, lng_m, lng_s) {
 			requestPost.url = baseUrl + 'master/zone/coord/create';
-			requestPost.params = {IdMasterPersonalZone: escapeIfNotNull(masterPersonalZoneId), lat_c: escapeIfNotNull(lat_c), lat_d: escapeIfNotNull(lat_d), lat_m: escapeIfNotNull(lat_m), lat_s: escapeIfNotNull(lat_s), lng_c: escapeIfNotNull(lng_c), lng_d: escapeIfNotNull(lng_d), lng_m: escapeIfNotNull(lng_m), lng_s: escapeIfNotNull(lng_s)};
+			requestPost.params = {master_zone_id: escapeIfNotNull(masterPersonalZoneId), lat_c: escapeIfNotNull(lat_c), lat_d: escapeIfNotNull(lat_d), lat_m: escapeIfNotNull(lat_m), lat_s: escapeIfNotNull(lat_s), lng_c: escapeIfNotNull(lng_c), lng_d: escapeIfNotNull(lng_d), lng_m: escapeIfNotNull(lng_m), lng_s: escapeIfNotNull(lng_s)};
 			return $http(requestPost);
 		},
 
 		updateZoneCoord: function(coordId, masterPersonalZoneId, lat_c, lat_d, lat_m, lat_s, lng_c, lng_d, lng_m, lng_s) {
 			requestPost.url = baseUrl + 'master/zone/coord/update/' + coordId;
-			requestPost.params = {IdMasterPersonalZone: escapeIfNotNull(masterPersonalZoneId), lat_c: escapeIfNotNull(lat_c), lat_d: escapeIfNotNull(lat_d), lat_m: escapeIfNotNull(lat_m), lat_s: escapeIfNotNull(lat_s), lng_c: escapeIfNotNull(lng_c), lng_d: escapeIfNotNull(lng_d), lng_m: escapeIfNotNull(lng_m), lng_s: escapeIfNotNull(lng_s)};
+			requestPost.params = {master_zone_id: escapeIfNotNull(masterPersonalZoneId), lat_c: escapeIfNotNull(lat_c), lat_d: escapeIfNotNull(lat_d), lat_m: escapeIfNotNull(lat_m), lat_s: escapeIfNotNull(lat_s), lng_c: escapeIfNotNull(lng_c), lng_d: escapeIfNotNull(lng_d), lng_m: escapeIfNotNull(lng_m), lng_s: escapeIfNotNull(lng_s)};
 			return $http(requestPost);
 		},
 
