@@ -660,6 +660,66 @@ app.factory('MasterStubService', function ($http) {
 			});		
 		},
 
+		getMasterAllowedNotifReceiver: function (eventId) {
+			/*
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators/');
+			var squadRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/');
+			var comsysRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/');
+			var factionRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId);
+			var operators;
+			var squads;
+			var faction;
+			var allowedNotifReceivers = [];
+			var squadId;
+			var comsys;
+
+			ref.on("value", function(snapshot) {
+				operators = snapshot.val();
+				for (var id in operators) {
+					allowedNotifReceivers.push({id: id, name: operators[id].nickname, type: 'operator'});
+				};
+
+				squadRef.on("value", function(snapshot) {
+				squads = snapshot.val();
+
+					for (var id in squads) {
+						allowedNotifReceivers.push({id: id, name: squads[id].tag, type: 'squad'});
+					};
+
+					comsysRef.on("value", function(snapshot) {
+						comsys = snapshot.val();
+						for (var id in comsys) {
+							if(id != comsysId){
+								allowedNotifReceivers.push({id: id, name: comsys[id].nickname, type: 'comsys'});
+							}
+						};
+
+						factionRef.on("value", function(snapshot) {
+							faction = snapshot.val();
+							allowedNotifReceivers.push({id: factionId, name: faction.name, type: 'faction'});
+
+							callback(allowedNotifReceivers);
+							factionRef.off();
+					    }, function (errorObject) {
+					      console.log("The read failed: " + errorObject.code);
+					    });
+						comsysRef.off();
+				    }, function (errorObject) {
+				      console.log("The read failed: " + errorObject.code);
+				    });
+
+					squadRef.off();
+			    }, function (errorObject) {
+			      console.log("The read failed: " + errorObject.code);
+			    });
+
+				ref.off();
+		    }, function (errorObject) {
+		      console.log("The read failed: " + errorObject.code);
+		    });
+			*/
+		},
+
 		createCarePackage : function (IDEvent,  hidden, gps_lat, gps_long) {
 			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/');
 			var postsRef = ref.child("care_packages/");

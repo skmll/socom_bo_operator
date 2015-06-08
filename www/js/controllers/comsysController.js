@@ -113,4 +113,18 @@ app.controller('ComsysController', function ($scope, ComsysStubService) {
 		ComsysStubService.sendTimestamp(eventId, factionId, comsysId);
 	};
 
+	$scope.getComsysAllowedNotifReceiver = function(){
+		var eventId = 10;
+		var factionId = 1;
+		var comsysId = 1;
+		var resultArray;
+		ComsysStubService.getComsysAllowedNotifReceiver(eventId, factionId, comsysId, function(array){
+			resultArray = array;
+			console.log(resultArray);
+			$scope.$apply(function () {
+				$scope.comsysReceiver = array[0].name;
+	        });
+		});
+	};
+
 });
