@@ -16,7 +16,7 @@ app.factory('OperatorStubService', function ($http) {
 
 	function escapeIfNotNull(variable){
 		if(variable != null){
-			return escape(variable);
+			return variable;
 		}
 		return null;
 	} 
