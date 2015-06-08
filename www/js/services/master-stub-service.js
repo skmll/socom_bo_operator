@@ -16,7 +16,7 @@ app.factory('MasterStubService', function ($http) {
 
 	function escapeIfNotNull(variable){
 		if(variable != null){
-			return variable;
+			return escape(variable);
 		}
 		return null;
 	}
