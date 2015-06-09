@@ -956,4 +956,10 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 		MasterStubService.createCarePackage(IDEvent, hidden, gps_lat, gps_long);
 	};
 
+	$scope.getMasterAllowedNotifReceiver = function(){
+		MasterStubService.getMasterAllowedNotifReceiver(10, function(array){
+			console.log(array);
+		});
+	};
+
 });

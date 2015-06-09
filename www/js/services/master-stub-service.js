@@ -660,64 +660,85 @@ app.factory('MasterStubService', function ($http) {
 			});		
 		},
 
-		getMasterAllowedNotifReceiver: function (eventId) {
-			/*
-			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators/');
-			var squadRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/');
-			var comsysRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/');
-			var factionRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId);
-			var operators;
-			var squads;
-			var faction;
+		getMasterAllowedNotifReceiver: function (eventId, done) {
+
+			var factionsRef = new Firebase(firebaseUrl + eventId + '/factions/');
 			var allowedNotifReceivers = [];
-			var squadId;
-			var comsys;
+			var factions;
+			var endedFactionProcessesCounter = 0;
 
-			ref.on("value", function(snapshot) {
-				operators = snapshot.val();
-				for (var id in operators) {
-					allowedNotifReceivers.push({id: id, name: operators[id].nickname, type: 'operator'});
-				};
+		    var current = 0;
+		    var currentToFactionId = [];
 
-				squadRef.on("value", function(snapshot) {
-				squads = snapshot.val();
+		    allowedNotifReceivers.push({id: eventId, name: 'Event', type: 'event'});
 
-					for (var id in squads) {
-						allowedNotifReceivers.push({id: id, name: squads[id].tag, type: 'squad'});
+			factionsRef.on("value", function(snapshot) {
+				factions = snapshot.val();
+				var i = 0;
+			    for (var id in factions) {
+			        allowedNotifReceivers.push({id: id, name: factions[id].name, type: 'faction'});
+			        currentToFactionId[i] = id;
+			        i++;
+			    };
+
+			    processFaction(currentToFactionId[current], function iterate() {
+			        if (++current < factions.length) {
+			            processFaction(currentToFactionId[current], iterate);
+			        } else {
+			            done(allowedNotifReceivers);
+			        }
+			    });
+				factionsRef.off();
+		    }, function (errorObject) {
+		      console.log("The read failed: " + errorObject.code);
+		    });
+
+
+			function processFaction(factionId, callback){
+
+				var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators/');
+				var squadRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/');
+				var comsysRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/');
+				var operators;
+				var squads;
+				var comsys;
+
+				ref.on("value", function(snapshot) {
+					operators = snapshot.val();
+					for (var id in operators) {
+						allowedNotifReceivers.push({id: id, name: operators[id].nickname, type: 'operator'});
 					};
 
-					comsysRef.on("value", function(snapshot) {
-						comsys = snapshot.val();
-						for (var id in comsys) {
-							if(id != comsysId){
-								allowedNotifReceivers.push({id: id, name: comsys[id].nickname, type: 'comsys'});
-							}
+					squadRef.on("value", function(snapshot) {
+					squads = snapshot.val();
+
+						for (var id in squads) {
+							allowedNotifReceivers.push({id: id, name: squads[id].tag, type: 'squad'});
 						};
 
-						factionRef.on("value", function(snapshot) {
-							faction = snapshot.val();
-							allowedNotifReceivers.push({id: factionId, name: faction.name, type: 'faction'});
-
-							callback(allowedNotifReceivers);
-							factionRef.off();
+						comsysRef.on("value", function(snapshot) {
+							comsys = snapshot.val();
+							for (var id in comsys) {
+								allowedNotifReceivers.push({id: id, name: comsys[id].nickname, type: 'comsys'});
+							};
+							callback();
+							comsysRef.off();
 					    }, function (errorObject) {
 					      console.log("The read failed: " + errorObject.code);
 					    });
-						comsysRef.off();
+
+						squadRef.off();
 				    }, function (errorObject) {
 				      console.log("The read failed: " + errorObject.code);
 				    });
 
-					squadRef.off();
+					ref.off();
 			    }, function (errorObject) {
 			      console.log("The read failed: " + errorObject.code);
 			    });
+			};
 
-				ref.off();
-		    }, function (errorObject) {
-		      console.log("The read failed: " + errorObject.code);
-		    });
-			*/
+			
 		},
 
 		createCarePackage : function (IDEvent,  hidden, gps_lat, gps_long) {
