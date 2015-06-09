@@ -24,6 +24,17 @@ app.controller('CommonController', function ($scope, CommonStubService) {
 		});
 	};
 
+	$scope.getAllFactions = function (eventId) {
+		CommonStubService.getAllFactions(eventId)
+			.success(function (data) {
+			console.log(data);
+			$scope.getAllFactionsResult = data.response;
+		})
+			.error(function (error) {
+			$scope.getAllFactionsResult = 'Unable to load data: ' + error;
+		});
+	};
+
 	$scope.getEventsByYear = function (year) {
 		CommonStubService.getEventsByYear(year)
 			.success(function (data) {

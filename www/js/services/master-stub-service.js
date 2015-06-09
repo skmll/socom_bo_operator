@@ -587,10 +587,6 @@ app.factory('MasterStubService', function ($http) {
 			return $http.get(baseUrl + 'event/' + eventId + '/faction/delete/' + factionPIN);
 		},
 
-		getAllFactions: function(eventId) {
-			return $http.get(baseUrl + 'event/' + eventId + '/faction/get/all');
-		},
-
 		getFactionById: function(eventId, factionId) {
 			return $http.get(baseUrl + 'event/' + eventId + '/faction/get/id/' + factionId);
 		},

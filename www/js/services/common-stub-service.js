@@ -85,6 +85,10 @@ app.factory('CommonStubService', function ($http) {
 			return $http.get(baseUrl + 'event/' + eventId + '/zone/faction/' + factionPIN + '/get/id/' + eventZoneId);
 		},
 
+		getAllFactions: function(eventId) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/get/all');
+		},
+
 		getAllFactionSquads: function (eventId, factionPIN) {
 			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/get/all');
 		},

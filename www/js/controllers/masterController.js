@@ -893,17 +893,6 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 		});
 	};
 
-	$scope.getAllFactions = function (IDEvent) {
-		MasterStubService.deleteFaction(IDEvent)
-			.success(function (data) {
-			console.log(data);
-			$scope.getAllFactionsResult = data.response;
-		})
-			.error(function (error) {
-			$scope.getAllFactionsResult = 'Unable to load data: ' + error;
-		});
-	};
-
 	$scope.getFactionByID = function (IDEvent, IDFaction) {
 		MasterStubService.getFactionByID(IDEvent, IDFaction)
 			.success(function (data) {
