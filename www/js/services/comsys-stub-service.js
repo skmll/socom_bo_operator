@@ -12,66 +12,102 @@ app.factory('ComsysStubService', function ($http) {
 		};
 
 	$http.defaults.withCredentials = true;
-
+	
 	function escapeIfNotNull(variable) {
 
-		if (variable != null) {
-			return variable;
-		}
-
-		return null;
+		return variable;
+		/*if (variable != null) return escape(variable);
+		return null;*/
 	}
 
 	return {
 		
 		/***** Laravel Services *****/
 
-		logoutComsys: function () {
-			return $http.get(baseUrl + 'comsys/logout/');
-		},
-
-		getComsysPersonalConfig: function () {
-			return $http.get(baseUrl + 'comsys/config/personal/get');
-		},
-
+		/* Service #16 */
 		createComsys: function (username, password, nickname) {
 			requestPost.url = baseUrl + 'comsys/create';
 			requestPost.params = { username: escapeIfNotNull(username), password: escapeIfNotNull(password), nickname: escapeIfNotNull(nickname) };
 			return $http(requestPost);
 		},
+		
+		/* Service #17 */
+		loginComsys: function (username, password) {
+			requestPost.url = baseUrl + 'comsys/login';
+			requestPost.params = { username: escapeIfNotNull(username), password: escapeIfNotNull(password) };
+			return $http(requestPost);
+		},
+		
+		/* Service #18 */
+		loginCheckComsys: function () {
+			return $http.get(baseUrl + 'comsys/login/check');
+		},
+		
+		/* Service #19 */
+		logoutComsys: function () {
+			return $http.get(baseUrl + 'comsys/logout/');
+		},
 
+		/* Service #20 */
+		changeComsysPassword: function (oldPassword, newPassword) {
+			requestPost.url = baseUrl + 'comsys/password/update';
+			requestPost.params = { old: escapeIfNotNull(oldPassword), new: escapeIfNotNull(newPassword) };
+			return $http(requestPost);
+		},
+		
+		/* Service #21 */
+		getComsysPersonalConfig: function () {
+			return $http.get(baseUrl + 'comsys/config/personal/get');
+		},
+		
+		/* Service #22 */
 		updateComsysPersonalConfig: function (nickname, displayGrid, coordFormat) {
 			requestPost.url = baseUrl + 'comsys/config/personal/update';
 			requestPost.params = { nickname: escapeIfNotNull(nickname), display_grid: escapeIfNotNull(displayGrid), coord_format: escapeIfNotNull(coordFormat) };
 			return $http(requestPost);
 		},
 
-		loginComsys: function (username, password) {
-			requestPost.url = baseUrl + 'comsys/login';
-			requestPost.params = { username: escapeIfNotNull(username), password: escapeIfNotNull(password) };
-			return $http(requestPost);
-		},
-
-		loginCheckComsys: function () {
-			return $http.get(baseUrl + 'comsys/login/check');
-		},
-
-		logoutComsys: function () {
-			return $http.get(baseUrl + 'comsys/logout');
-		},
-
-		changeComsysPassword: function (oldPassword, newPassword) {
-			requestPost.url = baseUrl + 'comsys/password/update';
-			requestPost.params = { old: escapeIfNotNull(oldPassword), new: escapeIfNotNull(newPassword) };
-			return $http(requestPost);
-		},
-
+		/* Service #133 */
 		getEventsOfComsys: function () {
 			return $http.get(baseUrl + 'comsys/event/get/all');
 		},
 
 		/***** Firebase Services *****/
-
+		 
+		/* Service F08 */
+		sendNotificationToComsys: function (eventId, factionId, comsysId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/' + comsysId + '/comsys_notifications/');
+			ref.push({
+				available_responses_list: available_responses_list,
+				responses_list: responses_list,
+				sender: sender,
+				text: text
+			});
+		},
+		
+		/* Service F09 */
+		sendNotificationToFaction: function (eventId, factionId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/faction_notifications/');
+			ref.push({
+				available_responses_list: available_responses_list,
+				responses_list: responses_list,
+				sender: sender,
+				text: text
+			});
+		},
+		
+		/* Service F10 */
+		sendNotificationToSquad: function (eventId, factionId, squadId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/squads/' + squadId + '/squad_notifications/');
+			ref.push({
+				available_responses_list: available_responses_list,
+				responses_list: responses_list,
+				sender: sender,
+				text: text
+			});
+		},
+		
+		/* Service F11 */
 		sendNotificationToOperator: function (eventId, factionId, operatorId, available_responses_list, responses_list, sender, text) {
 			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/operators/' + operatorId + '/operator_notifications/');
 			ref.push({
@@ -82,26 +118,15 @@ app.factory('ComsysStubService', function ($http) {
 			});
 		},
 
-		sendNotificationToSquad: function (eventId, factionId, squadId, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/squads/' + squadId + '/squad_notifications/');
-			ref.push({
-				available_responses_list: available_responses_list,
-				responses_list: responses_list,
-				sender: sender,
-				text: text
+		/* Service F12 */
+		sendTimestamp: function (eventId, factionId, comsysId) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/' + comsysId);
+			ref.update({
+				timestamp: Firebase.ServerValue.TIMESTAMP
 			});
 		},
-
-		sendNotificationToComsys: function (eventId, factionId, comsysId, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/' + comsysId + '/comsys_notifications/');
-			ref.push({
-				available_responses_list: available_responses_list,
-				responses_list: responses_list,
-				sender: sender,
-				text: text
-			});
-		},
-
+		
+		/* Service F13 */
 		addEnemyPing: function (eventId, factionId, available_responses_list, responses_list, sender, text) {
 			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/special_actions/');
 			ref.push({
@@ -111,14 +136,8 @@ app.factory('ComsysStubService', function ($http) {
 				text: text
 			});
 		},
-
-		sendTimestamp: function (eventId, factionId, comsysId) {
-			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/' + comsysId);
-			ref.update({
-				timestamp: Firebase.ServerValue.TIMESTAMP
-			});
-		},
-
+		
+		/* Service F19 */
 		getComsysAllowedNotifReceiver: function (eventId, factionId, comsysId, callback) {
 			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators/');
 			var squadRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/');
@@ -128,24 +147,28 @@ app.factory('ComsysStubService', function ($http) {
 			var squads;
 			var faction;
 			var allowedNotifReceivers = [];
-			var squadId;
 			var comsys;
 
 			ref.on("value", function(snapshot) {
+				
 				operators = snapshot.val();
+				
 				for (var id in operators) {
 					allowedNotifReceivers.push({id: id, name: operators[id].nickname, type: 'operator'});
 				};
 
 				squadRef.on("value", function(snapshot) {
-				squads = snapshot.val();
+					
+					squads = snapshot.val();
 
 					for (var id in squads) {
 						allowedNotifReceivers.push({id: id, name: squads[id].tag, type: 'squad'});
 					};
 
 					comsysRef.on("value", function(snapshot) {
+						
 						comsys = snapshot.val();
+						
 						for (var id in comsys) {
 							if(id != comsysId){
 								allowedNotifReceivers.push({id: id, name: comsys[id].nickname, type: 'comsys'});
@@ -153,38 +176,34 @@ app.factory('ComsysStubService', function ($http) {
 						};
 
 						factionRef.on("value", function(snapshot) {
+							
 							faction = snapshot.val();
 							allowedNotifReceivers.push({id: factionId, name: faction.name, type: 'faction'});
-
 							callback(allowedNotifReceivers);
+							
 							factionRef.off();
+							
 					    }, function (errorObject) {
-					      console.log("The read failed: " + errorObject.code);
-					    });
+								console.log("The read failed: " + errorObject.code);
+					    	});
+							
 						comsysRef.off();
+						
 				    }, function (errorObject) {
-				      console.log("The read failed: " + errorObject.code);
-				    });
+					   		console.log("The read failed: " + errorObject.code);
+				    	});
 
 					squadRef.off();
+					
 			    }, function (errorObject) {
-			      console.log("The read failed: " + errorObject.code);
-			    });
+						console.log("The read failed: " + errorObject.code);
+			    	});
 
 				ref.off();
+				
 		    }, function (errorObject) {
-		      console.log("The read failed: " + errorObject.code);
-		    });
-		},
-
-		sendNotificationToFaction: function (eventId, factionId, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/faction_notifications/');
-			ref.push({
-				available_responses_list: available_responses_list,
-				responses_list: responses_list,
-				sender: sender,
-				text: text
-			});
+		      		console.log("The read failed: " + errorObject.code);
+		    	});
 		}
 
 	};

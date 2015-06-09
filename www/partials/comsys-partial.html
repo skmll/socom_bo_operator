@@ -5,44 +5,44 @@
   <ion-content>
     <div>
       <button class="button button-light" ng-click="updateComsysPersonalConfig('','','')">updateComsysPersonalConfig</button>
-      <span ng-bind="updateComsysPersonalConfigResult"></span>
+      <span ng-bind="updateComsysPersonalConfigResult" ng-class="loginSuperadminClass"></span>
     </div>
     <div>
       <button class="button button-light" ng-click="getComsysPersonalConfig()">getComsysPersonalConfig</button>
-      <span ng-bind="getComsysPersonalConfigResult"></span>
+      <span ng-bind="getComsysPersonalConfigResult" ng-class="getComsysPersonalConfigClass"></span>
     </div>
     <div>
       <button class="button button-light" ng-click="loginComsys('comsys01', 'comsys01')">loginComsys</button>
-      <span ng-bind="loginComsysResult"></span>
+      <span ng-bind="loginComsysResult" ng-class="loginComsysClass"></span>
     </div>
     <div>
       <button class="button button-light" ng-click="changeComsysPassword('', '')">changeComsysPassword</button>
-      <span ng-bind="changeComsysPasswordResult"></span>
+      <span ng-bind="changeComsysPasswordResult" ng-class="changeComsysPasswordClass"></span>
     </div>
     <div>
-      <button class="button button-light" ng-click="logout()">Logout</button>
-      <span ng-bind="logoutResult"></span>
+      <button class="button button-light" ng-click="logoutComsys()">Logout</button>
+      <span ng-bind="logoutComsysResult" ng-class="logoutComsysClass"></span>
     </div>
     <div>
       <button class="button button-light" ng-click="loginCheckComsys()">Login Check</button>
-      <span ng-bind="loginCheckComsysResult"></span>
+      <span ng-bind="loginCheckComsysResult" ng-class="loginCheckComsysClass"></span>
     </div>
     <div>
       <button class="button button-light" ng-click="createComsys()">createComsys</button>
-      <span ng-bind="createComsysResult"></span>
+      <span ng-bind="createComsysResult" ng-class="createComsysClass"></span>
     </div>
-    <div>
-      <button class="button button-light" ng-click="sendNotificationToOperator()">sendNotificationToOperator</button>
-    </div>
-    <div>
-      <button class="button button-light" ng-click="sendNotificationToSquad()">sendNotificationToSquad</button>
-    </div>
-    <div>
-      <button class="button button-light" ng-click="addEnemyPing()">addEnemyPing</button>
-    </div>
-    <div>
+     <div>
       <button class="button button-light" ng-click="getEventsOfComsys()">getEventsOfComsys</button>
-      <span ng-bind="getEventsOfComsysResult"></span>
+      <span ng-bind="getEventsOfComsysResult" ng-class="getEventsOfComsysClass"></span>
+    </div>
+    <div>
+      <button class="button button-energized" ng-click="sendNotificationToOperator()">sendNotificationToOperator</button>
+    </div>
+    <div>
+      <button class="button button-energized" ng-click="sendNotificationToSquad()">sendNotificationToSquad</button>
+    </div>
+    <div>
+      <button class="button button-energized" ng-click="addEnemyPing()">addEnemyPing</button>
     </div>
     <div>
       <button class="button button-energized" ng-click="sendTimestamp(10, 1, 1)">sendTimestamp</button>
