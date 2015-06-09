@@ -638,8 +638,8 @@ app.factory('MasterStubService', function ($http) {
 				score: score
 			});
 		},
-		sendNotificationToSquad : function (IDEvent, IDFaction, IDSquad, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/squads/' + IDSquad + '/');
+		sendNotificationToSquad : function (eventId, factionId, squadId, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/squads/' + squadId + '/');
 			var postsRef = ref.child("squad_notifications/");
 			var newPostRef = postsRef.push({
 				available_responses_list: available_responses_list,
@@ -649,8 +649,8 @@ app.factory('MasterStubService', function ($http) {
 			});
 		},
 
-		sendNotificationToOperator : function (IDEvent, IDFaction, IDOperator, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + IDEvent + '/factions/' + IDFaction + '/operators/' + IDOperator + '/');
+		sendNotificationToOperator : function (eventId, factionId, IDOperator, available_responses_list, responses_list, sender, text) {
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/operators/' + IDOperator + '/');
 			var postsRef = ref.child("operator_notifications/");
 			var newPostRef = postsRef.push({
 				available_responses_list: available_responses_list,
@@ -741,14 +741,14 @@ app.factory('MasterStubService', function ($http) {
 			
 		},
 
-		createCarePackage : function (IDEvent,  hidden, gps_lat, gps_long) {
-			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/');
+		createCarePackage : function (eventId,  hidden, gps_lat, gps_long) {
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId);
 			var postsRef = ref.child("care_packages/");
 			var newPostRef = postsRef.push({
-				IDEvent: IDEvent,
 				hidden: hidden,
 				gps_lat: gps_lat,
-				gps_long: gps_long
+				gps_long: gps_long,
+				timestamp: Firebase.ServerValue.TIMESTAMP
 			});		
 		}
 		
