@@ -4,12 +4,12 @@ app.factory('ComsysStubService', function ($http) {
 	var firebaseUrl = 'https://socom-bo-estg-2015.firebaseio.com/events_in_progress/';
 
 	var requestPost =
-		{
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
-			},
-		};
+	{
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded'
+		},
+	};
 
 	$http.defaults.withCredentials = true;
 	
@@ -73,7 +73,7 @@ app.factory('ComsysStubService', function ($http) {
 		},
 
 		/***** Firebase Services *****/
-		 
+
 		/* Service F08 */
 		sendNotificationToComsys: function (eventId, factionId, comsysId, available_responses_list, responses_list, sender, text) {
 			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/' + comsysId + '/comsys_notifications/');
@@ -149,37 +149,21 @@ app.factory('ComsysStubService', function ($http) {
 			var allowedNotifReceivers = [];
 			var comsys;
 
-<<<<<<< HEAD
 			ref.once("value", function(snapshot) {
-=======
-			ref.on("value", function(snapshot) {
-				
->>>>>>> 0121a35502f8e93455a5eabf33600a088d133a65
 				operators = snapshot.val();
 				
 				for (var id in operators) {
 					allowedNotifReceivers.push({id: id, name: operators[id].nickname, type: 'operator'});
 				};
 
-<<<<<<< HEAD
 				squadRef.once("value", function(snapshot) {
-				squads = snapshot.val();
-=======
-				squadRef.on("value", function(snapshot) {
-					
 					squads = snapshot.val();
->>>>>>> 0121a35502f8e93455a5eabf33600a088d133a65
 
 					for (var id in squads) {
 						allowedNotifReceivers.push({id: id, name: squads[id].tag, type: 'squad'});
 					};
 
-<<<<<<< HEAD
 					comsysRef.once("value", function(snapshot) {
-=======
-					comsysRef.on("value", function(snapshot) {
-						
->>>>>>> 0121a35502f8e93455a5eabf33600a088d133a65
 						comsys = snapshot.val();
 						
 						for (var id in comsys) {
@@ -188,52 +172,30 @@ app.factory('ComsysStubService', function ($http) {
 							}
 						};
 
-<<<<<<< HEAD
 						factionRef.once("value", function(snapshot) {
-=======
-						factionRef.on("value", function(snapshot) {
-							
->>>>>>> 0121a35502f8e93455a5eabf33600a088d133a65
+
 							faction = snapshot.val();
 							allowedNotifReceivers.push({id: factionId, name: faction.name, type: 'faction'});
 							callback(allowedNotifReceivers);
 							
-<<<<<<< HEAD
-					    }, function (errorObject) {
-					      console.log("The read failed: " + errorObject.code);
-					    });
-=======
-							factionRef.off();
-							
-					    }, function (errorObject) {
-								console.log("The read failed: " + errorObject.code);
-					    	});
-							
-						comsysRef.off();
->>>>>>> 0121a35502f8e93455a5eabf33600a088d133a65
-						
-				    }, function (errorObject) {
-					   		console.log("The read failed: " + errorObject.code);
-				    	});
 
-<<<<<<< HEAD
-=======
-					squadRef.off();
->>>>>>> 0121a35502f8e93455a5eabf33600a088d133a65
-					
-			    }, function (errorObject) {
+						}, function (errorObject) {
+							console.log("The read failed: " + errorObject.code);
+						});
+
+					}, function (errorObject) {
 						console.log("The read failed: " + errorObject.code);
-			    	});
+					});
 
-<<<<<<< HEAD
-=======
-				ref.off();
-				
->>>>>>> 0121a35502f8e93455a5eabf33600a088d133a65
-		    }, function (errorObject) {
-		      		console.log("The read failed: " + errorObject.code);
-		    	});
+				}, function (errorObject) {
+					console.log("The read failed: " + errorObject.code);
+				});
+
+			}, function (errorObject) {
+				console.log("The read failed: " + errorObject.code);
+			});
 		}
 
 	};
+	
 });
