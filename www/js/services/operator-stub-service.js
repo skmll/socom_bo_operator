@@ -155,7 +155,7 @@ app.factory('OperatorStubService', function ($http) {
 			var squadId;
 			var comsys;
 
-			ref.on("value", function(snapshot) {
+			ref.once("value", function(snapshot) {
 				operators = snapshot.val();
 				squadId = operators[operatorId].squad_id;
 				for (var id in operators) {
@@ -164,7 +164,7 @@ app.factory('OperatorStubService', function ($http) {
 					}
 				};
 
-				squadRef.on("value", function(snapshot) {
+				squadRef.once("value", function(snapshot) {
 				squads = snapshot.val();
 
 					for (var id in squads) {
@@ -173,24 +173,23 @@ app.factory('OperatorStubService', function ($http) {
 						}
 					};
 
-					comsysRef.on("value", function(snapshot) {
+					comsysRef.once("value", function(snapshot) {
 					comsys = snapshot.val();
 
 						for (var id in comsys) {
 							allowedNotifReceivers.push({id: id, name: comsys[id].nickname, type: 'comsys'});
 						};
 						callback(allowedNotifReceivers);
-						comsysRef.off();
+						
 				    }, function (errorObject) {
 				      console.log("The read failed: " + errorObject.code);
 				    });
 
-					squadRef.off();
+					
 			    }, function (errorObject) {
 			      console.log("The read failed: " + errorObject.code);
 			    });
 
-				ref.off();
 		    }, function (errorObject) {
 		      console.log("The read failed: " + errorObject.code);
 		    });

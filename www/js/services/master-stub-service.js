@@ -667,7 +667,7 @@ app.factory('MasterStubService', function ($http) {
 
 		    allowedNotifReceivers.push({id: eventId, name: 'Event', type: 'event'});
 
-			factionsRef.on("value", function(snapshot) {
+			factionsRef.once("value", function(snapshot) {
 				factions = snapshot.val();
 				var i = 0;
 			    for (var id in factions) {
@@ -683,7 +683,6 @@ app.factory('MasterStubService', function ($http) {
 			            done(allowedNotifReceivers);
 			        }
 			    });
-				factionsRef.off();
 		    }, function (errorObject) {
 		      console.log("The read failed: " + errorObject.code);
 		    });
@@ -698,36 +697,31 @@ app.factory('MasterStubService', function ($http) {
 				var squads;
 				var comsys;
 
-				ref.on("value", function(snapshot) {
+				ref.once("value", function(snapshot) {
 					operators = snapshot.val();
 					for (var id in operators) {
 						allowedNotifReceivers.push({id: id, name: operators[id].nickname, type: 'operator'});
 					};
 
-					squadRef.on("value", function(snapshot) {
+					squadRef.once("value", function(snapshot) {
 					squads = snapshot.val();
 
 						for (var id in squads) {
 							allowedNotifReceivers.push({id: id, name: squads[id].tag, type: 'squad'});
 						};
 
-						comsysRef.on("value", function(snapshot) {
+						comsysRef.once("value", function(snapshot) {
 							comsys = snapshot.val();
 							for (var id in comsys) {
 								allowedNotifReceivers.push({id: id, name: comsys[id].nickname, type: 'comsys'});
 							};
 							callback();
-							comsysRef.off();
 					    }, function (errorObject) {
 					      console.log("The read failed: " + errorObject.code);
 					    });
-
-						squadRef.off();
 				    }, function (errorObject) {
 				      console.log("The read failed: " + errorObject.code);
 				    });
-
-					ref.off();
 			    }, function (errorObject) {
 			      console.log("The read failed: " + errorObject.code);
 			    });

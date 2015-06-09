@@ -114,7 +114,7 @@ app.controller('ComsysController', function ($scope, ComsysStubService) {
 	};
 
 	$scope.getComsysAllowedNotifReceiver = function(){
-		var eventId = 10;
+		var eventId = 1;
 		var factionId = 1;
 		var comsysId = 1;
 		var resultArray;

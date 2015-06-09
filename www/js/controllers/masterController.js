@@ -946,7 +946,7 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 	};
 
 	$scope.getMasterAllowedNotifReceiver = function(){
-		MasterStubService.getMasterAllowedNotifReceiver(10, function(array){
+		MasterStubService.getMasterAllowedNotifReceiver(1, function(array){
 			console.log(array);
 		});
 	};
