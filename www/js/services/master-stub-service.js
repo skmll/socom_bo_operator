@@ -665,7 +665,6 @@ app.factory('MasterStubService', function ($http) {
 			var factionsRef = new Firebase(firebaseUrl + eventId + '/factions/');
 			var allowedNotifReceivers = [];
 			var factions;
-			var endedFactionProcessesCounter = 0;
 
 		    var current = 0;
 		    var currentToFactionId = [];
