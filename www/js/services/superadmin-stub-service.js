@@ -14,9 +14,9 @@ app.factory('SuperAdminStubService', function ($http) {
 
 	function escapeIfNotNull(variable) {
 
-		if (variable != null) return variable;
-
-		return null;
+		return variable;
+		/*if (variable != null) return escape(variable);
+		return null;*/
 	}
 
 	return {

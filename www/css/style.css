@@ -18,6 +18,15 @@
 	text-align: center;
 }
 
+.scroll {
+	width: 500px;
+  	display: inline-block;
+}
+
+.blue, .green, .red {
+	float: right;
+}
+
 .blue {
   	background-color: blue;
 }
