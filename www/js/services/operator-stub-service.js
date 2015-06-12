@@ -169,7 +169,7 @@ app.factory('OperatorStubService', function ($http) {
 
 					for (var id in squads) {
 						if(id == squadId){
-							allowedNotifReceivers.push({id: id, name: squads[id].tag, type: 'squad'});
+							allowedNotifReceivers.push({id: id, name: 'Squad ' + squads[id].tag, type: 'squad'});
 						}
 					};
 
