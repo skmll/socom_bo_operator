@@ -160,7 +160,7 @@ app.factory('ComsysStubService', function ($http) {
 					squads = snapshot.val();
 
 					for (var id in squads) {
-						allowedNotifReceivers.push({id: id, name: squads[id].tag, type: 'squad'});
+						allowedNotifReceivers.push({id: id, name: 'Squad ' + squads[id].tag, type: 'squad'});
 					};
 
 					comsysRef.once("value", function(snapshot) {
