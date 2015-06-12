@@ -110,7 +110,8 @@ app.factory('OperatorStubService', function ($http) {
 				available_responses_list: available_responses_list,
 				responses_list: responses_list,
 				sender: sender,
-				text: text
+				text: text,
+				timestamp: Firebase.ServerValue.TIMESTAMP
 			});
 		},
 		
@@ -120,7 +121,8 @@ app.factory('OperatorStubService', function ($http) {
 				available_responses_list: available_responses_list,
 				responses_list: responses_list,
 				sender: sender,
-				text: text
+				text: text,
+				timestamp: Firebase.ServerValue.TIMESTAMP
 			});
 		},
 
@@ -130,7 +132,8 @@ app.factory('OperatorStubService', function ($http) {
 				available_responses_list: available_responses_list,
 				responses_list: responses_list,
 				sender: sender,
-				text: text
+				text: text,
+				timestamp: Firebase.ServerValue.TIMESTAMP
 			});
 		},
 
