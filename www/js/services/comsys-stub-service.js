@@ -75,11 +75,10 @@ app.factory('ComsysStubService', function ($http) {
 		/***** Firebase Services *****/
 
 		/* Service F08 */
-		sendNotificationToComsys: function (eventId, factionId, comsysId, available_responses_list, responses_list, sender, text) {
+		sendNotificationToComsys: function (eventId, factionId, comsysId, available_responses_list, sender, text) {
 			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/' + comsysId + '/comsys_notifications/');
 			ref.push({
 				available_responses_list: available_responses_list,
-				responses_list: responses_list,
 				sender: sender,
 				text: text,
 				timestamp: Firebase.ServerValue.TIMESTAMP
@@ -87,11 +86,10 @@ app.factory('ComsysStubService', function ($http) {
 		},
 		
 		/* Service F09 */
-		sendNotificationToFaction: function (eventId, factionId, available_responses_list, responses_list, sender, text) {
+		sendNotificationToFaction: function (eventId, factionId, available_responses_list, sender, text) {
 			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/faction_notifications/');
 			ref.push({
 				available_responses_list: available_responses_list,
-				responses_list: responses_list,
 				sender: sender,
 				text: text,
 				timestamp: Firebase.ServerValue.TIMESTAMP
@@ -99,11 +97,10 @@ app.factory('ComsysStubService', function ($http) {
 		},
 		
 		/* Service F10 */
-		sendNotificationToSquad: function (eventId, factionId, squadId, available_responses_list, responses_list, sender, text) {
+		sendNotificationToSquad: function (eventId, factionId, squadId, available_responses_list, sender, text) {
 			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/squads/' + squadId + '/squad_notifications/');
 			ref.push({
 				available_responses_list: available_responses_list,
-				responses_list: responses_list,
 				sender: sender,
 				text: text,
 				timestamp: Firebase.ServerValue.TIMESTAMP
@@ -111,11 +108,10 @@ app.factory('ComsysStubService', function ($http) {
 		},
 		
 		/* Service F11 */
-		sendNotificationToOperator: function (eventId, factionId, operatorId, available_responses_list, responses_list, sender, text) {
+		sendNotificationToOperator: function (eventId, factionId, operatorId, available_responses_list, sender, text) {
 			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/operators/' + operatorId + '/operator_notifications/');
 			ref.push({
 				available_responses_list: available_responses_list,
-				responses_list: responses_list,
 				sender: sender,
 				text: text,
 				timestamp: Firebase.ServerValue.TIMESTAMP
@@ -131,13 +127,13 @@ app.factory('ComsysStubService', function ($http) {
 		},
 		
 		/* Service F13 */
-		addEnemyPing: function (eventId, factionId, available_responses_list, responses_list, sender, text) {
-			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/special_actions/');
-			ref.push({
-				available_responses_list: available_responses_list,
-				responses_list: responses_list,
-				sender: sender,
-				text: text
+		addEnemyPing: function (eventId, factionId, gps_lat, gps_lng) {
+			var special_actRef = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/special_actions");
+			special_actRef.push({
+				action: "enemy",
+				gps_lat: gps_lat,
+				gps_lng: gps_lng,
+				timestamp: Firebase.ServerValue.TIMESTAMP
 			});
 		},
 		

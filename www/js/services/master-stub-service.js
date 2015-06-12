@@ -595,36 +595,33 @@ app.factory('MasterStubService', function ($http) {
 			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/comsys/join');
 		},
 
-		sendNotificationToEvent: function(eventId, available_responses_list, responses_list, sender, text) {
+		sendNotificationToEvent: function(eventId, available_responses_list, sender, text) {
 			var ref = new Firebase(firebaseUrl + eventId + '/');
 			var postsRef = ref.child("event_notifications");
 			postsRef.push({
 				available_responses_list: available_responses_list,
-				responses_list: responses_list,
 				sender: sender,
 				text: text,
 				timestamp: Firebase.ServerValue.TIMESTAMP
 			});
 		},
 
-		sendNotificationToFaction: function(eventId, factionId, available_responses_list, responses_list, sender, text) {
+		sendNotificationToFaction: function(eventId, factionId, available_responses_list, sender, text) {
 			var ref = new Firebase(firebaseUrl + eventId + '/' + factionId + '/');
 			var postsRef = ref.child("faction_notifications/");
 			postsRef.push({
 				available_responses_list: available_responses_list,
-				responses_list: responses_list,
 				sender: sender,
 				text: text,
 				timestamp: Firebase.ServerValue.TIMESTAMP
 			});
 		},
 
-		sendNotificationToComsys: function(eventId, factionId, comsysId, available_responses_list, responses_list, sender, text) {
+		sendNotificationToComsys: function(eventId, factionId, comsysId, available_responses_list, sender, text) {
 			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/comsys_users/' + comsysId + '/');
 			var postsRef = ref.child("comsys_notifications/");
 			var newPostRef = postsRef.push({
 				available_responses_list: available_responses_list,
-				responses_list: responses_list,
 				sender: sender,
 				text: text,
 				timestamp: Firebase.ServerValue.TIMESTAMP
@@ -637,24 +634,22 @@ app.factory('MasterStubService', function ($http) {
 				score: score
 			});
 		},
-		sendNotificationToSquad : function (eventId, factionId, squadId, available_responses_list, responses_list, sender, text) {
+		sendNotificationToSquad : function (eventId, factionId, squadId, available_responses_list, sender, text) {
 			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/squads/' + squadId + '/');
 			var postsRef = ref.child("squad_notifications/");
 			var newPostRef = postsRef.push({
 				available_responses_list: available_responses_list,
-				responses_list: responses_list,
 				sender: sender,
 				text: text,
 				timestamp: Firebase.ServerValue.TIMESTAMP
 			});
 		},
 
-		sendNotificationToOperator : function (eventId, factionId, IDOperator, available_responses_list, responses_list, sender, text) {
+		sendNotificationToOperator : function (eventId, factionId, IDOperator, available_responses_list, sender, text) {
 			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/operators/' + IDOperator + '/');
 			var postsRef = ref.child("operator_notifications/");
 			var newPostRef = postsRef.push({
 				available_responses_list: available_responses_list,
-				responses_list: responses_list,
 				sender: sender,
 				text: text,
 				timestamp: Firebase.ServerValue.TIMESTAMP

@@ -103,34 +103,31 @@ app.factory('OperatorStubService', function ($http) {
 				},
 				
 		// Firebase Services
-		sendNotificationToOperator: function(eventId, factionId, operatorId, available_responses_list, responses_list, sender, text) {
+		sendNotificationToOperator: function(eventId, factionId, operatorId, available_responses_list, sender, text) {
 			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators/' + operatorId + '/');
 			var postsRef = ref.child("operator_notifications/");
 			var newPostRef = postsRef.push({
 				available_responses_list: available_responses_list,
-				responses_list: responses_list,
 				sender: sender,
 				text: text,
 				timestamp: Firebase.ServerValue.TIMESTAMP
 			});
 		},
 		
-		sendNotificationToSquad: function(eventId, factionId, squadId, available_responses_list, responses_list, sender, text) {
+		sendNotificationToSquad: function(eventId, factionId, squadId, available_responses_list, sender, text) {
 			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' + squadId + '/squad_notifications/');
 			ref.push({
 				available_responses_list: available_responses_list,
-				responses_list: responses_list,
 				sender: sender,
 				text: text,
 				timestamp: Firebase.ServerValue.TIMESTAMP
 			});
 		},
 
-		sendNotificationToComsys: function(eventId, factionId, comsysId, available_responses_list, responses_list, sender, text) {
+		sendNotificationToComsys: function(eventId, factionId, comsysId, available_responses_list, sender, text) {
 			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/comsys_users/' + comsysId + '/comsys_notifications/');
 			ref.push({
 				available_responses_list: available_responses_list,
-				responses_list: responses_list,
 				sender: sender,
 				text: text,
 				timestamp: Firebase.ServerValue.TIMESTAMP
