@@ -45,7 +45,7 @@ app.factory('ComsysStubService', function ($http) {
 		
 		/* Service #19 */
 		logoutComsys: function () {
-			return $http.get(baseUrl + 'comsys/logout/');
+			return $http.get(baseUrl + 'comsys/logout');
 		},
 
 		/* Service #20 */
