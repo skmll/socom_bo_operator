@@ -481,7 +481,7 @@ app.factory('MasterStubService', function ($http) {
 		},
 
 		createEvent: function( name, logo, description_briefing, address, rules, prohibitions, proceedment, additional_informations,
-				see_enemie_basessregistration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
+				registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
 				max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
 				see_enemie_bases, see_enemie_respawn, points_per_kill ) {
 
