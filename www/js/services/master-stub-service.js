@@ -483,7 +483,7 @@ app.factory('MasterStubService', function ($http) {
 		createEvent: function( name, logo, description_briefing, address, rules, prohibitions, proceedment, additional_informations,
 				registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
 				max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
-				see_enemies_bases, see_enemies_respawn, points_per_kill ) {
+				see_enemie_base, see_enemie_respawn, points_per_kill ) {
 
 			requestPost.url = baseUrl + 'event/create';
 
@@ -495,8 +495,8 @@ app.factory('MasterStubService', function ($http) {
 					operator_inicial_perk_points: escapeIfNotNull(operator_inicial_perk_points), 
 					max_comsys_per_faction: escapeIfNotNull(max_comsys_per_faction), max_operators_per_faction: escapeIfNotNull(max_operators_per_faction), 
 					respawn_delay: escapeIfNotNull(respawn_delay), gps_refresh_rate_min: escapeIfNotNull(gps_refresh_rate_min), 
-					gps_refresh_rate_max: escapeIfNotNull(gps_refresh_rate_max), see_enemies_bases: escapeIfNotNull(see_enemies_bases), 
-					see_enemies_reswap: escapeIfNotNull(see_enemies_respawn), points_per_kill: escapeIfNotNull(points_per_kill) };
+					gps_refresh_rate_max: escapeIfNotNull(gps_refresh_rate_max), see_enemie_base: escapeIfNotNull(see_enemie_base), 
+					see_enemie_respawn: escapeIfNotNull(see_enemie_respawn), points_per_kill: escapeIfNotNull(points_per_kill) };
 
 			return $http(requestPost);
 		},
@@ -504,7 +504,7 @@ app.factory('MasterStubService', function ($http) {
 		updateEvent: function( eventId, name, logo, description_briefing, address, rules, prohibitions, proceedment, additional_informations,
 				registration_date_start, registration_date_end, event_date_start, event_date_end, operator_inicial_perk_points, 
 				max_comsys_per_faction, max_operators_per_faction, respawn_delay, gps_refresh_rate_min, gps_refresh_rate_max,
-				see_enemies_bases, see_enemies_respawn, points_per_kill ) {
+				see_enemie_base, see_enemie_respawn, points_per_kill ) {
 
 			requestPost.url = baseUrl + 'event/update/' + eventId;
 
@@ -516,8 +516,8 @@ app.factory('MasterStubService', function ($http) {
 					operator_inicial_perk_points: escapeIfNotNull(operator_inicial_perk_points), 
 					max_comsys_per_faction: escapeIfNotNull(max_comsys_per_faction), max_operators_per_faction: escapeIfNotNull(max_operators_per_faction), 
 					respawn_delay: escapeIfNotNull(respawn_delay), gps_refresh_rate_min: escapeIfNotNull(gps_refresh_rate_min), 
-					gps_refresh_rate_max: escapeIfNotNull(gps_refresh_rate_max), see_enemies_bases: escapeIfNotNull(see_enemies_bases), 
-					see_enemies_reswap: escapeIfNotNull(see_enemies_respawn), points_per_kill: escapeIfNotNull(points_per_kill) };
+					gps_refresh_rate_max: escapeIfNotNull(gps_refresh_rate_max), see_enemie_base: escapeIfNotNull(see_enemie_base), 
+					see_enemie_respawn: escapeIfNotNull(see_enemie_respawn), points_per_kill: escapeIfNotNull(points_per_kill) };
 
 			return $http(requestPost);
 		},
