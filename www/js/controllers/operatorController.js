@@ -188,7 +188,7 @@ app.controller('OperatorController', function ($scope, OperatorStubService) {
 	};
 
 	$scope.getOperatorAllowedNotifReceiver = function(){
-		var eventId = 10;
+		var eventId = 1;
 		var factionId = 1;
 		var operatorId = 8976;
 		var resultArray;
