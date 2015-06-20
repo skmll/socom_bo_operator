@@ -1,5 +1,6 @@
 app.controller('MasterController', function ($scope, MasterStubService, $firebaseArray) {
 
+var firebaseUrl = 'https://socom-bo-estg-2015.firebaseio.com/';
 	$scope.login = function (username, password) {
 		MasterStubService.login(username, password)
 			.success(function (data) {
@@ -950,5 +951,6 @@ app.controller('MasterController', function ($scope, MasterStubService, $firebas
 			console.log(array);
 		});
 	};
+
 
 });

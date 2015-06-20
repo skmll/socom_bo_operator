@@ -194,6 +194,29 @@ app.factory('ComsysStubService', function ($http) {
 			}, function (errorObject) {
 				console.log("The read failed: " + errorObject.code);
 			});
+		},
+		
+						searchFirebase: function(eventId, callback) {
+			var ref = new Firebase(firebaseUrl + eventId + "/factions/");
+			ref.on("value", function(snapshot) {
+				var factionsId = snapshot.val();
+				callback(factionsId);
+			});
+		},
+
+						searchScore: function(eventId, factionId, callback) {
+			var ref = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/score/");
+			ref.on("value", function(snapshot) {
+				var score = snapshot.val();
+				callback(score);
+			});
+		},
+
+		changeMasterScore: function (eventId, factionId, score) {
+			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/');
+			ref.update({
+				score: score
+			});
 		}
 
 	};

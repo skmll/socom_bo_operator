@@ -127,4 +127,5 @@ app.controller('ComsysController', function ($scope, ComsysStubService, $parse) 
 		else element.assign($scope, "red");
 	};
 
+	
 });
