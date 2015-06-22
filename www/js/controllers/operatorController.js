@@ -198,4 +198,10 @@ app.controller('OperatorController', function ($scope, OperatorStubService) {
 		});
 	};
 
+	$scope.viewSquad = function(eventId, factionId, operatorId) {
+		OperatorStubService.viewSquad(eventId, factionId, operatorId, function(array) {
+			console.log(array);
+		});
+	};
+	
 });

@@ -203,7 +203,45 @@ app.factory('OperatorStubService', function ($http) {
 				gps_lng: gps_lng,
 				timestamp: Firebase.ServerValue.TIMESTAMP
 			});
-		}
-		
+		}, 
+
+		viewSquad: function(eventId, factionId, operatorId, callback) {
+var ref = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/operators/" + operatorId + "/");			
+ref.on("value", function(snapshot) {
+	var operator = snapshot.val();
+var ref2 = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/operators/");				
+ref2.once("value", function(snapshot2) {
+	var operators = snapshot2.val();
+	var squadOperatorId = [];
+	for(idOperator in operators) {
+		var ref3 = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/operators/" + idOperator + "/");				
+		ref3.once("value", function(snapshot3) {
+			var operatorData = snapshot3.val();
+			if(operator.squad_id == operatorData.squad_id) {
+				console.log("operatorSquadId " + operator.squad_id);
+				console.log("operatorDataSquadId " + operatorData.squad_id);
+								console.log("operatorId " + idOperator);
+				squadOperatorId.push(idOperator);
+			}
+callback(squadOperatorId);
+		});
+	}
+});
+});
+		},
+
+				addEnemyPing: function (eventId, factionId, gps_lat, gps_lng, senderId) {
+			var special_actRef = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/special_actions");
+			special_actRef.push({
+				action: "enemy",
+				gps_lat: gps_lat,
+				gps_lng: gps_lng,
+				timestamp: Firebase.ServerValue.TIMESTAMP,
+				sender: "operator",
+				senderId: senderId
+			});
+		},
+
+
 	};
 });

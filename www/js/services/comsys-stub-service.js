@@ -127,13 +127,15 @@ app.factory('ComsysStubService', function ($http) {
 		},
 		
 		/* Service F13 */
-		addEnemyPing: function (eventId, factionId, gps_lat, gps_lng) {
+		addEnemyPing: function (eventId, factionId, gps_lat, gps_lng, senderId) {
 			var special_actRef = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/special_actions");
 			special_actRef.push({
 				action: "enemy",
 				gps_lat: gps_lat,
 				gps_lng: gps_lng,
-				timestamp: Firebase.ServerValue.TIMESTAMP
+				timestamp: Firebase.ServerValue.TIMESTAMP,
+				sender: "comsys",
+				senderId: senderId
 			});
 		},
 		
@@ -204,6 +206,7 @@ app.factory('ComsysStubService', function ($http) {
 			});
 		},
 
+		/* Firebase methods */
 						searchScore: function(eventId, factionId, callback) {
 			var ref = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/score/");
 			ref.on("value", function(snapshot) {
@@ -217,7 +220,15 @@ app.factory('ComsysStubService', function ($http) {
 			ref.update({
 				score: score
 			});
-		}
+		},
+
+viewMyFaction: function(eventId, factionId, callback) {
+				var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators');
+				ref.on("value", function(snapshot) {
+		var operators = snapshot.val();
+		callback(operators);
+				});
+}
 
 	};
 	

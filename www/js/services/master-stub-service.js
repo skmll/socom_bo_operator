@@ -739,7 +739,16 @@ app.factory('MasterStubService', function ($http) {
 				gps_long: gps_long,
 				timestamp: Firebase.ServerValue.TIMESTAMP
 			});		
+		},
+
+/* Firebase methods */
+								viewAllFactions: function(eventId, callback) {
+			var ref = new Firebase(firebaseUrl + eventId + "/factions/");
+			ref.on("value", function(snapshot) {
+				var factions = snapshot.val();
+				callback(factions);
+			});
 		}
-		
+
 	};
 });
