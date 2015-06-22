@@ -252,10 +252,10 @@ callback(ping);
 
 viewPingComsys: function(eventId, factionId, callback) {
 	var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/special_actions/');
-	ref.on("child_added", function(childSnapshot, prevChildName) {
+	ref.on("value", function(childSnapshot) {
 		var spActions = childSnapshot.val();
 		for(id in spActions.action) {
-			
+			console.log(id);
 		}
 	});
 }
