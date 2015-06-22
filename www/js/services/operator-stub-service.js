@@ -242,6 +242,23 @@ callback(squadOperatorId);
 			});
 		},
 
+viewPings: function(eventId, factionId, squadId, callback) {
+var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' + squadId + '/');	
+ref.on("child_added", function(snapshot) {
+var ping = snapshot.val();	
+callback(ping);
+});
+},
+
+viewPingComsys: function(eventId, factionId, callback) {
+	var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/special_actions/');
+	ref.on("child_added", function(childSnapshot, prevChildName) {
+		var spActions = childSnapshot.val();
+		for(id in spActions.action) {
+			
+		}
+	});
+}
 
 	};
 });

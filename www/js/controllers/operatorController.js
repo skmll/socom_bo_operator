@@ -203,5 +203,10 @@ app.controller('OperatorController', function ($scope, OperatorStubService) {
 			console.log(array);
 		});
 	};
-	
+
+$scope.viewPingComsys = function(eventId, factionId) {
+	OperatorStubService.viewPingComsys(eventId, factionId);
+};
+
+
 });

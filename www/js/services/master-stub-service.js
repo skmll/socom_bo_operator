@@ -741,6 +741,11 @@ app.factory('MasterStubService', function ($http) {
 			});		
 		},
 
+		getAllFactions: function(eventId) {
+    return $http.get(baseUrl + 'event/' + eventId + '/faction/get/all');
+}
+
+		
 /* Firebase methods */
 								viewAllFactions: function(eventId, callback) {
 			var ref = new Firebase(firebaseUrl + eventId + "/factions/");
