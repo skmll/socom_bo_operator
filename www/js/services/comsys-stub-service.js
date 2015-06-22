@@ -228,7 +228,19 @@ viewMyFaction: function(eventId, factionId, callback) {
 		var operators = snapshot.val();
 		callback(operators);
 				});
-}
+},
+
+				addEnemyPing: function (eventId, factionId, gps_lat, gps_lng, senderId) {
+			var special_actRef = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/special_actions");
+			special_actRef.push({
+				action: "enemy",
+				gps_lat: gps_lat,
+				gps_lng: gps_lng,
+				timestamp: Firebase.ServerValue.TIMESTAMP,
+				sender: "operator",
+				senderId: senderId
+			});
+		},
 
 	};
 	
