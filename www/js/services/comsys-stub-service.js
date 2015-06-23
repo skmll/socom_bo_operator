@@ -258,7 +258,7 @@ app.factory('ComsysStubService', function ($http) {
 				for(var squadId in squads){
 					if(squadIdsAlreadyRef.indexOf(squadId) == -1){
 						console.log('squad id ' + squadId + ' already referenced');
-						continue;
+						//continue;
 					}
 					squadIdsAlreadyRef.push(squadId);
 					var squadRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' 
