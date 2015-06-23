@@ -127,8 +127,10 @@ app.controller('ComsysController', function ($scope, ComsysStubService, $parse) 
 		else element.assign($scope, "red");
 	};
 
-	$scope.viewMyFaction = function(eventId, factionId) {
-		ComsysStubService.viewMyFaction(eventId, factionId);
+	$scope.viewMyFaction = function(eventId, factionId, callback) {
+		ComsysStubService.viewMyFaction(eventId, factionId, function(data) {
+			console.log(data);
+		});
 	};
 
 $scope.checkGameState = function(eventId) {
