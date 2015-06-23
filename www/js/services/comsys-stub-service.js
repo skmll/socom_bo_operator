@@ -11,6 +11,8 @@ app.factory('ComsysStubService', function ($http) {
 		},
 	};
 
+	var squadIdsAlreadyRef = [];
+
 	$http.defaults.withCredentials = true;
 	
 	function escapeIfNotNull(variable) {
@@ -253,7 +255,12 @@ app.factory('ComsysStubService', function ($http) {
 			var squadsRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads');
 			squadsRef.on('value', function(snapshot) {
 				squads = snapshot.val();
-				for(squadId in squads){
+				for(var squadId in squads){
+					if(squadIdsAlreadyRef.indexOf(squadId) == -1){
+						console.log('squad id ' + squadId + ' already referenced');
+						continue;
+					}
+					squadIdsAlreadyRef.push(squadId);
 					var squadRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' 
 						+ squadId + '/pings');
 					squadRef.on('child_added', function(childSnapshot, prevChildKey) {
