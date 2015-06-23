@@ -952,5 +952,10 @@ var firebaseUrl = 'https://socom-bo-estg-2015.firebaseio.com/';
 		});
 	};
 
+	$scope.viewAllFactions = function(eventId) {
+		MasterStubService.viewAllFactions(eventId, function(data) {
+			console.log(data);
+		});
+	};
 
 });
