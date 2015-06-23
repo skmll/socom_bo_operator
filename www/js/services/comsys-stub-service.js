@@ -22,6 +22,15 @@ app.factory('ComsysStubService', function ($http) {
 		return null;*/
 	}
 
+	function arrayContainsVar(array, variable){
+		for (var i = 0; i < array.length; i++) {
+			if(array[i] == variable){
+				return true;
+			}
+		};
+		return false;
+	}
+
 	return {
 		
 		/***** Laravel Services *****/
@@ -256,9 +265,9 @@ app.factory('ComsysStubService', function ($http) {
 			squadsRef.on('value', function(snapshot) {
 				squads = snapshot.val();
 				for(var squadId in squads){
-					if(squadIdsAlreadyRef.indexOf(squadId) == -1){
+					if(arrayContainsVar(squadIdsAlreadyRef, squadId)){
 						console.log('squad id ' + squadId + ' already referenced');
-						//continue;
+						continue;
 					}
 					squadIdsAlreadyRef.push(squadId);
 					var squadRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' 
