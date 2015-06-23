@@ -230,18 +230,6 @@ app.factory('OperatorStubService', function ($http) {
 			});
 		},
 
-		addEnemyPing: function (eventId, factionId, gps_lat, gps_lng, senderId) {
-			var special_actRef = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/special_actions");
-			special_actRef.push({
-				action: "enemy",
-				gps_lat: gps_lat,
-				gps_lng: gps_lng,
-				timestamp: Firebase.ServerValue.TIMESTAMP,
-				sender: "operator",
-				senderId: senderId
-			});
-		},
-
 		viewPings: function(eventId, factionId, squadId, callback) {
 			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' + squadId + '/');	
 			ref.on("child_added", function(snapshot) {

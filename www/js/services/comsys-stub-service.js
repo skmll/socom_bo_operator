@@ -198,7 +198,7 @@ app.factory('ComsysStubService', function ($http) {
 			});
 		},
 		
-						searchFirebase: function(eventId, callback) {
+		searchFirebase: function(eventId, callback) {
 			var ref = new Firebase(firebaseUrl + eventId + "/factions/");
 			ref.on("value", function(snapshot) {
 				var factionsId = snapshot.val();
@@ -207,7 +207,7 @@ app.factory('ComsysStubService', function ($http) {
 		},
 
 		/* Firebase methods */
-						searchScore: function(eventId, factionId, callback) {
+		searchScore: function(eventId, factionId, callback) {
 			var ref = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/score/");
 			ref.on("value", function(snapshot) {
 				var score = snapshot.val();
@@ -240,6 +240,31 @@ app.factory('ComsysStubService', function ($http) {
 				else {
 					callback("Event not started yet");
 				}
+			});
+		},
+		
+		onFactionEnemyPingAdded: function(eventId, factionId, callback) {
+			var squads = [];
+			
+			var squadsRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads');
+			squadsRef.on('value', function(snapshot) {
+				squads = snapshot.val();
+				for(squadId in squads){
+					var squadRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' 
+						+ squadId + '/pings');
+					squadRef.on('child_added', function(childSnapshot, prevChildKey) {
+						if(childSnapshot.val().action == 'enemy'){
+							callback(childSnapshot.val()); 
+						}
+					});
+				};
+			});
+			
+			var ref2 = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/special_actions');
+			ref2.on('child_added', function(childSnapshot, prevChildKey) {
+				if(childSnapshot.val().action == 'enemy'){
+					callback(childSnapshot.val()); 
+				} 
 			});
 		}
 	};
