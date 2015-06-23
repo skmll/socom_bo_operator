@@ -7,10 +7,10 @@ app.factory('OperatorStubService', function ($http) {
 	
 	var requestPost = 
 	{
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
-			},
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded'
+		},
 	};
 
 	$http.defaults.withCredentials = true;
@@ -47,62 +47,62 @@ app.factory('OperatorStubService', function ($http) {
 		},
 
 		updateOperatorPersonalConfig: function (display_grid, coord_format,nickname, country,
-				rank_ornumber, specialization_id) {
+			rank_ornumber, specialization_id) {
 			requestPost.url = baseUrl + 'operator/config/personal/update';
 			requestPost.params = { display_grid: escapeIfNotNull(display_grid), coord_format: escapeIfNotNull(coord_format),
-					nickname: escapeIfNotNull(nickname), country: escapeIfNotNull(country), rank_ornumber: escapeIfNotNull(rank_ornumber),specialization_id: escapeIfNotNull(specialization_id) };
-			return $http(requestPost);
-		},
+				nickname: escapeIfNotNull(nickname), country: escapeIfNotNull(country), rank_ornumber: escapeIfNotNull(rank_ornumber),specialization_id: escapeIfNotNull(specialization_id) };
+				return $http(requestPost);
+			},
 
-		operatorLogout: function () {
-			return $http.get(baseUrl + 'operator/logout');
-		},
+			operatorLogout: function () {
+				return $http.get(baseUrl + 'operator/logout');
+			},
 
-		changeOperatorPassword: function (oldPassword, newPassword) {
-			requestPost.url = baseUrl + 'operator/password/update';
-			requestPost.params = { old: escapeIfNotNull(oldPassword), new: escapeIfNotNull(newPassword) };
-			return $http(requestPost);
-		},
+			changeOperatorPassword: function (oldPassword, newPassword) {
+				requestPost.url = baseUrl + 'operator/password/update';
+				requestPost.params = { old: escapeIfNotNull(oldPassword), new: escapeIfNotNull(newPassword) };
+				return $http(requestPost);
+			},
 
-		createSquad: function (eventId, factionPIN) {
-			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/create');
-		},
+			createSquad: function (eventId, factionPIN) {
+				return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/create');
+			},
 
-		deleteSquad: function (eventId, factionPIN) {
-			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/delete');
-		},
+			deleteSquad: function (eventId, factionPIN) {
+				return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/delete');
+			},
 
-		lockFactionSquad: function (eventId, factionPIN) {
-			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/lock');
-		},
+			lockFactionSquad: function (eventId, factionPIN) {
+				return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/lock');
+			},
 
-		unlockFactionSquad: function (eventId, factionPIN) {
-			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/unlock');
-		},
+			unlockFactionSquad: function (eventId, factionPIN) {
+				return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/unlock');
+			},
 
-		kickOperatorFromFactionSquad: function (eventId, factionPIN, operatorId) {
-			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/kick/' + operatorId);
-		},
+			kickOperatorFromFactionSquad: function (eventId, factionPIN, operatorId) {
+				return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/kick/' + operatorId);
+			},
 
-		joinFactionSquad: function (eventId, factionPIN, squadId) {
-			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/join/' + squadId);
-		},
+			joinFactionSquad: function (eventId, factionPIN, squadId) {
+				return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/join/' + squadId);
+			},
 
-		leaveFactionSquad: function (eventId, factionPIN, squadId) {
-			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/leave/' + squadId);
-		},
-		
-		getEventsOfOperator: function () {
-			return $http.get(baseUrl + 'operator/event/get/all');
-		},
-		
-		changeStatus: function(eventId, factionId, operatorId, status){
-			var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/operators/'+operatorId+'/'+status);
-			ref.update({
-				status: status
+			leaveFactionSquad: function (eventId, factionPIN, squadId) {
+				return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/squad/leave/' + squadId);
+			},
+
+			getEventsOfOperator: function () {
+				return $http.get(baseUrl + 'operator/event/get/all');
+			},
+
+			changeStatus: function(eventId, factionId, operatorId, status){
+				var ref = new Firebase('https://socom-bo-estg-2015.firebaseio.com/events_in_progress/' + eventId + '/factions/' + factionId + '/operators/'+operatorId+'/'+status);
+				ref.update({
+					status: status
 				});
-				},
-				
+			},
+
 		// Firebase Services
 		sendNotificationToOperator: function(eventId, factionId, operatorId, available_responses_list, sender, text) {
 			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators/' + operatorId + '/');
@@ -135,11 +135,13 @@ app.factory('OperatorStubService', function ($http) {
 			});
 		},
 
-		addPing: function(eventId, factionId, squadId, action, gps_lat, gps_lng) {
+		addPing: function(eventId, factionId, squadId, action, gps_lat, gps_lng, enemiesNumber, direction) {
 			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' + squadId + '/');
 			var postsRef = ref.child("pings/");
 			var newPostRef = postsRef.push({
 				action: action,
+				enemies_number: enemiesNumber,
+				direction: direction,
 				gps_lat: gps_lat,
 				gps_lng: gps_lng,
 				timestamp: Firebase.ServerValue.TIMESTAMP
@@ -166,7 +168,7 @@ app.factory('OperatorStubService', function ($http) {
 				};
 
 				squadRef.once("value", function(snapshot) {
-				squads = snapshot.val();
+					squads = snapshot.val();
 
 					for (var id in squads) {
 						if(id == squadId){
@@ -175,25 +177,25 @@ app.factory('OperatorStubService', function ($http) {
 					};
 
 					comsysRef.once("value", function(snapshot) {
-					comsys = snapshot.val();
+						comsys = snapshot.val();
 
 						for (var id in comsys) {
 							allowedNotifReceivers.push({id: id, name: comsys[id].nickname, type: 'comsys'});
 						};
 						callback(allowedNotifReceivers);
 						
-				    }, function (errorObject) {
-				      console.log("The read failed: " + errorObject.code);
-				    });
+					}, function (errorObject) {
+						console.log("The read failed: " + errorObject.code);
+					});
 
 					
-			    }, function (errorObject) {
-			      console.log("The read failed: " + errorObject.code);
-			    });
+				}, function (errorObject) {
+					console.log("The read failed: " + errorObject.code);
+				});
 
-		    }, function (errorObject) {
-		      console.log("The read failed: " + errorObject.code);
-		    });
+			}, function (errorObject) {
+				console.log("The read failed: " + errorObject.code);
+			});
 		},
 
 		updateLocation: function(eventId, factionId, operatorId, gps_lng, gps_lat, battery) {
@@ -207,28 +209,28 @@ app.factory('OperatorStubService', function ($http) {
 		}, 
 
 		viewSquad: function(eventId, factionId, operatorId, callback) {
-var ref = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/operators/" + operatorId + "/");			
-ref.on("value", function(snapshot) {
-	var operator = snapshot.val();
-var ref2 = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/operators/");				
-ref2.once("value", function(snapshot2) {
-	var operators = snapshot2.val();
-	var squadOperatorId = [];
-	for(idOperator in operators) {
-		var ref3 = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/operators/" + idOperator + "/");				
-		ref3.once("value", function(snapshot3) {
-			var operatorData = snapshot3.val();
-			if(operator.squad_id == operatorData.squad_id) {
-				squadOperatorId.push(idOperator);
-			}
-callback(squadOperatorId);
-		});
-	}
-});
-});
+			var ref = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/operators/" + operatorId + "/");			
+			ref.on("value", function(snapshot) {
+				var operator = snapshot.val();
+				var ref2 = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/operators/");				
+				ref2.once("value", function(snapshot2) {
+					var operators = snapshot2.val();
+					var squadOperatorId = [];
+					for(idOperator in operators) {
+						var ref3 = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/operators/" + idOperator + "/");				
+						ref3.once("value", function(snapshot3) {
+							var operatorData = snapshot3.val();
+							if(operator.squad_id == operatorData.squad_id) {
+								squadOperatorId.push(idOperator);
+							}
+							callback(squadOperatorId);
+						});
+					}
+				});
+			});
 		},
 
-				addEnemyPing: function (eventId, factionId, gps_lat, gps_lng, senderId) {
+		addEnemyPing: function (eventId, factionId, gps_lat, gps_lng, senderId) {
 			var special_actRef = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/special_actions");
 			special_actRef.push({
 				action: "enemy",
@@ -240,28 +242,28 @@ callback(squadOperatorId);
 			});
 		},
 
-viewPings: function(eventId, factionId, squadId, callback) {
-var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' + squadId + '/');	
-ref.on("child_added", function(snapshot) {
-var ping = snapshot.val();	
-callback(ping);
-});
-},
+		viewPings: function(eventId, factionId, squadId, callback) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' + squadId + '/');	
+			ref.on("child_added", function(snapshot) {
+				var ping = snapshot.val();	
+				callback(ping);
+			});
+		},
 
-viewPingComsys: function(eventId, factionId, callback) {
-	var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/special_actions/');
-	ref.on("value", function(snapshot) {
-		var comsysPings = [];
-		var spActions = snapshot.val();
-		for(var id in spActions) {
-			if(spActions[id].action == "enemy"){
-				comsysPings.push({gps_lat: spActions[id].gps_lat, gps_lng: spActions[id].gps_lng});
-console.log(comsysPings[0].gps_lat);
-}
-			}
-		callback(comsysPings);
-	});
-}
+		viewPingComsys: function(eventId, factionId, callback) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/special_actions/');
+			ref.on("value", function(snapshot) {
+				var comsysPings = [];
+				var spActions = snapshot.val();
+				for(var id in spActions) {
+					if(spActions[id].action == "enemy"){
+						comsysPings.push({gps_lat: spActions[id].gps_lat, gps_lng: spActions[id].gps_lng});
+						console.log(comsysPings[0].gps_lat);
+					}
+				}
+				callback(comsysPings);
+			});
+		}
 
-	};
+		};
 });

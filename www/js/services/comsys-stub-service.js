@@ -127,10 +127,12 @@ app.factory('ComsysStubService', function ($http) {
 		},
 		
 		/* Service F13 */
-		addEnemyPing: function (eventId, factionId, gps_lat, gps_lng) {
+		addEnemyPing: function (eventId, factionId, gps_lat, gps_lng, enemiesNumber, direction) {
 			var special_actRef = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/special_actions");
 			special_actRef.push({
 				action: "enemy",
+				enemies_number: enemiesNumber,
+				direction: direction,
 				gps_lat: gps_lat,
 				gps_lng: gps_lng,
 				timestamp: Firebase.ServerValue.TIMESTAMP
@@ -220,26 +222,26 @@ app.factory('ComsysStubService', function ($http) {
 			});
 		},
 
-viewMyFaction: function(eventId, factionId, callback) {
-				var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators');
-				ref.on("value", function(snapshot) {
-		var operators = snapshot.val();
-		callback(operators);
-				});
-},
+		viewMyFaction: function(eventId, factionId, callback) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators');
+			ref.on("value", function(snapshot) {
+				var operators = snapshot.val();
+				callback(operators);
+			});
+		},
 
-checkGameState: function(eventId, callback) {
-	var ref = new Firebase(firebaseUrl + eventId + '/game_state');
-	ref.on("value", function(snapshot) {
-		var state = snapshot.val();
-if(state == "started") {
-	callback(state);
-}
-else {
-	callback("Event not started yet");
-}
-	});
-}
+		checkGameState: function(eventId, callback) {
+			var ref = new Firebase(firebaseUrl + eventId + '/game_state');
+			ref.on("value", function(snapshot) {
+				var state = snapshot.val();
+				if(state == "started") {
+					callback(state);
+				}
+				else {
+					callback("Event not started yet");
+				}
+			});
+		}
 	};
 	
 });
