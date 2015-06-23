@@ -130,5 +130,12 @@ app.controller('ComsysController', function ($scope, ComsysStubService, $parse) 
 	$scope.viewMyFaction = function(eventId, factionId) {
 		ComsysStubService.viewMyFaction(eventId, factionId);
 	};
-	
+
+$scope.checkGameState = function(eventId) {
+	ComsysStubService.checkGameState(eventId, function(data) {
+		console.log(data);
+	});
+};
+
+
 });

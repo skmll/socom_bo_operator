@@ -4,6 +4,7 @@ app.factory('OperatorStubService', function ($http) {
 
 	var firebaseUrl = 'https://socom-bo-estg-2015.firebaseio.com/events_in_progress/';
 
+	
 	var requestPost = 
 	{
 			method: 'POST',
@@ -218,9 +219,6 @@ ref2.once("value", function(snapshot2) {
 		ref3.once("value", function(snapshot3) {
 			var operatorData = snapshot3.val();
 			if(operator.squad_id == operatorData.squad_id) {
-				console.log("operatorSquadId " + operator.squad_id);
-				console.log("operatorDataSquadId " + operatorData.squad_id);
-								console.log("operatorId " + idOperator);
 				squadOperatorId.push(idOperator);
 			}
 callback(squadOperatorId);
@@ -252,11 +250,16 @@ callback(ping);
 
 viewPingComsys: function(eventId, factionId, callback) {
 	var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/special_actions/');
-	ref.on("value", function(childSnapshot) {
-		var spActions = childSnapshot.val();
-		for(id in spActions.action) {
-			console.log(id);
-		}
+	ref.on("value", function(snapshot) {
+		var comsysPings = [];
+		var spActions = snapshot.val();
+		for(var id in spActions) {
+			if(spActions[id].action == "enemy"){
+				comsysPings.push({gps_lat: spActions[id].gps_lat, gps_lng: spActions[id].gps_lng});
+console.log(comsysPings[0].gps_lat);
+}
+			}
+		callback(comsysPings);
 	});
 }
 

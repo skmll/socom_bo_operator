@@ -42,7 +42,7 @@
       <button class="button button-energized" ng-click="sendNotificationToSquad()">sendNotificationToSquad</button>
     </div>
     <div>
-      <button class="button button-energized" ng-click="addEnemyPing()">addEnemyPing</button>
+      <button class="button button-energized" ng-click="addEnemyPing(1, 1, 200, 200)">addEnemyPing</button>
     </div>
     <div>
       <button class="button button-energized" ng-click="sendTimestamp(10, 1, 1)">sendTimestamp</button>
@@ -63,6 +63,7 @@
 	{{searchScore(1, 1) }}
 	<button ng-click="changeMasterScore(1, 1, 100)">Change Score</button>
 	<button ng-click="viewMyFaction(1, 1)">viewMyFaction</button>
+	<button ng-click="checkGameState(1)">checkGameState</button>
 	</div>
   </ion-content>
 </ion-pane>

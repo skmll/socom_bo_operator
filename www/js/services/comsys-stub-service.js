@@ -127,15 +127,13 @@ app.factory('ComsysStubService', function ($http) {
 		},
 		
 		/* Service F13 */
-		addEnemyPing: function (eventId, factionId, gps_lat, gps_lng, senderId) {
+		addEnemyPing: function (eventId, factionId, gps_lat, gps_lng) {
 			var special_actRef = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/special_actions");
 			special_actRef.push({
 				action: "enemy",
 				gps_lat: gps_lat,
 				gps_lng: gps_lng,
-				timestamp: Firebase.ServerValue.TIMESTAMP,
-				sender: "comsys",
-				senderId: senderId
+				timestamp: Firebase.ServerValue.TIMESTAMP
 			});
 		},
 		
@@ -230,18 +228,18 @@ viewMyFaction: function(eventId, factionId, callback) {
 				});
 },
 
-				addEnemyPing: function (eventId, factionId, gps_lat, gps_lng, senderId) {
-			var special_actRef = new Firebase(firebaseUrl + eventId + "/factions/" + factionId + "/special_actions");
-			special_actRef.push({
-				action: "enemy",
-				gps_lat: gps_lat,
-				gps_lng: gps_lng,
-				timestamp: Firebase.ServerValue.TIMESTAMP,
-				sender: "operator",
-				senderId: senderId
-			});
-		},
-
+checkGameState: function(eventId, callback) {
+	var ref = new Firebase(firebaseUrl + eventId + '/game_state');
+	ref.on("value", function(snapshot) {
+		var state = snapshot.val();
+if(state == "started") {
+	callback(state);
+}
+else {
+	callback("Event not started yet");
+}
+	});
+}
 	};
 	
 });

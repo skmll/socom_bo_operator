@@ -591,6 +591,11 @@ app.factory('MasterStubService', function ($http) {
 			return $http.get(baseUrl + 'event/' + eventId + '/faction/get/id/' + factionId);
 		},
 
+				getAllFactions: function(eventId) {
+    return $http.get(baseUrl + 'event/' + eventId + '/faction/get/all');
+},
+
+		
 		joinFactionComsys: function(eventId, factionPIN) {
 			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/comsys/join');
 		},
@@ -741,9 +746,6 @@ app.factory('MasterStubService', function ($http) {
 			});		
 		},
 
-		getAllFactions: function(eventId) {
-    return $http.get(baseUrl + 'event/' + eventId + '/faction/get/all');
-},
 
 		
 /* Firebase methods */

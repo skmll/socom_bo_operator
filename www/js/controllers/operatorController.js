@@ -205,7 +205,9 @@ app.controller('OperatorController', function ($scope, OperatorStubService) {
 	};
 
 $scope.viewPingComsys = function(eventId, factionId) {
-	OperatorStubService.viewPingComsys(eventId, factionId);
+	OperatorStubService.viewPingComsys(eventId, factionId, function(data) {
+		console.log(data[0].gps_lat);
+	});
 };
 
 
