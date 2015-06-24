@@ -305,16 +305,15 @@ app.factory('ComsysStubService', function ($http) {
 						callback(squadId, 'added');
 					}
 				};
-				console.log('squadIdsKnown', squadIdsKnown);			
-				var index = 0;
-				for (var squadId in squadIdsKnown) {
-					if(!arrayContainsVar(squadIdsFromFirebase, squadId)){
-						console.log('removing from array', squadId);
+				console.log('squadIdsKnown', squadIdsKnown);
+
+				for (var index = 0; index < squadIdsKnown.length; index++) {
+					if(!arrayContainsVar(squadIdsFromFirebase, squadIdsKnown[index])){
+						console.log('removing from array', squadIdsKnown[index]);
 						squadIdsKnown.splice(index, 1);
-						console.log('array after removing ' + squadId, squadIdsKnown);
-						callback(squadId, 'removed');
+						console.log('array after removing ' + squadIdsKnown[index], squadIdsKnown);
+						callback(squadIdsKnown[index], 'removed');
 					}
-					index++;
 				};
 			});
 		}	
