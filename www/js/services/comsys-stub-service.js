@@ -295,16 +295,20 @@ app.factory('ComsysStubService', function ($http) {
 			var squadsRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads');
 			squadsRef.on('value', function(snapshot) {
 				squads = snapshot.val();
+				var squadIdsFromFirebase = [];
+				
 				for(var squadId in squads){
+					squadIdsFromFirebase.push(squadId);
 					if(!arrayContainsVar(squadIdsKnown, squadId)){
 						console.log('adding to array ', squadId);
 						squadIdsKnown.push(squadId);
 						callback(squadId, 'added');
 					}
 				};
+								
 				var index = 0;
 				for (var squadId in squadIdsKnown) {
-					if(!arrayContainsVar(squads, squadId)){
+					if(!arrayContainsVar(squadIdsFromFirebase, squadId)){
 						console.log('removing from array', squadId);
 						squadIdsKnown.splice(index, 1);
 						console.log('array after removing ' + squadId, squadIdsKnown);
