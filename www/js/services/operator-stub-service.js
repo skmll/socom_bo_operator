@@ -230,26 +230,21 @@ app.factory('OperatorStubService', function ($http) {
 			});
 		},
 
-		viewPings: function(eventId, factionId, squadId, callback) {
-			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' + squadId + '/');	
-			ref.on("child_added", function(snapshot) {
+		onSquadPingAdded: function(eventId, factionId, squadId, callback) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' + squadId + '/pings');	
+			ref.on("child_added", function(snapshot, prevKey) {
 				var ping = snapshot.val();	
 				callback(ping);
 			});
 		},
 
-		viewPingComsys: function(eventId, factionId, callback) {
+		onComsysPingAdded: function(eventId, factionId, callback) {
 			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/special_actions/');
-			ref.on("value", function(snapshot) {
-				var comsysPings = [];
-				var spActions = snapshot.val();
-				for(var id in spActions) {
-					if(spActions[id].action == "enemy"){
-						comsysPings.push({gps_lat: spActions[id].gps_lat, gps_lng: spActions[id].gps_lng});
-						console.log(comsysPings[0].gps_lat);
-					}
+			ref.on("child_added", function(snapshot, prevKey) {
+				var spAction = snapshot.val();
+				if(spAction.action == "enemy"){
+					callback(spAction);
 				}
-				callback(comsysPings);
 			});
 		}
 
