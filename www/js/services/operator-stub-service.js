@@ -231,7 +231,7 @@ app.factory('OperatorStubService', function ($http) {
 		},
 
 		onSquadPingAdded: function(eventId, factionId, squadId, callback) {
-			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' + squadId + '/pings');	
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads/' + squadId + '/pings/');	
 			ref.on("child_added", function(snapshot, prevKey) {
 				var ping = snapshot.val();	
 				callback(ping);
