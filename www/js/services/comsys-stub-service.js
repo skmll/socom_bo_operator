@@ -296,20 +296,17 @@ app.factory('ComsysStubService', function ($http) {
 			squadsRef.on('value', function(snapshot) {
 				squads = snapshot.val();
 				for(var squadId in squads){
-					if(arrayContainsVar(squadIdsKnown, squadId)){
-						console.log('squad id ' + squadId + ' already known');
-						continue;
+					if(!arrayContainsVar(squadIdsKnown, squadId)){
+						squadIdsKnown.push(squadId);
+						callback(squadId, 'added');
 					}
-					squadIdsKnown.push(squadId);
-					callback(squadId, 'added');
-
 				};
 				var index = 0;
 				for (var squadId in squadIdsKnown) {
 					if(!arrayContainsVar(squads, squadId)){
 						//console.log('squad id ' + squadId + ' removed from firebase');
 						squadIdsKnown.splice(index, 1);
-						console.log('squads after removing ' + squadId, squadIdsKnown);
+						//console.log('squads after removing ' + squadId, squadIdsKnown);
 						callback(squadId, 'removed');
 					}
 					index++;
