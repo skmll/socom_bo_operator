@@ -310,9 +310,9 @@ app.factory('ComsysStubService', function ($http) {
 				for (var index = 0; index < squadIdsKnown.length; index++) {
 					if(!arrayContainsVar(squadIdsFromFirebase, squadIdsKnown[index])){
 						//console.log('removing from array', squadIdsKnown[index]);
-						squadIdsKnown.splice(index, 1);
+						var squadIds = squadIdsKnown.splice(index, 1);
 						//console.log('array after removing ' + squadIdsKnown[index], squadIdsKnown);
-						callback(squadIdsKnown[index], 'removed');
+						callback(squadIds[0], 'removed');
 					}
 				};
 			});
