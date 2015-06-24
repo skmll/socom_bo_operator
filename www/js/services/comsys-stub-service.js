@@ -12,6 +12,7 @@ app.factory('ComsysStubService', function ($http) {
 	};
 
 	var squadIdsAlreadyRef = [];
+	var squadIdsKnown = [];
 
 	$http.defaults.withCredentials = true;
 	
@@ -286,7 +287,37 @@ app.factory('ComsysStubService', function ($http) {
 					callback(childSnapshot.val()); 
 				} 
 			});
-		}
+		},
+	
+		onSquadsIdsChanged: function(eventId, factionId, callback) {
+			var squads = [];
+			
+			var squadsRef = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/squads');
+			squadsRef.on('value', function(snapshot) {
+				squads = snapshot.val();
+				for(var squadId in squads){
+					if(arrayContainsVar(squadIdsKnown, squadId)){
+						console.log('squad id ' + squadId + ' already known');
+						continue;
+					}
+					squadIdsKnown.push(squadId);
+					callback(squadId, 'added');
+
+				};
+				var index = 0;
+				for (var squadId in squadIdsKnown) {
+					if(!arrayContainsVar(squads, squadId)){
+						//console.log('squad id ' + squadId + ' removed from firebase');
+						squadIdsKnown.splice(index, 1);
+						console.log('squads after removing ' + squadId, squadIdsKnown);
+						callback(squadId, 'removed');
+					}
+					index++;
+				};
+			});
+		}	
+		
+		
 	};
 	
 });
