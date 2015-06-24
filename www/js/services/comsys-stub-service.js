@@ -305,7 +305,7 @@ app.factory('ComsysStubService', function ($http) {
 						callback(squadId, 'added');
 					}
 				};
-								
+				console.log('squadIdsKnown', squadIdsKnown);			
 				var index = 0;
 				for (var squadId in squadIdsKnown) {
 					if(!arrayContainsVar(squadIdsFromFirebase, squadId)){
