@@ -217,6 +217,11 @@ app.factory('ComsysStubService', function ($http) {
 				callback(factionsId);
 			});
 		},
+		
+		leaveFactionComsys: function(eventId, factionPIN) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + 
+					factionPIN + '/comsys/leave');
+		},
 
 		/* Firebase methods */
 		searchScore: function(eventId, factionId, callback) {

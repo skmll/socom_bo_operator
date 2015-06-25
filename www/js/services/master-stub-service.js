@@ -550,11 +550,6 @@ app.factory('MasterStubService', function ($http) {
 			return $http.get(baseUrl + 'event/' + eventId + '/faction/delete/' + pin);
 		},
 
-		leaveFactionComsys: function(eventId, factionPIN) {
-			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + 
-					factionPIN + '/comsys/leave');
-		},
-
 		removeZoneOfEvent: function(eventId, zoneId) {
 			return $http.get(baseUrl + 'event/' + eventId + '/zone/remove/' + zoneId);
 		},
