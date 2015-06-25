@@ -218,6 +218,10 @@ app.factory('ComsysStubService', function ($http) {
 			});
 		},
 		
+		joinFactionComsys: function(eventId, factionPIN) {
+			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/comsys/join');
+		},
+		
 		leaveFactionComsys: function(eventId, factionPIN) {
 			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + 
 					factionPIN + '/comsys/leave');

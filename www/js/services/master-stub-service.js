@@ -590,11 +590,6 @@ app.factory('MasterStubService', function ($http) {
     return $http.get(baseUrl + 'event/' + eventId + '/faction/get/all');
 },
 
-		
-		joinFactionComsys: function(eventId, factionPIN) {
-			return $http.get(baseUrl + 'event/' + eventId + '/faction/' + factionPIN + '/comsys/join');
-		},
-
 		sendNotificationToEvent: function(eventId, available_responses_list, sender, text) {
 			var ref = new Firebase(firebaseUrl + eventId + '/');
 			var postsRef = ref.child("event_notifications");
