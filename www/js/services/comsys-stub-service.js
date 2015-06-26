@@ -243,17 +243,17 @@ app.factory('ComsysStubService', function ($http) {
 			});
 		},
 
-		viewMyFaction: function(eventId, factionId, callback) {
-	var ops = [];
-				var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators');
-				ref.on("value", function(snapshot) {
-		var operators = snapshot.val();
-		for(idOperator in operators) {
-			ops.push(idOperator);
-		}
-		callback(ops);
-				});
-},
+		onOperatorValuesChanged: function(eventId, factionId, callback) {
+			var ref = new Firebase(firebaseUrl + eventId + '/factions/' + factionId + '/operators');
+			ref.on("value", function(snapshot) {
+				var ops = [];
+				var operators = snapshot.val();
+				for(var idOperator in operators) {
+					ops.push(operators[idOperator]);
+				}
+				callback(ops);
+			});
+		},
 
 		checkGameState: function(eventId, callback) {
 			var ref = new Firebase(firebaseUrl + eventId + '/game_state');
