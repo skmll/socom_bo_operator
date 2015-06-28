@@ -282,15 +282,15 @@ app.factory('MasterStubService', function ($http) {
 			return $http.get(baseUrl + 'master/zone/type/get/id/' + id);
 		},
 
-		createMasterZone : function (id, description, capture_points) {
+		createMasterZone : function (id, description, capture_points, color) {
 			requestPost.url = baseUrl + 'master/zone/create';
-			requestPost.params = { zone_id: escapeIfNotNull(id), description: escapeIfNotNull(description), capture_points: escapeIfNotNull(capture_points) };
+			requestPost.params = { zone_id: escapeIfNotNull(id), description: escapeIfNotNull(description), capture_points: escapeIfNotNull(capture_points), color: color };
 			return $http(requestPost);
 		},
 
-		updateMasterZone : function (id, description, capture_points) {
+		updateMasterZone : function (id, description, capture_points, color) {
 			requestPost.url = baseUrl + 'master/zone/update/' + id;
-			requestPost.params = { zone_id: escapeIfNotNull(id), description: escapeIfNotNull(description), capture_points: escapeIfNotNull(capture_points) };
+			requestPost.params = { zone_id: escapeIfNotNull(id), description: escapeIfNotNull(description), capture_points: escapeIfNotNull(capture_points), color: color };
 			return $http(requestPost);
 		},
 
@@ -412,15 +412,15 @@ app.factory('MasterStubService', function ($http) {
 			return $http.get(baseUrl + 'master/zone/type/get/id/' + zoneTypeId);
 		},
 
-		createMasterZone : function (zoneTypeId, description, capturePoints) {
+		createMasterZone : function (zoneTypeId, description, capturePoints, color) {
 			requestPost.url = baseUrl + 'master/zone/create';
-			requestPost.params = { zone_id: escapeIfNotNull(zoneTypeId), description: escapeIfNotNull(description), capture_points: escapeIfNotNull(capturePoints) };
+			requestPost.params = { zone_id: escapeIfNotNull(zoneTypeId), description: escapeIfNotNull(description), capture_points: escapeIfNotNull(capturePoints), color: color };
 			return $http(requestPost);
 		},
 
-		updateMasterZone : function (masterZoneId, zoneTypeId, description, capturePoints) {
+		updateMasterZone : function (masterZoneId, zoneTypeId, description, capturePoints, color) {
 			requestPost.url = baseUrl + 'master/zone/update/' + masterZoneId;
-			requestPost.params = { zone_id: escapeIfNotNull(zoneTypeId), description: escapeIfNotNull(description), capture_points: escapeIfNotNull(capturePoints) };
+			requestPost.params = { zone_id: escapeIfNotNull(zoneTypeId), description: escapeIfNotNull(description), capture_points: escapeIfNotNull(capturePoints), color: color };
 			return $http(requestPost);
 		},
 

@@ -41,8 +41,8 @@ app.factory('SuperAdminStubService', function ($http) {
 		},
 		
 		/* Service #4 */
-		changeMasterPassword: function (oldPassword, newPassword) {
-			requestPost.url = baseUrl + 'master/password/update';
+		changeSuperadminPassword	: function (oldPassword, newPassword) {
+			requestPost.url = baseUrl + 'superadmin/password/update';
 			requestPost.params = { old: escapeIfNotNull(oldPassword), new: escapeIfNotNull(newPassword) };
 			return $http(requestPost);
 		},
