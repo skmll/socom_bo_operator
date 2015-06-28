@@ -740,11 +740,13 @@ app.factory('MasterStubService', function ($http) {
 		
 /* Firebase methods */
 								viewAllFactions: function(eventId, callback) {
-									var ops = []
+									var allFactionOperators = [];
 			var ref = new Firebase(firebaseUrl + eventId + "/factions/");
 			ref.on("value", function(snapshot) {
 				var factions = snapshot.val();
 				for(id in factions) {
+					var factionOperators = {};
+					var ops = [];
 					var ref2 = new Firebase(firebaseUrl + eventId + "/factions/" + id + "/operators");
 					ref2.once("value", function(snapshot2) {
 						var operators = snapshot2.val();
@@ -752,8 +754,10 @@ app.factory('MasterStubService', function ($http) {
 							ops.push(operators[idOperator]);
 						}
 					});
+					factionOperators = {faction: id, operators:  ops};
+					allFactionOperators.push(factionOperators);
 				}
-				callback(ops);
+				callback(allFactionOperators);
 			});
 		}
 
