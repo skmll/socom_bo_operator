@@ -749,7 +749,7 @@ app.factory('MasterStubService', function ($http) {
 					ref2.once("value", function(snapshot2) {
 						var operators = snapshot2.val();
 						for(idOperator in operators) {
-							ops.push(idOperator);
+							ops.push(operators[idOperator]);
 						}
 					});
 				}
